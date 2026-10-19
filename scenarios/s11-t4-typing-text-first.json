@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "id": "s11-t4-typing-text-first",
+  "tiers": [
+    "T4"
+  ],
+  "story": "S-11",
+  "tier": "T4",
+  "stage": "S1",
+  "intent": "Text-first mode at the middle of the T4 band: applied fps at or above 1 over any 5 s window, at least 90 percent of keystrokes echoed within 2xRTT+250 ms, at most one expired input object, audio off by default, and the UI states the degraded mode.",
+  "simulator_cases": [
+    "t4_typing_text_first_floor",
+    "t4_no_audio_default"
+  ],
+  "viewers": 1,
+  "steps": [
+    {
+      "Link": {
+        "profile": "t4"
+      }
+    },
+    {
+      "Advance": 4000
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyT",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyT",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 500
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyE",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyE",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 500
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyX",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyX",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 500
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyT",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyT",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 5000
+    },
+    {
+      "Assert": "INV-8"
+    },
+    {
+      "Assert": "INV-2"
+    }
+  ]
+}

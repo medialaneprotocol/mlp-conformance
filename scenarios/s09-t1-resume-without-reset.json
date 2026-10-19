@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "id": "s09-t1-resume-without-reset",
+  "tiers": [
+    "T1"
+  ],
+  "story": "S-9",
+  "tier": "T1",
+  "stage": "S1",
+  "intent": "A media-lane-only loss then a full loss on a fast link: the session resumes with no reset frame, the first frame after resume chains onto the viewer's held frame (patch_gaps 0), one accepted resume per loss, and the control lane stays intact throughout the media-lane-only phase.",
+  "simulator_cases": [
+    "t1_resume_rebases_not_resets",
+    "t1_media_lane_resume_control_lane_intact"
+  ],
+  "viewers": 1,
+  "steps": [
+    {
+      "Link": {
+        "profile": "t1"
+      }
+    },
+    {
+      "Advance": 1000
+    },
+    {
+      "CaptureChange": {
+        "x": 300,
+        "y": 200,
+        "width": 800,
+        "height": 500
+      }
+    },
+    {
+      "Advance": 2000
+    },
+    "ViewerDisconnect",
+    {
+      "Advance": 3000
+    },
+    "ViewerReconnect",
+    {
+      "Advance": 3000
+    },
+    "ViewerDisconnect",
+    {
+      "Advance": 200
+    },
+    "ViewerReconnect",
+    {
+      "Advance": 3000
+    },
+    {
+      "Assert": "INV-2"
+    }
+  ]
+}

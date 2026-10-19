@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "id": "t4-flap",
+  "kind": "flap",
+  "tier": "T4",
+  "rtt_ms": 1500.0,
+  "jitter_ms": 500.0,
+  "jitter_dist": "Normal",
+  "loss_permille": 350,
+  "burst_loss": null,
+  "reorder_permille": 0,
+  "duplicate_permille": 0,
+  "rate_bps_down": 32000,
+  "rate_bps_up": 32000,
+  "mtu_bytes": 65536,
+  "outage_schedule": [
+    {
+      "start_ms": 0,
+      "dur_ms": 10000
+    },
+    {
+      "start_ms": 20000,
+      "dur_ms": 10000
+    },
+    {
+      "start_ms": 40000,
+      "dur_ms": 10000
+    },
+    {
+      "start_ms": 60000,
+      "dur_ms": 10000
+    },
+    {
+      "start_ms": 80000,
+      "dur_ms": 10000
+    }
+  ],
+  "ack_delay_ms": 0,
+  "seed": 1004,
+  "flap": {
+    "cycles": 5,
+    "down_ms": 10000,
+    "up_ms": 10000
+  }
+}

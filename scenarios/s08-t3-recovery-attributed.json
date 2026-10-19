@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "id": "s08-t3-recovery-attributed",
+  "tiers": [
+    "T3"
+  ],
+  "story": "S-8",
+  "tier": "T3",
+  "stage": "S1",
+  "intent": "A degrade/recover cycle at T3 where every recovery step is attributed to exactly one hop: the sum of hop reports plus link loss equals viewer-reported loss within one object, and every session-state transition has a series.",
+  "simulator_cases": [
+    "t3_recovery_fully_attributed"
+  ],
+  "viewers": 1,
+  "steps": [
+    {
+      "Link": {
+        "profile": "t3"
+      }
+    },
+    {
+      "Advance": 1000
+    },
+    {
+      "CaptureChange": {
+        "x": 360,
+        "y": 240,
+        "width": 900,
+        "height": 600
+      }
+    },
+    {
+      "Advance": 3000
+    },
+    {
+      "Link": {
+        "profile": "blackhole"
+      }
+    },
+    {
+      "Advance": 10000
+    },
+    {
+      "Link": {
+        "profile": "t3"
+      }
+    },
+    {
+      "Advance": 8000
+    },
+    {
+      "Assert": "INV-10"
+    }
+  ]
+}

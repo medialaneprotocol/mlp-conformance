@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "id": "s03-t4-outage-resume",
+  "tiers": [
+    "T4"
+  ],
+  "story": "S-3",
+  "tier": "T4",
+  "stage": "S1",
+  "intent": "A 10 s black-hole with a keystroke during it: the session parks and resumes, no rejected resume, recovery p95 within 2xRTT+2 s, one accepted resume per viewer, input applied after restore or expired within its deadline and never applied late.",
+  "simulator_cases": [
+    "t4_outage_survives_and_resumes",
+    "t4_input_deadline_bounds",
+    "t4_no_stuck_keys"
+  ],
+  "viewers": 1,
+  "steps": [
+    {
+      "Link": {
+        "profile": "t4"
+      }
+    },
+    {
+      "Advance": 2000
+    },
+    {
+      "CaptureChange": {
+        "x": 480,
+        "y": 300,
+        "width": 720,
+        "height": 260
+      }
+    },
+    {
+      "Advance": 2000
+    },
+    {
+      "Link": {
+        "profile": "blackhole"
+      }
+    },
+    {
+      "Advance": 5000
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyA",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyA",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 5000
+    },
+    {
+      "Link": {
+        "profile": "t4"
+      }
+    },
+    {
+      "Advance": 8000
+    },
+    {
+      "Assert": "INV-9"
+    },
+    {
+      "Assert": "INV-3"
+    },
+    {
+      "Assert": "INV-4"
+    }
+  ]
+}

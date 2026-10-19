@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "id": "s15-lane-unsupported-degrade",
+  "tiers": [
+    "T0"
+  ],
+  "story": "S-15",
+  "tier": "T0",
+  "stage": "S1",
+  "intent": "Rollout safety: a viewer against a host whose media lane is unsupported. The session connects and stays usable, the media lane is refused with a typed reason, input and terminal still work, and the score is reported as 0 with the reason rather than missing. No network degradation is involved.",
+  "simulator_cases": [
+    "lane_unsupported_degrades_not_fails"
+  ],
+  "viewers": 1,
+  "steps": [
+    {
+      "Link": {
+        "profile": "t0"
+      }
+    },
+    {
+      "Advance": 1000
+    },
+    {
+      "CaptureChange": {
+        "x": 400,
+        "y": 300,
+        "width": 600,
+        "height": 300
+      }
+    },
+    {
+      "Advance": 1000
+    },
+    {
+      "ViewerInput": {
+        "PointerMove": {
+          "x": 700,
+          "y": 450
+        }
+      }
+    },
+    {
+      "Advance": 1000
+    }
+  ]
+}

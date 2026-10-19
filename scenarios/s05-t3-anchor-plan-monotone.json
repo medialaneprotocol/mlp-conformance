@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "id": "s05-t3-anchor-plan-monotone",
+  "tiers": [
+    "T3"
+  ],
+  "story": "S-5",
+  "tier": "T3",
+  "stage": "S1",
+  "intent": "A full-screen change under long-haul conditions is delivered as a progressive anchor plan: no reset frame, every plan frame atomic and within budget, pending_blocks monotone between input events, completion within 8 s.",
+  "simulator_cases": [
+    "t3_anchor_plan_atomic_and_monotone"
+  ],
+  "viewers": 1,
+  "steps": [
+    {
+      "Link": {
+        "profile": "t3"
+      }
+    },
+    {
+      "Advance": 1000
+    },
+    {
+      "CaptureChange": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    {
+      "Advance": 8000
+    },
+    {
+      "Assert": "INV-1"
+    },
+    {
+      "Assert": "INV-2"
+    },
+    {
+      "Assert": "INV-6"
+    }
+  ]
+}

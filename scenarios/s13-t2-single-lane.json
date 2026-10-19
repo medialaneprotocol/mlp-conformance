@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "id": "s13-t2-single-lane",
+  "tiers": [
+    "T2"
+  ],
+  "story": "S-13",
+  "tier": "T2",
+  "stage": "S1",
+  "intent": "The media WebSocket cannot be opened, so the session runs lane_mode=single on poor Wi-Fi: the session is live, input keeps its priority bound, media is still paced, and the viewer shows the benign single-connection note.",
+  "simulator_cases": [
+    "t2_single_lane_priority_preserved"
+  ],
+  "viewers": 1,
+  "steps": [
+    {
+      "Link": {
+        "profile": "t2"
+      }
+    },
+    {
+      "Advance": 1000
+    },
+    {
+      "CaptureChange": {
+        "x": 240,
+        "y": 180,
+        "width": 900,
+        "height": 500
+      }
+    },
+    {
+      "Advance": 500
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyH",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyH",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 120
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyI",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyI",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 2000
+    },
+    {
+      "Assert": "INV-8"
+    },
+    {
+      "Assert": "INV-7"
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "schema": 1,
+  "id": "s06b-t2-input-priority-under-plan",
+  "tiers": [
+    "T2"
+  ],
+  "story": "S-6",
+  "tier": "T2",
+  "stage": "S1",
+  "intent": "Typing during a converging large change at T2 (the matrix's second S-6 case): the same echo and rate bounds hold on the faster, less lossy tier.",
+  "simulator_cases": [
+    "t2_input_priority_under_plan"
+  ],
+  "viewers": 1,
+  "steps": [
+    {
+      "Link": {
+        "profile": "t2"
+      }
+    },
+    {
+      "Advance": 1000
+    },
+    {
+      "CaptureChange": {
+        "x": 0,
+        "y": 0,
+        "width": 1500,
+        "height": 900
+      }
+    },
+    {
+      "Advance": 300
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyA",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyA",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 120
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyB",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyB",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 120
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyC",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyC",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 120
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyD",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyD",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 120
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyE",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyE",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 2000
+    },
+    {
+      "Assert": "INV-8"
+    },
+    {
+      "Assert": "INV-7"
+    }
+  ]
+}

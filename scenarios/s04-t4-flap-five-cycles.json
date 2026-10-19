@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "id": "s04-t4-flap-five-cycles",
+  "tiers": [
+    "T4"
+  ],
+  "story": "S-4",
+  "tier": "T4",
+  "stage": "S1",
+  "intent": "Five cycles of 10 s down / 10 s up: the session survives every cycle with one resumed media session per viewer per cycle and no new handshake, no TTL park eviction, no duplicate input injection, and a bounded reconnect ladder.",
+  "simulator_cases": [
+    "t4_flap_five_cycles_no_operator_action",
+    "t4_flap_ladder_bounded"
+  ],
+  "viewers": 1,
+  "steps": [
+    {
+      "Link": {
+        "profile": "t4"
+      }
+    },
+    {
+      "Advance": 2000
+    },
+    {
+      "CaptureChange": {
+        "x": 520,
+        "y": 360,
+        "width": 640,
+        "height": 240
+      }
+    },
+    {
+      "Advance": 1000
+    },
+    {
+      "Link": {
+        "profile": "t4-flap"
+      }
+    },
+    {
+      "Advance": 100000
+    },
+    {
+      "Link": {
+        "profile": "t4"
+      }
+    },
+    {
+      "Advance": 5000
+    },
+    {
+      "Assert": "INV-9"
+    },
+    {
+      "Assert": "INV-4"
+    }
+  ]
+}

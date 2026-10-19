@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "id": "s02-t3-scroll-converge",
+  "tiers": [
+    "T3"
+  ],
+  "story": "S-2",
+  "tier": "T3",
+  "stage": "S1",
+  "intent": "One 900x620 wheel scroll under long-haul conditions: first visual change within 1 s, pending_blocks monotone to 0 within 8 s, at most one anchor plan, no stuck repair, 2-5 fps.",
+  "simulator_cases": [
+    "t3_scroll_converges_within_plan_deadline"
+  ],
+  "viewers": 1,
+  "steps": [
+    {
+      "Link": {
+        "profile": "t3"
+      }
+    },
+    {
+      "Advance": 1000
+    },
+    {
+      "CaptureChange": {
+        "x": 200,
+        "y": 180,
+        "width": 1500,
+        "height": 800
+      }
+    },
+    {
+      "Advance": 2000
+    },
+    {
+      "Assert": "INV-2"
+    },
+    {
+      "ViewerInput": {
+        "Wheel": {
+          "delta": -8
+        }
+      }
+    },
+    {
+      "Advance": 250
+    },
+    {
+      "ViewerInput": {
+        "Wheel": {
+          "delta": -8
+        }
+      }
+    },
+    {
+      "Advance": 250
+    },
+    {
+      "ViewerInput": {
+        "Wheel": {
+          "delta": -8
+        }
+      }
+    },
+    {
+      "Advance": 8000
+    },
+    {
+      "Assert": "INV-2"
+    },
+    {
+      "Assert": "INV-7"
+    }
+  ]
+}

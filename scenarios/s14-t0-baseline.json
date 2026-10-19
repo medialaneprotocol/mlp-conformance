@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "id": "s14-t0-baseline",
+  "tiers": [
+    "T0"
+  ],
+  "story": "S-14",
+  "tier": "T0",
+  "stage": "S1",
+  "intent": "LAN regression guard: no netem at all, a full-screen change and pointer motion with zero patch gaps, zero dropped frames, no anchor plan, and pacing that never delays a frame beyond 1 ms.",
+  "simulator_cases": [
+    "t0_identical_to_baseline_behaviour"
+  ],
+  "viewers": 1,
+  "steps": [
+    {
+      "Link": {
+        "profile": "t0"
+      }
+    },
+    {
+      "Advance": 500
+    },
+    {
+      "CaptureChange": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    {
+      "Advance": 1000
+    },
+    {
+      "ViewerInput": {
+        "PointerMove": {
+          "x": 640,
+          "y": 400
+        }
+      }
+    },
+    {
+      "Advance": 500
+    },
+    {
+      "Assert": "INV-1"
+    },
+    {
+      "Assert": "INV-2"
+    }
+  ]
+}

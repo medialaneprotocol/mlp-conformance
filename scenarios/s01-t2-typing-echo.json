@@ -1,0 +1,232 @@
+{
+  "schema": 1,
+  "id": "s01-t2-typing-echo",
+  "tiers": [
+    "T2"
+  ],
+  "story": "S-1",
+  "tier": "T2",
+  "stage": "S1",
+  "intent": "Typing under poor Wi-Fi: keystroke echo p95 within 2xRTT+250 ms (0.550 s), at most one patch gap per 10 s, no pending-reason anchor plan, converged within 2 s of the last keystroke.",
+  "simulator_cases": [
+    "t2_typing_echo_within_budget"
+  ],
+  "viewers": 1,
+  "steps": [
+    {
+      "Link": {
+        "profile": "t2"
+      }
+    },
+    {
+      "Advance": 1000
+    },
+    {
+      "CaptureChange": {
+        "x": 320,
+        "y": 240,
+        "width": 640,
+        "height": 200
+      }
+    },
+    {
+      "Advance": 500
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyH",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyH",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 120
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyE",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyE",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 120
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyL",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyL",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 120
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyL",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyL",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 120
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyO",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyO",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 120
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "Space",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "Space",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 120
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyW",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyW",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 120
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyO",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyO",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 120
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyR",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyR",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 120
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyL",
+          "pressed": true
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "Key": {
+          "code": "KeyL",
+          "pressed": false
+        }
+      }
+    },
+    {
+      "Advance": 2000
+    },
+    {
+      "Assert": "INV-8"
+    },
+    {
+      "Assert": "INV-2"
+    }
+  ]
+}

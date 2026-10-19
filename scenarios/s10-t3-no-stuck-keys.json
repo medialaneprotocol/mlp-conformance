@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "id": "s10-t3-no-stuck-keys",
+  "tiers": [
+    "T3"
+  ],
+  "story": "S-10",
+  "tier": "T3",
+  "stage": "S1",
+  "intent": "Ctrl+Alt+Shift held across a 20 s black-hole: the park grace releases every key, after restore only the keys still physically held are re-established, and no key remains down at session end. INV-4 holds in every profile.",
+  "simulator_cases": [
+    "t3_pressed_set_releases_on_park_and_resume",
+    "input_fuzz_no_stuck_keys"
+  ],
+  "viewers": 1,
+  "steps": [
+    {
+      "Link": {
+        "profile": "t3"
+      }
+    },
+    {
+      "Advance": 1000
+    },
+    {
+      "ViewerInput": {
+        "PressedSet": {
+          "keys": [
+            "ControlLeft",
+            "AltLeft",
+            "ShiftLeft"
+          ],
+          "buttons": []
+        }
+      }
+    },
+    {
+      "Advance": 1000
+    },
+    {
+      "Link": {
+        "profile": "blackhole"
+      }
+    },
+    {
+      "Advance": 20000
+    },
+    {
+      "Link": {
+        "profile": "t3"
+      }
+    },
+    {
+      "Advance": 4000
+    },
+    {
+      "ViewerInput": {
+        "PressedSet": {
+          "keys": [
+            "ControlLeft"
+          ],
+          "buttons": []
+        }
+      }
+    },
+    {
+      "Advance": 2000
+    },
+    {
+      "ViewerInput": {
+        "PressedSet": {
+          "keys": [],
+          "buttons": []
+        }
+      }
+    },
+    {
+      "Advance": 2000
+    },
+    {
+      "Assert": "INV-4"
+    }
+  ]
+}
