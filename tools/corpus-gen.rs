@@ -46,7 +46,7 @@ use std::path::{Path, PathBuf};
 use std::process::ExitCode;
 
 use mlp_core::media::MediaPath;
-use mlp_core::media::blocks::BlockRect;
+use mlp_core::media::cells::CellRect;
 use mlp_core::media::input::InputKind;
 use mlp_core::testing::lossy_link::{JitterDist, LinkProfile, Outage, Tier};
 use mlp_core::testing::scenario::{Invariant, Scenario, Step, run};
@@ -152,7 +152,7 @@ fn parse_step(
                 .parse::<u32>()
                 .map_err(|error| format!("change {rect:?}: {error}"))
         };
-        return Ok(Step::CaptureChange(BlockRect::new(
+        return Ok(Step::CaptureChange(CellRect::new(
             value(0)?,
             value(1)?,
             value(2)?,

@@ -257,7 +257,9 @@ if missing:
 else:
     with open(readme, "r", encoding="utf-8") as handle:
         readme_text = handle.read()
-    if "just transport-vectors" not in readme_text or "--update" not in readme_text:
+    # The README must state how to regenerate the traces, so that nobody
+    # edits a trace by hand because they could not find the command.
+    if "conformance-gate.sh --update" not in readme_text:
         fail("corpus: files present", "README.md does not state the regeneration command")
 if len(problems) == mark:
     ok("corpus: files present", "README.md, profiles/, scenarios/, decisions/")
