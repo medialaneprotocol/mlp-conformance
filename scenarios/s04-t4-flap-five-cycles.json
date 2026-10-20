@@ -7,12 +7,12 @@
   "story": "S-4",
   "tier": "T4",
   "stage": "S1",
-  "intent": "Five cycles of 10 s down / 10 s up: the session survives every cycle with one resumed media session per viewer per cycle and no new handshake, no TTL park eviction, no duplicate input injection, and a bounded reconnect ladder.",
+  "intent": "Five cycles of 10 s down / 10 s up: the session survives every cycle with one resumed media session per receiver per cycle and no new handshake, no TTL park eviction, no duplicate input injection, and a bounded reconnect ladder.",
   "simulator_cases": [
     "t4_flap_five_cycles_no_operator_action",
     "t4_flap_ladder_bounded"
   ],
-  "viewers": 1,
+  "receivers": 1,
   "steps": [
     {
       "Link": {

@@ -25,7 +25,7 @@
 //!
 //!   `MLP_CORPUS_PROGRAM`  path to the translation unit:
 //!       `P|<id>|<dist>|<rtt>|<jitter>|<loss>|<burst|->|<reorder>|<dup>|<down>|<up>|<mtu>|<outages|->|<ack>|<seed>`
-//!       `S|<id>|<story>|<tier>|<viewers>|<step>;<step>;…`
+//!       `S|<id>|<story>|<tier>|<receivers>|<step>;<step>;…`
 //!     with steps `advance:<ms>`, `link:<profile>`, `change:<x>,<y>,<w>,<h>`,
 //!     `input:<kind>`, `disconnect`, `reconnect`, `host_reconnect`,
 //!     `path:<ws|dc>`, `assert:<1..10>`.
@@ -205,7 +205,7 @@ fn main() -> ExitCode {
     let program = match env::var("MLP_CORPUS_PROGRAM") {
         Ok(value) if !value.is_empty() => PathBuf::from(value),
         _ => {
-            // The corpus is not on this host: print the marker the gate counts,
+            // The corpus is not on this sender: print the marker the gate counts,
             // write nothing, and pass — a missing corpus must be visible as a
             // count, never as a smaller green run.
             println!("{ABSENT_MARKER}");
@@ -243,15 +243,15 @@ fn main() -> ExitCode {
                 Some(tier) => tier,
                 None => return fail(&format!("unknown tier {:?}", fields[3])),
             };
-            let viewers: u8 = match fields[4].parse() {
+            let receivers: u8 = match fields[4].parse() {
                 Ok(value) => value,
-                Err(error) => return fail(&format!("viewers {:?}: {error}", fields[4])),
+                Err(error) => return fail(&format!("receivers {:?}: {error}", fields[4])),
             };
             scenarios.push((
                 fields[1].to_string(),
                 fields[2].to_string(),
                 tier,
-                viewers,
+                receivers,
                 fields[5].to_string(),
             ));
         } else {
@@ -265,7 +265,7 @@ fn main() -> ExitCode {
 
     let mut dirty = 0usize;
     let mut traces = 0usize;
-    for (id, story, tier, viewers, step_field) in &scenarios {
+    for (id, story, tier, receivers, step_field) in &scenarios {
         let mut steps = Vec::new();
         if !step_field.is_empty() {
             for token in step_field.split(';') {
@@ -279,7 +279,7 @@ fn main() -> ExitCode {
             name: id.clone(),
             tier: *tier,
             steps,
-            viewers: *viewers,
+            receivers: *receivers,
         };
         let trace = run(&scenario);
         if !trace.violations.is_empty() {

@@ -7,11 +7,11 @@
   "story": "S-15",
   "tier": "T0",
   "stage": "S1",
-  "intent": "Rollout safety: a viewer against a host whose media lane is unsupported. The session connects and stays usable, the media lane is refused with a typed reason, input and terminal still work, and the score is reported as 0 with the reason rather than missing. No network degradation is involved.",
+  "intent": "Rollout safety: a receiver against a sender whose media lane is unsupported. The session connects and stays usable, the media lane is refused with a typed reason, input and terminal still work, and the score is reported as 0 with the reason rather than missing. No network degradation is involved.",
   "simulator_cases": [
     "lane_unsupported_degrades_not_fails"
   ],
-  "viewers": 1,
+  "receivers": 1,
   "steps": [
     {
       "Link": {

@@ -7,13 +7,13 @@
   "story": "S-3",
   "tier": "T4",
   "stage": "S1",
-  "intent": "A 10 s black-hole with a keystroke during it: the session parks and resumes, no rejected resume, recovery p95 within 2xRTT+2 s, one accepted resume per viewer, input applied after restore or expired within its deadline and never applied late.",
+  "intent": "A 10 s black-hole with a keystroke during it: the session parks and resumes, no rejected resume, recovery p95 within 2xRTT+2 s, one accepted resume per receiver, input applied after restore or expired within its deadline and never applied late.",
   "simulator_cases": [
     "t4_outage_survives_and_resumes",
     "t4_input_deadline_bounds",
     "t4_no_stuck_keys"
   ],
-  "viewers": 1,
+  "receivers": 1,
   "steps": [
     {
       "Link": {

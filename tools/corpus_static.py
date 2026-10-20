@@ -425,8 +425,8 @@ for name in scenario_paths:
         fail("scenarios: parse", "%s: intent must be a sentence" % name)
     if not isinstance(doc.get("simulator_cases"), list) or not doc["simulator_cases"]:
         fail("scenarios: parse", "%s: simulator_cases must be a non-empty array" % name)
-    if not isinstance(doc.get("viewers"), int) or not 1 <= doc.get("viewers", 0) <= 8:
-        fail("scenarios: parse", "%s: viewers must be 1…8" % name)
+    if not isinstance(doc.get("receivers"), int) or not 1 <= doc.get("receivers", 0) <= 8:
+        fail("scenarios: parse", "%s: receivers must be 1…8" % name)
     if not isinstance(doc.get("steps"), list) or not doc.get("steps"):
         fail("scenarios: parse", "%s: steps must be a non-empty array" % name)
     scenarios[stem] = doc
@@ -666,7 +666,7 @@ if program_out and not problems:
                 doc["ack_delay_ms"], doc["seed"]))
         for sid, doc in sorted(scenarios.items()):
             handle.write("S|%s|%s|%s|%d|%s\n" % (
-                sid, doc["story"], doc["tier"].lower(), doc["viewers"],
+                sid, doc["story"], doc["tier"].lower(), doc["receivers"],
                 ";".join(step_token(step) for step in doc["steps"])))
     print("mlp-corpus: program=%s" % program_out)
 sys.exit(1 if problems else 0)

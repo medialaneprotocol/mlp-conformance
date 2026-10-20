@@ -8,12 +8,12 @@
   "story": "S-7",
   "tier": "T3",
   "stage": "S1",
-  "intent": "Continuous motion at T3 and, with an anchor plan, at T4: every hop's queue stays within its configured cap, one pending frame per viewer, block state bounded, no monotone growth. The live ten-minute run is the netem harness's; this scenario is the deterministic invariant harness for INV-5.",
+  "intent": "Continuous motion at T3 and, with an anchor plan, at T4: every hop's queue stays within its configured cap, one pending frame per receiver, cell state bounded, no monotone growth. The live ten-minute run is the netem harness's; this scenario is the deterministic invariant harness for INV-5.",
   "simulator_cases": [
     "t3_memory_bounded_under_continuous_motion",
     "t4_memory_bounded_with_plans"
   ],
-  "viewers": 1,
+  "receivers": 1,
   "steps": [
     {
       "Link": {

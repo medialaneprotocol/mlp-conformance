@@ -7,12 +7,12 @@
   "story": "S-9",
   "tier": "T1",
   "stage": "S1",
-  "intent": "A media-lane-only loss then a full loss on a fast link: the session resumes with no reset frame, the first frame after resume chains onto the viewer's held frame (patch_gaps 0), one accepted resume per loss, and the control lane stays intact throughout the media-lane-only phase.",
+  "intent": "A media-lane-only loss then a full loss on a fast link: the session resumes with no reset frame, the first frame after resume chains onto the receiver's held frame (patch_gaps 0), one accepted resume per loss, and the control lane stays intact throughout the media-lane-only phase.",
   "simulator_cases": [
     "t1_resume_rebases_not_resets",
     "t1_media_lane_resume_control_lane_intact"
   ],
-  "viewers": 1,
+  "receivers": 1,
   "steps": [
     {
       "Link": {
