@@ -10,6 +10,7 @@ promises. It is read by **both** ends of the protocol:
 |---|---|---|
 | The reference implementation | [`mlp-harness`](../mlp-harness), run by the gate | replays every committed scenario over the protocol's real machines and writes `decisions/` — the gate then regenerates and byte-compares |
 | A browser implementation | `scenarios/*.json` | reconstructs the identical link behaviour from the same committed scenarios |
+| A consumer of the tiers | `tiers.json` | reads each tier's canonical point and the band it sits in, instead of carrying a copy of the envelope |
 
 There is exactly **one** corpus directory. The gate asserts that both
 consumers resolve to it, so a consumer pointed at a second copy fails there
@@ -32,6 +33,8 @@ and the diff is part of the change's review.
 ```
 matrix.json    the acceptance matrix: the specification's stories, the
                scenarios that cover them, and what each one promises
+tiers.json     the protocol's tier table: every tier's canonical point and
+               the band it sits in, as data
 scenarios/     one JSON document per acceptance story
 decisions/     one JSON document per scenario: the golden decision trace
 scripts/       the gate, and the matrix's own check
@@ -60,10 +63,36 @@ overrides that.
    byte-identical to the committed traces. The harness refuses a scenario
    that does not parse, and it fails when a run breaks an invariant: a
    corpus may only commit clean runs.
-3. **The gate itself.** `--self-test` mutates a copy of the corpus three
-   ways — a tampered trace, a scenario the matrix does not name, and a
-   scenario that does not parse — and requires each mutation to be noticed.
-   A gate that cannot fail is not a gate.
+3. **The tier table is the harness's own.** The harness publishes the
+   protocol's tier table — every tier's canonical point and the band it sits
+   in — and the gate compares the published table with the committed one,
+   byte for byte. The table is the protocol's envelope as data, so a
+   consumer reads a tier's numbers instead of copying them; a hand-edited
+   copy of it is a second contract that drifts.
+4. **The gate itself.** `--self-test` mutates a copy of the corpus four
+   ways — a tampered trace, a scenario the matrix does not name, a scenario
+   that does not parse, and a tampered tier table — and requires each
+   mutation to be noticed. A gate that cannot fail is not a gate.
+
+## The tier table
+
+The tiers are the protocol's public contract: the rate, the round trip, the
+loss, the jitter and the outage pattern a link may have and still be one the
+protocol speaks about. The harness owns those numbers, and it publishes them
+as `tiers.json`:
+
+```bash
+mlp-harness tiers            # the table, as JSON
+mlp-harness tiers --out f    # the same bytes, in a file
+```
+
+A row carries the tier's own numbers (the round trip, the echo budget the
+tier promises, the loss bound), the **band** of links the tier speaks about,
+and the tier's **canonical point** — the whole link profile the harness
+asserts at. The canonical point is inside its own band.
+
+A consumer — a browser implementation, a deployment's own chaos harness —
+reads the table instead of carrying a second copy of the envelope.
 
 ## The scenarios
 

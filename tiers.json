@@ -1,0 +1,355 @@
+{
+  "schema": 1,
+  "tiers": [
+    {
+      "tier": "t0",
+      "rtt_ms": 10,
+      "echo_budget_ms": 270,
+      "loss_permille": 0,
+      "band": {
+        "rate_bps_down_min": 100000000,
+        "rate_bps_down_max": null,
+        "rate_bps_up_min": 10000000,
+        "rtt_ms_min": 0,
+        "rtt_ms_max": 10,
+        "loss_permille_min": 0,
+        "loss_permille_max": 0,
+        "jitter_ms_min": 0,
+        "jitter_ms_max": 2,
+        "outage_ms_max": 0,
+        "flap_cycles": 0,
+        "flap_down_ms": 0,
+        "flap_up_ms": 0
+      },
+      "profile": {
+        "down": {
+          "rate_bps": 100000000,
+          "propagation_us": 5000,
+          "jitter": {
+            "Normal": {
+              "amplitude_us": 2000
+            }
+          },
+          "loss": {
+            "Uniform": {
+              "permille": 0
+            }
+          },
+          "reorder_permille": 0,
+          "duplicate_permille": 0,
+          "queue_cap_bytes": 25000000,
+          "burst_bytes": 12500000,
+          "reorder_window_us": 10000,
+          "duplicate_delay_us": 1000,
+          "extra_delay_us": 0
+        },
+        "up": {
+          "rate_bps": 10000000,
+          "propagation_us": 5000,
+          "jitter": {
+            "Normal": {
+              "amplitude_us": 2000
+            }
+          },
+          "loss": {
+            "Uniform": {
+              "permille": 0
+            }
+          },
+          "reorder_permille": 0,
+          "duplicate_permille": 0,
+          "queue_cap_bytes": 2500000,
+          "burst_bytes": 1250000,
+          "reorder_window_us": 10000,
+          "duplicate_delay_us": 1000,
+          "extra_delay_us": 0
+        },
+        "mtu_bytes": 65536,
+        "outages": {
+          "windows": []
+        },
+        "seed": 6840143426475589633
+      }
+    },
+    {
+      "tier": "t1",
+      "rtt_ms": 50,
+      "echo_budget_ms": 350,
+      "loss_permille": 1,
+      "band": {
+        "rate_bps_down_min": 5000000,
+        "rate_bps_down_max": null,
+        "rate_bps_up_min": 1000000,
+        "rtt_ms_min": 50,
+        "rtt_ms_max": 50,
+        "loss_permille_min": 0,
+        "loss_permille_max": 1,
+        "jitter_ms_min": 0,
+        "jitter_ms_max": 10,
+        "outage_ms_max": 5000,
+        "flap_cycles": 0,
+        "flap_down_ms": 0,
+        "flap_up_ms": 0
+      },
+      "profile": {
+        "down": {
+          "rate_bps": 5000000,
+          "propagation_us": 25000,
+          "jitter": {
+            "Normal": {
+              "amplitude_us": 10000
+            }
+          },
+          "loss": {
+            "Uniform": {
+              "permille": 1
+            }
+          },
+          "reorder_permille": 0,
+          "duplicate_permille": 0,
+          "queue_cap_bytes": 1250000,
+          "burst_bytes": 625000,
+          "reorder_window_us": 10000,
+          "duplicate_delay_us": 1000,
+          "extra_delay_us": 0
+        },
+        "up": {
+          "rate_bps": 1000000,
+          "propagation_us": 25000,
+          "jitter": {
+            "Normal": {
+              "amplitude_us": 10000
+            }
+          },
+          "loss": {
+            "Uniform": {
+              "permille": 1
+            }
+          },
+          "reorder_permille": 0,
+          "duplicate_permille": 0,
+          "queue_cap_bytes": 250000,
+          "burst_bytes": 125000,
+          "reorder_window_us": 10000,
+          "duplicate_delay_us": 1000,
+          "extra_delay_us": 0
+        },
+        "mtu_bytes": 65536,
+        "outages": {
+          "windows": []
+        },
+        "seed": 6840143426475589633
+      }
+    },
+    {
+      "tier": "t2",
+      "rtt_ms": 150,
+      "echo_budget_ms": 550,
+      "loss_permille": 20,
+      "band": {
+        "rate_bps_down_min": 1000000,
+        "rate_bps_down_max": null,
+        "rate_bps_up_min": 256000,
+        "rtt_ms_min": 150,
+        "rtt_ms_max": 150,
+        "loss_permille_min": 0,
+        "loss_permille_max": 20,
+        "jitter_ms_min": 0,
+        "jitter_ms_max": 40,
+        "outage_ms_max": 5000,
+        "flap_cycles": 0,
+        "flap_down_ms": 0,
+        "flap_up_ms": 0
+      },
+      "profile": {
+        "down": {
+          "rate_bps": 1000000,
+          "propagation_us": 75000,
+          "jitter": {
+            "Normal": {
+              "amplitude_us": 40000
+            }
+          },
+          "loss": {
+            "Uniform": {
+              "permille": 20
+            }
+          },
+          "reorder_permille": 0,
+          "duplicate_permille": 0,
+          "queue_cap_bytes": 250000,
+          "burst_bytes": 125000,
+          "reorder_window_us": 10000,
+          "duplicate_delay_us": 1000,
+          "extra_delay_us": 0
+        },
+        "up": {
+          "rate_bps": 256000,
+          "propagation_us": 75000,
+          "jitter": {
+            "Normal": {
+              "amplitude_us": 40000
+            }
+          },
+          "loss": {
+            "Uniform": {
+              "permille": 20
+            }
+          },
+          "reorder_permille": 0,
+          "duplicate_permille": 0,
+          "queue_cap_bytes": 64000,
+          "burst_bytes": 32000,
+          "reorder_window_us": 10000,
+          "duplicate_delay_us": 1000,
+          "extra_delay_us": 0
+        },
+        "mtu_bytes": 65536,
+        "outages": {
+          "windows": []
+        },
+        "seed": 6840143426475589633
+      }
+    },
+    {
+      "tier": "t3",
+      "rtt_ms": 400,
+      "echo_budget_ms": 1050,
+      "loss_permille": 100,
+      "band": {
+        "rate_bps_down_min": 256000,
+        "rate_bps_down_max": 512000,
+        "rate_bps_up_min": 128000,
+        "rtt_ms_min": 400,
+        "rtt_ms_max": 400,
+        "loss_permille_min": 50,
+        "loss_permille_max": 100,
+        "jitter_ms_min": 0,
+        "jitter_ms_max": 100,
+        "outage_ms_max": 10000,
+        "flap_cycles": 0,
+        "flap_down_ms": 0,
+        "flap_up_ms": 0
+      },
+      "profile": {
+        "down": {
+          "rate_bps": 256000,
+          "propagation_us": 200000,
+          "jitter": {
+            "Normal": {
+              "amplitude_us": 100000
+            }
+          },
+          "loss": {
+            "Uniform": {
+              "permille": 100
+            }
+          },
+          "reorder_permille": 0,
+          "duplicate_permille": 0,
+          "queue_cap_bytes": 64000,
+          "burst_bytes": 32000,
+          "reorder_window_us": 10000,
+          "duplicate_delay_us": 1000,
+          "extra_delay_us": 0
+        },
+        "up": {
+          "rate_bps": 128000,
+          "propagation_us": 200000,
+          "jitter": {
+            "Normal": {
+              "amplitude_us": 100000
+            }
+          },
+          "loss": {
+            "Uniform": {
+              "permille": 100
+            }
+          },
+          "reorder_permille": 0,
+          "duplicate_permille": 0,
+          "queue_cap_bytes": 32000,
+          "burst_bytes": 16000,
+          "reorder_window_us": 10000,
+          "duplicate_delay_us": 1000,
+          "extra_delay_us": 0
+        },
+        "mtu_bytes": 65536,
+        "outages": {
+          "windows": []
+        },
+        "seed": 6840143426475589633
+      }
+    },
+    {
+      "tier": "t4",
+      "rtt_ms": 1400,
+      "echo_budget_ms": 3050,
+      "loss_permille": 350,
+      "band": {
+        "rate_bps_down_min": 32000,
+        "rate_bps_down_max": 64000,
+        "rate_bps_up_min": 32000,
+        "rtt_ms_min": 800,
+        "rtt_ms_max": 2000,
+        "loss_permille_min": 200,
+        "loss_permille_max": 500,
+        "jitter_ms_min": 250,
+        "jitter_ms_max": 1000,
+        "outage_ms_max": 30000,
+        "flap_cycles": 5,
+        "flap_down_ms": 10000,
+        "flap_up_ms": 10000
+      },
+      "profile": {
+        "down": {
+          "rate_bps": 32000,
+          "propagation_us": 700000,
+          "jitter": {
+            "Pareto": {
+              "amplitude_us": 500000
+            }
+          },
+          "loss": {
+            "Uniform": {
+              "permille": 350
+            }
+          },
+          "reorder_permille": 0,
+          "duplicate_permille": 0,
+          "queue_cap_bytes": 8000,
+          "burst_bytes": 4000,
+          "reorder_window_us": 10000,
+          "duplicate_delay_us": 1000,
+          "extra_delay_us": 0
+        },
+        "up": {
+          "rate_bps": 32000,
+          "propagation_us": 700000,
+          "jitter": {
+            "Pareto": {
+              "amplitude_us": 500000
+            }
+          },
+          "loss": {
+            "Uniform": {
+              "permille": 350
+            }
+          },
+          "reorder_permille": 0,
+          "duplicate_permille": 0,
+          "queue_cap_bytes": 8000,
+          "burst_bytes": 4000,
+          "reorder_window_us": 10000,
+          "duplicate_delay_us": 1000,
+          "extra_delay_us": 0
+        },
+        "mtu_bytes": 1150,
+        "outages": {
+          "windows": []
+        },
+        "seed": 6840143426475589633
+      }
+    }
+  ]
+}
