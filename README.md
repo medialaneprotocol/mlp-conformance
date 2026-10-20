@@ -92,6 +92,11 @@ cannot shrink quietly.
 
 The trace is generated, never written by hand.
 
+## Status
+
+In development. One moving version, `v0.1.0`, naming the current commit:
+there is exactly one tag, and a change moves it.
+
 ## License
 
 Apache-2.0. See [LICENSE](LICENSE).
@@ -99,3 +104,13 @@ Apache-2.0. See [LICENSE](LICENSE).
 The reference implementations under [`mlp-core`](../mlp-core) and
 [`mlp-ts`](../mlp-ts) are under PolyForm Noncommercial 1.0.0; this corpus is
 not, so any implementation may validate itself against it.
+
+## The sibling repositories
+
+| repository | what it holds |
+|---|---|
+| [`mlp`](https://github.com/medialaneprotocol/mlp) | the normative specification |
+| [`mlp-core`](https://github.com/medialaneprotocol/mlp-core) | the Rust reference implementation, and the protocol's command-line tool |
+| [`mlp-ts`](https://github.com/medialaneprotocol/mlp-ts) | the browser reference implementation |
+| [`mlp-proto`](https://github.com/medialaneprotocol/mlp-proto) | the class bodies' wire schemas |
+| [`mlp-conformance`](https://github.com/medialaneprotocol/mlp-conformance) | the conformance corpus and its gate |
