@@ -1,59 +1,301 @@
 {
   "schema": 1,
-  "id": "s04-t4-flap-five-cycles",
-  "tiers": [
-    "T4"
-  ],
-  "story": "S-4",
+  "name": "s04-t4-flap-five-cycles",
   "tier": "T4",
-  "stage": "S1",
-  "intent": "Five cycles of 10 s down / 10 s up: the session survives every cycle with one resumed media session per receiver per cycle and no new handshake, no TTL park eviction, no duplicate input injection, and a bounded reconnect ladder.",
-  "simulator_cases": [
-    "t4_flap_five_cycles_no_operator_action",
-    "t4_flap_ladder_bounded"
-  ],
-  "receivers": 1,
+  "seed": 1004,
+  "link": {
+    "down": {
+      "rate_bps": 32000,
+      "propagation_us": 700000,
+      "jitter": {
+        "Pareto": {
+          "amplitude_us": 500000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 350
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 8000,
+      "burst_bytes": 4000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "up": {
+      "rate_bps": 32000,
+      "propagation_us": 700000,
+      "jitter": {
+        "Pareto": {
+          "amplitude_us": 500000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 350
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 8000,
+      "burst_bytes": 4000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "mtu_bytes": 1150,
+    "outages": {
+      "windows": []
+    },
+    "seed": 1004
+  },
+  "prior_bps": null,
+  "grid": {
+    "width_px": 1920,
+    "height_px": 1080,
+    "cell_size_px": 64
+  },
   "steps": [
     {
-      "Link": {
-        "profile": "t4"
+      "SetLink": {
+        "profile": {
+          "down": {
+            "rate_bps": 32000,
+            "propagation_us": 700000,
+            "jitter": {
+              "Pareto": {
+                "amplitude_us": 500000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 350
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 8000,
+            "burst_bytes": 4000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "up": {
+            "rate_bps": 32000,
+            "propagation_us": 700000,
+            "jitter": {
+              "Pareto": {
+                "amplitude_us": 500000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 350
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 8000,
+            "burst_bytes": 4000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "mtu_bytes": 1150,
+          "outages": {
+            "windows": []
+          },
+          "seed": 1004
+        }
       }
     },
     {
-      "Advance": 2000
+      "Advance": {
+        "ms": 2000
+      }
     },
     {
       "CaptureChange": {
-        "x": 520,
-        "y": 360,
-        "width": 640,
-        "height": 240
+        "region": {
+          "x_px": 520,
+          "y_px": 360,
+          "width_px": 640,
+          "height_px": 240
+        }
       }
     },
     {
-      "Advance": 1000
-    },
-    {
-      "Link": {
-        "profile": "t4-flap"
+      "Advance": {
+        "ms": 1000
       }
     },
     {
-      "Advance": 100000
-    },
-    {
-      "Link": {
-        "profile": "t4"
+      "SetLink": {
+        "profile": {
+          "down": {
+            "rate_bps": 32000,
+            "propagation_us": 700000,
+            "jitter": {
+              "Pareto": {
+                "amplitude_us": 500000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 350
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 8000,
+            "burst_bytes": 4000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "up": {
+            "rate_bps": 32000,
+            "propagation_us": 700000,
+            "jitter": {
+              "Pareto": {
+                "amplitude_us": 500000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 350
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 8000,
+            "burst_bytes": 4000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "mtu_bytes": 1150,
+          "outages": {
+            "windows": [
+              {
+                "start_us": 0,
+                "duration_us": 10000000,
+                "kind": "Blackhole"
+              },
+              {
+                "start_us": 20000000,
+                "duration_us": 10000000,
+                "kind": "Blackhole"
+              },
+              {
+                "start_us": 40000000,
+                "duration_us": 10000000,
+                "kind": "Blackhole"
+              },
+              {
+                "start_us": 60000000,
+                "duration_us": 10000000,
+                "kind": "Blackhole"
+              },
+              {
+                "start_us": 80000000,
+                "duration_us": 10000000,
+                "kind": "Blackhole"
+              }
+            ]
+          },
+          "seed": 1004
+        }
       }
     },
     {
-      "Advance": 5000
+      "Advance": {
+        "ms": 100000
+      }
     },
     {
-      "Assert": "INV-9"
+      "SetLink": {
+        "profile": {
+          "down": {
+            "rate_bps": 32000,
+            "propagation_us": 700000,
+            "jitter": {
+              "Pareto": {
+                "amplitude_us": 500000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 350
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 8000,
+            "burst_bytes": 4000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "up": {
+            "rate_bps": 32000,
+            "propagation_us": 700000,
+            "jitter": {
+              "Pareto": {
+                "amplitude_us": 500000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 350
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 8000,
+            "burst_bytes": 4000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "mtu_bytes": 1150,
+          "outages": {
+            "windows": []
+          },
+          "seed": 1004
+        }
+      }
     },
     {
-      "Assert": "INV-4"
+      "Advance": {
+        "ms": 5000
+      }
+    },
+    {
+      "Assert": {
+        "invariant": "INV-9"
+      }
+    },
+    {
+      "Assert": {
+        "invariant": "INV-4"
+      }
     }
-  ]
+  ],
+  "faults": {
+    "apply_partial_update": false,
+    "acknowledge_unemitted_cell": false,
+    "apply_input_twice": false,
+    "apply_input_after_deadline": false,
+    "keep_key_held_after_release": false,
+    "unbounded_queue": false,
+    "oversize_object": false,
+    "burst_over_budget": false,
+    "delay_echo": false,
+    "recreate_session": false,
+    "unattributed_drop": false
+  }
 }

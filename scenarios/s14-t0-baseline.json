@@ -1,53 +1,174 @@
 {
   "schema": 1,
-  "id": "s14-t0-baseline",
-  "tiers": [
-    "T0"
-  ],
-  "story": "S-14",
+  "name": "s14-t0-baseline",
   "tier": "T0",
-  "stage": "S1",
-  "intent": "LAN regression guard: no netem at all, a full-screen change and pointer motion with zero patch gaps, zero dropped frames, no anchor plan, and pacing that never delays a frame beyond 1 ms.",
-  "simulator_cases": [
-    "t0_identical_to_baseline_behaviour"
-  ],
-  "receivers": 1,
+  "seed": 1000,
+  "link": {
+    "down": {
+      "rate_bps": 100000000,
+      "propagation_us": 5000,
+      "jitter": {
+        "Normal": {
+          "amplitude_us": 2000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 0
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 25000000,
+      "burst_bytes": 12500000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "up": {
+      "rate_bps": 10000000,
+      "propagation_us": 5000,
+      "jitter": {
+        "Normal": {
+          "amplitude_us": 2000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 0
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 2500000,
+      "burst_bytes": 1250000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "mtu_bytes": 65536,
+    "outages": {
+      "windows": []
+    },
+    "seed": 1000
+  },
+  "prior_bps": null,
+  "grid": {
+    "width_px": 1920,
+    "height_px": 1080,
+    "cell_size_px": 64
+  },
   "steps": [
     {
-      "Link": {
-        "profile": "t0"
-      }
-    },
-    {
-      "Advance": 500
-    },
-    {
-      "CaptureChange": {
-        "x": 0,
-        "y": 0,
-        "width": 1920,
-        "height": 1080
-      }
-    },
-    {
-      "Advance": 1000
-    },
-    {
-      "ViewerInput": {
-        "PointerMove": {
-          "x": 640,
-          "y": 400
+      "SetLink": {
+        "profile": {
+          "down": {
+            "rate_bps": 100000000,
+            "propagation_us": 5000,
+            "jitter": {
+              "Normal": {
+                "amplitude_us": 2000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 0
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 25000000,
+            "burst_bytes": 12500000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "up": {
+            "rate_bps": 10000000,
+            "propagation_us": 5000,
+            "jitter": {
+              "Normal": {
+                "amplitude_us": 2000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 0
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 2500000,
+            "burst_bytes": 1250000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "mtu_bytes": 65536,
+          "outages": {
+            "windows": []
+          },
+          "seed": 1000
         }
       }
     },
     {
-      "Advance": 500
+      "Advance": {
+        "ms": 500
+      }
     },
     {
-      "Assert": "INV-1"
+      "CaptureChange": {
+        "region": {
+          "x_px": 0,
+          "y_px": 0,
+          "width_px": 1920,
+          "height_px": 1080
+        }
+      }
     },
     {
-      "Assert": "INV-2"
+      "Advance": {
+        "ms": 1000
+      }
+    },
+    {
+      "ViewerInput": {
+        "event": {
+          "PointerMove": {
+            "x_px": 640,
+            "y_px": 400
+          }
+        }
+      }
+    },
+    {
+      "Advance": {
+        "ms": 500
+      }
+    },
+    {
+      "Assert": {
+        "invariant": "INV-1"
+      }
+    },
+    {
+      "Assert": {
+        "invariant": "INV-2"
+      }
     }
-  ]
+  ],
+  "faults": {
+    "apply_partial_update": false,
+    "acknowledge_unemitted_cell": false,
+    "apply_input_twice": false,
+    "apply_input_after_deadline": false,
+    "keep_key_held_after_release": false,
+    "unbounded_queue": false,
+    "oversize_object": false,
+    "burst_over_budget": false,
+    "delay_echo": false,
+    "recreate_session": false,
+    "unattributed_drop": false
+  }
 }

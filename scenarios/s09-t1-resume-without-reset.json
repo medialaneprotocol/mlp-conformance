@@ -1,56 +1,178 @@
 {
   "schema": 1,
-  "id": "s09-t1-resume-without-reset",
-  "tiers": [
-    "T1"
-  ],
-  "story": "S-9",
+  "name": "s09-t1-resume-without-reset",
   "tier": "T1",
-  "stage": "S1",
-  "intent": "A media-lane-only loss then a full loss on a fast link: the session resumes with no reset frame, the first frame after resume chains onto the receiver's held frame (patch_gaps 0), one accepted resume per loss, and the control lane stays intact throughout the media-lane-only phase.",
-  "simulator_cases": [
-    "t1_resume_rebases_not_resets",
-    "t1_media_lane_resume_control_lane_intact"
-  ],
-  "receivers": 1,
+  "seed": 1001,
+  "link": {
+    "down": {
+      "rate_bps": 5000000,
+      "propagation_us": 25000,
+      "jitter": {
+        "Normal": {
+          "amplitude_us": 10000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 1
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 1250000,
+      "burst_bytes": 625000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "up": {
+      "rate_bps": 1000000,
+      "propagation_us": 25000,
+      "jitter": {
+        "Normal": {
+          "amplitude_us": 10000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 1
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 250000,
+      "burst_bytes": 125000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "mtu_bytes": 65536,
+    "outages": {
+      "windows": []
+    },
+    "seed": 1001
+  },
+  "prior_bps": null,
+  "grid": {
+    "width_px": 1920,
+    "height_px": 1080,
+    "cell_size_px": 64
+  },
   "steps": [
     {
-      "Link": {
-        "profile": "t1"
+      "SetLink": {
+        "profile": {
+          "down": {
+            "rate_bps": 5000000,
+            "propagation_us": 25000,
+            "jitter": {
+              "Normal": {
+                "amplitude_us": 10000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 1
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 1250000,
+            "burst_bytes": 625000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "up": {
+            "rate_bps": 1000000,
+            "propagation_us": 25000,
+            "jitter": {
+              "Normal": {
+                "amplitude_us": 10000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 1
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 250000,
+            "burst_bytes": 125000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "mtu_bytes": 65536,
+          "outages": {
+            "windows": []
+          },
+          "seed": 1001
+        }
       }
     },
     {
-      "Advance": 1000
+      "Advance": {
+        "ms": 1000
+      }
     },
     {
       "CaptureChange": {
-        "x": 300,
-        "y": 200,
-        "width": 800,
-        "height": 500
+        "region": {
+          "x_px": 300,
+          "y_px": 200,
+          "width_px": 800,
+          "height_px": 500
+        }
       }
     },
     {
-      "Advance": 2000
+      "Advance": {
+        "ms": 2000
+      }
     },
     "ViewerDisconnect",
     {
-      "Advance": 3000
+      "Advance": {
+        "ms": 3000
+      }
     },
     "ViewerReconnect",
     {
-      "Advance": 3000
+      "Advance": {
+        "ms": 3000
+      }
     },
     "ViewerDisconnect",
     {
-      "Advance": 200
+      "Advance": {
+        "ms": 200
+      }
     },
     "ViewerReconnect",
     {
-      "Advance": 3000
+      "Advance": {
+        "ms": 3000
+      }
     },
     {
-      "Assert": "INV-2"
+      "Assert": {
+        "invariant": "INV-2"
+      }
     }
-  ]
+  ],
+  "faults": {
+    "apply_partial_update": false,
+    "acknowledge_unemitted_cell": false,
+    "apply_input_twice": false,
+    "apply_input_after_deadline": false,
+    "keep_key_held_after_release": false,
+    "unbounded_queue": false,
+    "oversize_object": false,
+    "burst_over_budget": false,
+    "delay_echo": false,
+    "recreate_session": false,
+    "unattributed_drop": false
+  }
 }

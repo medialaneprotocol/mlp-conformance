@@ -1,47 +1,164 @@
 {
   "schema": 1,
-  "id": "s15-lane-unsupported-degrade",
-  "tiers": [
-    "T0"
-  ],
-  "story": "S-15",
+  "name": "s15-lane-unsupported-degrade",
   "tier": "T0",
-  "stage": "S1",
-  "intent": "Rollout safety: a receiver against a sender whose media lane is unsupported. The session connects and stays usable, the media lane is refused with a typed reason, input and terminal still work, and the score is reported as 0 with the reason rather than missing. No network degradation is involved.",
-  "simulator_cases": [
-    "lane_unsupported_degrades_not_fails"
-  ],
-  "receivers": 1,
+  "seed": 1000,
+  "link": {
+    "down": {
+      "rate_bps": 100000000,
+      "propagation_us": 5000,
+      "jitter": {
+        "Normal": {
+          "amplitude_us": 2000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 0
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 25000000,
+      "burst_bytes": 12500000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "up": {
+      "rate_bps": 10000000,
+      "propagation_us": 5000,
+      "jitter": {
+        "Normal": {
+          "amplitude_us": 2000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 0
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 2500000,
+      "burst_bytes": 1250000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "mtu_bytes": 65536,
+    "outages": {
+      "windows": []
+    },
+    "seed": 1000
+  },
+  "prior_bps": null,
+  "grid": {
+    "width_px": 1920,
+    "height_px": 1080,
+    "cell_size_px": 64
+  },
   "steps": [
     {
-      "Link": {
-        "profile": "t0"
-      }
-    },
-    {
-      "Advance": 1000
-    },
-    {
-      "CaptureChange": {
-        "x": 400,
-        "y": 300,
-        "width": 600,
-        "height": 300
-      }
-    },
-    {
-      "Advance": 1000
-    },
-    {
-      "ViewerInput": {
-        "PointerMove": {
-          "x": 700,
-          "y": 450
+      "SetLink": {
+        "profile": {
+          "down": {
+            "rate_bps": 100000000,
+            "propagation_us": 5000,
+            "jitter": {
+              "Normal": {
+                "amplitude_us": 2000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 0
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 25000000,
+            "burst_bytes": 12500000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "up": {
+            "rate_bps": 10000000,
+            "propagation_us": 5000,
+            "jitter": {
+              "Normal": {
+                "amplitude_us": 2000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 0
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 2500000,
+            "burst_bytes": 1250000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "mtu_bytes": 65536,
+          "outages": {
+            "windows": []
+          },
+          "seed": 1000
         }
       }
     },
     {
-      "Advance": 1000
+      "Advance": {
+        "ms": 1000
+      }
+    },
+    {
+      "CaptureChange": {
+        "region": {
+          "x_px": 400,
+          "y_px": 300,
+          "width_px": 600,
+          "height_px": 300
+        }
+      }
+    },
+    {
+      "Advance": {
+        "ms": 1000
+      }
+    },
+    {
+      "ViewerInput": {
+        "event": {
+          "PointerMove": {
+            "x_px": 700,
+            "y_px": 450
+          }
+        }
+      }
+    },
+    {
+      "Advance": {
+        "ms": 1000
+      }
     }
-  ]
+  ],
+  "faults": {
+    "apply_partial_update": false,
+    "acknowledge_unemitted_cell": false,
+    "apply_input_twice": false,
+    "apply_input_after_deadline": false,
+    "keep_key_held_after_release": false,
+    "unbounded_queue": false,
+    "oversize_object": false,
+    "burst_over_budget": false,
+    "delay_echo": false,
+    "recreate_session": false,
+    "unattributed_drop": false
+  }
 }

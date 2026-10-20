@@ -1,55 +1,270 @@
 {
   "schema": 1,
-  "id": "s08-t3-recovery-attributed",
-  "tiers": [
-    "T3"
-  ],
-  "story": "S-8",
+  "name": "s08-t3-recovery-attributed",
   "tier": "T3",
-  "stage": "S1",
-  "intent": "A degrade/recover cycle at T3 where every recovery step is attributed to exactly one hop: the sum of hop reports plus link loss equals receiver-reported loss within one object, and every session-state transition has a series.",
-  "simulator_cases": [
-    "t3_recovery_fully_attributed"
-  ],
-  "receivers": 1,
+  "seed": 1003,
+  "link": {
+    "down": {
+      "rate_bps": 256000,
+      "propagation_us": 200000,
+      "jitter": {
+        "Normal": {
+          "amplitude_us": 100000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 100
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 64000,
+      "burst_bytes": 32000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "up": {
+      "rate_bps": 128000,
+      "propagation_us": 200000,
+      "jitter": {
+        "Normal": {
+          "amplitude_us": 100000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 100
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 32000,
+      "burst_bytes": 16000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "mtu_bytes": 65536,
+    "outages": {
+      "windows": []
+    },
+    "seed": 1003
+  },
+  "prior_bps": null,
+  "grid": {
+    "width_px": 1920,
+    "height_px": 1080,
+    "cell_size_px": 64
+  },
   "steps": [
     {
-      "Link": {
-        "profile": "t3"
+      "SetLink": {
+        "profile": {
+          "down": {
+            "rate_bps": 256000,
+            "propagation_us": 200000,
+            "jitter": {
+              "Normal": {
+                "amplitude_us": 100000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 100
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 64000,
+            "burst_bytes": 32000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "up": {
+            "rate_bps": 128000,
+            "propagation_us": 200000,
+            "jitter": {
+              "Normal": {
+                "amplitude_us": 100000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 100
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 32000,
+            "burst_bytes": 16000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "mtu_bytes": 65536,
+          "outages": {
+            "windows": []
+          },
+          "seed": 1003
+        }
       }
     },
     {
-      "Advance": 1000
+      "Advance": {
+        "ms": 1000
+      }
     },
     {
       "CaptureChange": {
-        "x": 360,
-        "y": 240,
-        "width": 900,
-        "height": 600
+        "region": {
+          "x_px": 360,
+          "y_px": 240,
+          "width_px": 900,
+          "height_px": 600
+        }
       }
     },
     {
-      "Advance": 3000
-    },
-    {
-      "Link": {
-        "profile": "blackhole"
+      "Advance": {
+        "ms": 3000
       }
     },
     {
-      "Advance": 10000
-    },
-    {
-      "Link": {
-        "profile": "t3"
+      "SetLink": {
+        "profile": {
+          "down": {
+            "rate_bps": 32000,
+            "propagation_us": 700000,
+            "jitter": {
+              "Pareto": {
+                "amplitude_us": 500000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 1000
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 8000,
+            "burst_bytes": 4000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "up": {
+            "rate_bps": 32000,
+            "propagation_us": 700000,
+            "jitter": {
+              "Pareto": {
+                "amplitude_us": 500000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 1000
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 8000,
+            "burst_bytes": 4000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "mtu_bytes": 1150,
+          "outages": {
+            "windows": []
+          },
+          "seed": 1006
+        }
       }
     },
     {
-      "Advance": 8000
+      "Advance": {
+        "ms": 10000
+      }
     },
     {
-      "Assert": "INV-10"
+      "SetLink": {
+        "profile": {
+          "down": {
+            "rate_bps": 256000,
+            "propagation_us": 200000,
+            "jitter": {
+              "Normal": {
+                "amplitude_us": 100000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 100
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 64000,
+            "burst_bytes": 32000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "up": {
+            "rate_bps": 128000,
+            "propagation_us": 200000,
+            "jitter": {
+              "Normal": {
+                "amplitude_us": 100000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 100
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 32000,
+            "burst_bytes": 16000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "mtu_bytes": 65536,
+          "outages": {
+            "windows": []
+          },
+          "seed": 1003
+        }
+      }
+    },
+    {
+      "Advance": {
+        "ms": 8000
+      }
+    },
+    {
+      "Assert": {
+        "invariant": "INV-10"
+      }
     }
-  ]
+  ],
+  "faults": {
+    "apply_partial_update": false,
+    "acknowledge_unemitted_cell": false,
+    "apply_input_twice": false,
+    "apply_input_after_deadline": false,
+    "keep_key_held_after_release": false,
+    "unbounded_queue": false,
+    "oversize_object": false,
+    "burst_over_budget": false,
+    "delay_echo": false,
+    "recreate_session": false,
+    "unattributed_drop": false
+  }
 }

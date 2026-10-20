@@ -1,82 +1,305 @@
 {
   "schema": 1,
-  "id": "s03-t4-outage-resume",
-  "tiers": [
-    "T4"
-  ],
-  "story": "S-3",
+  "name": "s03-t4-outage-resume",
   "tier": "T4",
-  "stage": "S1",
-  "intent": "A 10 s black-hole with a keystroke during it: the session parks and resumes, no rejected resume, recovery p95 within 2xRTT+2 s, one accepted resume per receiver, input applied after restore or expired within its deadline and never applied late.",
-  "simulator_cases": [
-    "t4_outage_survives_and_resumes",
-    "t4_input_deadline_bounds",
-    "t4_no_stuck_keys"
-  ],
-  "receivers": 1,
+  "seed": 1004,
+  "link": {
+    "down": {
+      "rate_bps": 32000,
+      "propagation_us": 700000,
+      "jitter": {
+        "Pareto": {
+          "amplitude_us": 500000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 350
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 8000,
+      "burst_bytes": 4000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "up": {
+      "rate_bps": 32000,
+      "propagation_us": 700000,
+      "jitter": {
+        "Pareto": {
+          "amplitude_us": 500000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 350
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 8000,
+      "burst_bytes": 4000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "mtu_bytes": 1150,
+    "outages": {
+      "windows": []
+    },
+    "seed": 1004
+  },
+  "prior_bps": null,
+  "grid": {
+    "width_px": 1920,
+    "height_px": 1080,
+    "cell_size_px": 64
+  },
   "steps": [
     {
-      "Link": {
-        "profile": "t4"
+      "SetLink": {
+        "profile": {
+          "down": {
+            "rate_bps": 32000,
+            "propagation_us": 700000,
+            "jitter": {
+              "Pareto": {
+                "amplitude_us": 500000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 350
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 8000,
+            "burst_bytes": 4000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "up": {
+            "rate_bps": 32000,
+            "propagation_us": 700000,
+            "jitter": {
+              "Pareto": {
+                "amplitude_us": 500000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 350
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 8000,
+            "burst_bytes": 4000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "mtu_bytes": 1150,
+          "outages": {
+            "windows": []
+          },
+          "seed": 1004
+        }
       }
     },
     {
-      "Advance": 2000
+      "Advance": {
+        "ms": 2000
+      }
     },
     {
       "CaptureChange": {
-        "x": 480,
-        "y": 300,
-        "width": 720,
-        "height": 260
+        "region": {
+          "x_px": 480,
+          "y_px": 300,
+          "width_px": 720,
+          "height_px": 260
+        }
       }
     },
     {
-      "Advance": 2000
-    },
-    {
-      "Link": {
-        "profile": "blackhole"
+      "Advance": {
+        "ms": 2000
       }
     },
     {
-      "Advance": 5000
+      "SetLink": {
+        "profile": {
+          "down": {
+            "rate_bps": 32000,
+            "propagation_us": 700000,
+            "jitter": {
+              "Pareto": {
+                "amplitude_us": 500000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 1000
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 8000,
+            "burst_bytes": 4000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "up": {
+            "rate_bps": 32000,
+            "propagation_us": 700000,
+            "jitter": {
+              "Pareto": {
+                "amplitude_us": 500000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 1000
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 8000,
+            "burst_bytes": 4000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "mtu_bytes": 1150,
+          "outages": {
+            "windows": []
+          },
+          "seed": 1006
+        }
+      }
+    },
+    {
+      "Advance": {
+        "ms": 5000
+      }
     },
     {
       "ViewerInput": {
-        "Key": {
-          "code": "KeyA",
-          "pressed": true
+        "event": {
+          "Key": {
+            "code": "KeyA",
+            "pressed": true
+          }
         }
       }
     },
     {
       "ViewerInput": {
-        "Key": {
-          "code": "KeyA",
-          "pressed": false
+        "event": {
+          "Key": {
+            "code": "KeyA",
+            "pressed": false
+          }
         }
       }
     },
     {
-      "Advance": 5000
-    },
-    {
-      "Link": {
-        "profile": "t4"
+      "Advance": {
+        "ms": 5000
       }
     },
     {
-      "Advance": 8000
+      "SetLink": {
+        "profile": {
+          "down": {
+            "rate_bps": 32000,
+            "propagation_us": 700000,
+            "jitter": {
+              "Pareto": {
+                "amplitude_us": 500000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 350
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 8000,
+            "burst_bytes": 4000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "up": {
+            "rate_bps": 32000,
+            "propagation_us": 700000,
+            "jitter": {
+              "Pareto": {
+                "amplitude_us": 500000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 350
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 8000,
+            "burst_bytes": 4000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "mtu_bytes": 1150,
+          "outages": {
+            "windows": []
+          },
+          "seed": 1004
+        }
+      }
     },
     {
-      "Assert": "INV-9"
+      "Advance": {
+        "ms": 8000
+      }
     },
     {
-      "Assert": "INV-3"
+      "Assert": {
+        "invariant": "INV-9"
+      }
     },
     {
-      "Assert": "INV-4"
+      "Assert": {
+        "invariant": "INV-3"
+      }
+    },
+    {
+      "Assert": {
+        "invariant": "INV-4"
+      }
     }
-  ]
+  ],
+  "faults": {
+    "apply_partial_update": false,
+    "acknowledge_unemitted_cell": false,
+    "apply_input_twice": false,
+    "apply_input_after_deadline": false,
+    "keep_key_held_after_release": false,
+    "unbounded_queue": false,
+    "oversize_object": false,
+    "burst_over_budget": false,
+    "delay_echo": false,
+    "recreate_session": false,
+    "unattributed_drop": false
+  }
 }

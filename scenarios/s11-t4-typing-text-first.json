@@ -1,108 +1,244 @@
 {
   "schema": 1,
-  "id": "s11-t4-typing-text-first",
-  "tiers": [
-    "T4"
-  ],
-  "story": "S-11",
+  "name": "s11-t4-typing-text-first",
   "tier": "T4",
-  "stage": "S1",
-  "intent": "Text-first mode at the middle of the T4 band: applied fps at or above 1 over any 5 s window, at least 90 percent of keystrokes echoed within 2xRTT+250 ms, at most one expired input object, audio off by default, and the UI states the degraded mode.",
-  "simulator_cases": [
-    "t4_typing_text_first_floor",
-    "t4_no_audio_default"
-  ],
-  "receivers": 1,
+  "seed": 1004,
+  "link": {
+    "down": {
+      "rate_bps": 32000,
+      "propagation_us": 700000,
+      "jitter": {
+        "Pareto": {
+          "amplitude_us": 500000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 350
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 8000,
+      "burst_bytes": 4000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "up": {
+      "rate_bps": 32000,
+      "propagation_us": 700000,
+      "jitter": {
+        "Pareto": {
+          "amplitude_us": 500000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 350
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 8000,
+      "burst_bytes": 4000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "mtu_bytes": 1150,
+    "outages": {
+      "windows": []
+    },
+    "seed": 1004
+  },
+  "prior_bps": null,
+  "grid": {
+    "width_px": 1920,
+    "height_px": 1080,
+    "cell_size_px": 64
+  },
   "steps": [
     {
-      "Link": {
-        "profile": "t4"
+      "SetLink": {
+        "profile": {
+          "down": {
+            "rate_bps": 32000,
+            "propagation_us": 700000,
+            "jitter": {
+              "Pareto": {
+                "amplitude_us": 500000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 350
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 8000,
+            "burst_bytes": 4000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "up": {
+            "rate_bps": 32000,
+            "propagation_us": 700000,
+            "jitter": {
+              "Pareto": {
+                "amplitude_us": 500000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 350
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 8000,
+            "burst_bytes": 4000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "mtu_bytes": 1150,
+          "outages": {
+            "windows": []
+          },
+          "seed": 1004
+        }
       }
     },
     {
-      "Advance": 4000
+      "Advance": {
+        "ms": 4000
+      }
     },
     {
       "ViewerInput": {
-        "Key": {
-          "code": "KeyT",
-          "pressed": true
+        "event": {
+          "Key": {
+            "code": "KeyT",
+            "pressed": true
+          }
         }
       }
     },
     {
       "ViewerInput": {
-        "Key": {
-          "code": "KeyT",
-          "pressed": false
+        "event": {
+          "Key": {
+            "code": "KeyT",
+            "pressed": false
+          }
         }
       }
     },
     {
-      "Advance": 500
-    },
-    {
-      "ViewerInput": {
-        "Key": {
-          "code": "KeyE",
-          "pressed": true
-        }
+      "Advance": {
+        "ms": 500
       }
     },
     {
       "ViewerInput": {
-        "Key": {
-          "code": "KeyE",
-          "pressed": false
-        }
-      }
-    },
-    {
-      "Advance": 500
-    },
-    {
-      "ViewerInput": {
-        "Key": {
-          "code": "KeyX",
-          "pressed": true
+        "event": {
+          "Key": {
+            "code": "KeyE",
+            "pressed": true
+          }
         }
       }
     },
     {
       "ViewerInput": {
-        "Key": {
-          "code": "KeyX",
-          "pressed": false
+        "event": {
+          "Key": {
+            "code": "KeyE",
+            "pressed": false
+          }
         }
       }
     },
     {
-      "Advance": 500
-    },
-    {
-      "ViewerInput": {
-        "Key": {
-          "code": "KeyT",
-          "pressed": true
-        }
+      "Advance": {
+        "ms": 500
       }
     },
     {
       "ViewerInput": {
-        "Key": {
-          "code": "KeyT",
-          "pressed": false
+        "event": {
+          "Key": {
+            "code": "KeyX",
+            "pressed": true
+          }
         }
       }
     },
     {
-      "Advance": 5000
+      "ViewerInput": {
+        "event": {
+          "Key": {
+            "code": "KeyX",
+            "pressed": false
+          }
+        }
+      }
     },
     {
-      "Assert": "INV-8"
+      "Advance": {
+        "ms": 500
+      }
     },
     {
-      "Assert": "INV-2"
+      "ViewerInput": {
+        "event": {
+          "Key": {
+            "code": "KeyT",
+            "pressed": true
+          }
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "event": {
+          "Key": {
+            "code": "KeyT",
+            "pressed": false
+          }
+        }
+      }
+    },
+    {
+      "Advance": {
+        "ms": 5000
+      }
+    },
+    {
+      "Assert": {
+        "invariant": "INV-8"
+      }
+    },
+    {
+      "Assert": {
+        "invariant": "INV-2"
+      }
     }
-  ]
+  ],
+  "faults": {
+    "apply_partial_update": false,
+    "acknowledge_unemitted_cell": false,
+    "apply_input_twice": false,
+    "apply_input_after_deadline": false,
+    "keep_key_held_after_release": false,
+    "unbounded_queue": false,
+    "oversize_object": false,
+    "burst_over_budget": false,
+    "delay_echo": false,
+    "recreate_session": false,
+    "unattributed_drop": false
+  }
 }

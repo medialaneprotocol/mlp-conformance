@@ -1,232 +1,409 @@
 {
   "schema": 1,
-  "id": "s01-t2-typing-echo",
-  "tiers": [
-    "T2"
-  ],
-  "story": "S-1",
+  "name": "s01-t2-typing-echo",
   "tier": "T2",
-  "stage": "S1",
-  "intent": "Typing under poor Wi-Fi: keystroke echo p95 within 2xRTT+250 ms (0.550 s), at most one patch gap per 10 s, no pending-reason anchor plan, converged within 2 s of the last keystroke.",
-  "simulator_cases": [
-    "t2_typing_echo_within_budget"
-  ],
-  "receivers": 1,
+  "seed": 1002,
+  "link": {
+    "down": {
+      "rate_bps": 1000000,
+      "propagation_us": 75000,
+      "jitter": {
+        "Normal": {
+          "amplitude_us": 40000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 20
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 250000,
+      "burst_bytes": 125000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "up": {
+      "rate_bps": 256000,
+      "propagation_us": 75000,
+      "jitter": {
+        "Normal": {
+          "amplitude_us": 40000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 20
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 64000,
+      "burst_bytes": 32000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "mtu_bytes": 65536,
+    "outages": {
+      "windows": []
+    },
+    "seed": 1002
+  },
+  "prior_bps": null,
+  "grid": {
+    "width_px": 1920,
+    "height_px": 1080,
+    "cell_size_px": 64
+  },
   "steps": [
     {
-      "Link": {
-        "profile": "t2"
+      "SetLink": {
+        "profile": {
+          "down": {
+            "rate_bps": 1000000,
+            "propagation_us": 75000,
+            "jitter": {
+              "Normal": {
+                "amplitude_us": 40000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 20
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 250000,
+            "burst_bytes": 125000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "up": {
+            "rate_bps": 256000,
+            "propagation_us": 75000,
+            "jitter": {
+              "Normal": {
+                "amplitude_us": 40000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 20
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 64000,
+            "burst_bytes": 32000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "mtu_bytes": 65536,
+          "outages": {
+            "windows": []
+          },
+          "seed": 1002
+        }
       }
     },
     {
-      "Advance": 1000
+      "Advance": {
+        "ms": 1000
+      }
     },
     {
       "CaptureChange": {
-        "x": 320,
-        "y": 240,
-        "width": 640,
-        "height": 200
+        "region": {
+          "x_px": 320,
+          "y_px": 240,
+          "width_px": 640,
+          "height_px": 200
+        }
       }
     },
     {
-      "Advance": 500
+      "Advance": {
+        "ms": 500
+      }
     },
     {
       "ViewerInput": {
-        "Key": {
-          "code": "KeyH",
-          "pressed": true
+        "event": {
+          "Key": {
+            "code": "KeyH",
+            "pressed": true
+          }
         }
       }
     },
     {
       "ViewerInput": {
-        "Key": {
-          "code": "KeyH",
-          "pressed": false
+        "event": {
+          "Key": {
+            "code": "KeyH",
+            "pressed": false
+          }
         }
       }
     },
     {
-      "Advance": 120
-    },
-    {
-      "ViewerInput": {
-        "Key": {
-          "code": "KeyE",
-          "pressed": true
-        }
+      "Advance": {
+        "ms": 120
       }
     },
     {
       "ViewerInput": {
-        "Key": {
-          "code": "KeyE",
-          "pressed": false
-        }
-      }
-    },
-    {
-      "Advance": 120
-    },
-    {
-      "ViewerInput": {
-        "Key": {
-          "code": "KeyL",
-          "pressed": true
+        "event": {
+          "Key": {
+            "code": "KeyE",
+            "pressed": true
+          }
         }
       }
     },
     {
       "ViewerInput": {
-        "Key": {
-          "code": "KeyL",
-          "pressed": false
+        "event": {
+          "Key": {
+            "code": "KeyE",
+            "pressed": false
+          }
         }
       }
     },
     {
-      "Advance": 120
-    },
-    {
-      "ViewerInput": {
-        "Key": {
-          "code": "KeyL",
-          "pressed": true
-        }
+      "Advance": {
+        "ms": 120
       }
     },
     {
       "ViewerInput": {
-        "Key": {
-          "code": "KeyL",
-          "pressed": false
-        }
-      }
-    },
-    {
-      "Advance": 120
-    },
-    {
-      "ViewerInput": {
-        "Key": {
-          "code": "KeyO",
-          "pressed": true
+        "event": {
+          "Key": {
+            "code": "KeyL",
+            "pressed": true
+          }
         }
       }
     },
     {
       "ViewerInput": {
-        "Key": {
-          "code": "KeyO",
-          "pressed": false
+        "event": {
+          "Key": {
+            "code": "KeyL",
+            "pressed": false
+          }
         }
       }
     },
     {
-      "Advance": 120
-    },
-    {
-      "ViewerInput": {
-        "Key": {
-          "code": "Space",
-          "pressed": true
-        }
+      "Advance": {
+        "ms": 120
       }
     },
     {
       "ViewerInput": {
-        "Key": {
-          "code": "Space",
-          "pressed": false
-        }
-      }
-    },
-    {
-      "Advance": 120
-    },
-    {
-      "ViewerInput": {
-        "Key": {
-          "code": "KeyW",
-          "pressed": true
+        "event": {
+          "Key": {
+            "code": "KeyL",
+            "pressed": true
+          }
         }
       }
     },
     {
       "ViewerInput": {
-        "Key": {
-          "code": "KeyW",
-          "pressed": false
+        "event": {
+          "Key": {
+            "code": "KeyL",
+            "pressed": false
+          }
         }
       }
     },
     {
-      "Advance": 120
-    },
-    {
-      "ViewerInput": {
-        "Key": {
-          "code": "KeyO",
-          "pressed": true
-        }
+      "Advance": {
+        "ms": 120
       }
     },
     {
       "ViewerInput": {
-        "Key": {
-          "code": "KeyO",
-          "pressed": false
-        }
-      }
-    },
-    {
-      "Advance": 120
-    },
-    {
-      "ViewerInput": {
-        "Key": {
-          "code": "KeyR",
-          "pressed": true
+        "event": {
+          "Key": {
+            "code": "KeyO",
+            "pressed": true
+          }
         }
       }
     },
     {
       "ViewerInput": {
-        "Key": {
-          "code": "KeyR",
-          "pressed": false
+        "event": {
+          "Key": {
+            "code": "KeyO",
+            "pressed": false
+          }
         }
       }
     },
     {
-      "Advance": 120
-    },
-    {
-      "ViewerInput": {
-        "Key": {
-          "code": "KeyL",
-          "pressed": true
-        }
+      "Advance": {
+        "ms": 120
       }
     },
     {
       "ViewerInput": {
-        "Key": {
-          "code": "KeyL",
-          "pressed": false
+        "event": {
+          "Key": {
+            "code": "Space",
+            "pressed": true
+          }
         }
       }
     },
     {
-      "Advance": 2000
+      "ViewerInput": {
+        "event": {
+          "Key": {
+            "code": "Space",
+            "pressed": false
+          }
+        }
+      }
     },
     {
-      "Assert": "INV-8"
+      "Advance": {
+        "ms": 120
+      }
     },
     {
-      "Assert": "INV-2"
+      "ViewerInput": {
+        "event": {
+          "Key": {
+            "code": "KeyW",
+            "pressed": true
+          }
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "event": {
+          "Key": {
+            "code": "KeyW",
+            "pressed": false
+          }
+        }
+      }
+    },
+    {
+      "Advance": {
+        "ms": 120
+      }
+    },
+    {
+      "ViewerInput": {
+        "event": {
+          "Key": {
+            "code": "KeyO",
+            "pressed": true
+          }
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "event": {
+          "Key": {
+            "code": "KeyO",
+            "pressed": false
+          }
+        }
+      }
+    },
+    {
+      "Advance": {
+        "ms": 120
+      }
+    },
+    {
+      "ViewerInput": {
+        "event": {
+          "Key": {
+            "code": "KeyR",
+            "pressed": true
+          }
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "event": {
+          "Key": {
+            "code": "KeyR",
+            "pressed": false
+          }
+        }
+      }
+    },
+    {
+      "Advance": {
+        "ms": 120
+      }
+    },
+    {
+      "ViewerInput": {
+        "event": {
+          "Key": {
+            "code": "KeyL",
+            "pressed": true
+          }
+        }
+      }
+    },
+    {
+      "ViewerInput": {
+        "event": {
+          "Key": {
+            "code": "KeyL",
+            "pressed": false
+          }
+        }
+      }
+    },
+    {
+      "Advance": {
+        "ms": 2000
+      }
+    },
+    {
+      "Assert": {
+        "invariant": "INV-8"
+      }
+    },
+    {
+      "Assert": {
+        "invariant": "INV-2"
+      }
     }
-  ]
+  ],
+  "faults": {
+    "apply_partial_update": false,
+    "acknowledge_unemitted_cell": false,
+    "apply_input_twice": false,
+    "apply_input_after_deadline": false,
+    "keep_key_held_after_release": false,
+    "unbounded_queue": false,
+    "oversize_object": false,
+    "burst_over_budget": false,
+    "delay_echo": false,
+    "recreate_session": false,
+    "unattributed_drop": false
+  }
 }

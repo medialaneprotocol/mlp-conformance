@@ -8,8 +8,8 @@ promises. It is read by **both** ends of the protocol:
 
 | Consumer | Resolves | Contract |
 |---|---|---|
-| The reference implementation | `tools/corpus-gen.rs`, compiled by the gate | translates every committed scenario into the simulator's builder API, runs it, and writes `decisions/` — the gate then regenerates and byte-compares |
-| A browser implementation | `profiles/*.json` | reconstructs the identical link behaviour from the same committed profiles |
+| The reference implementation | [`mlp-harness`](../mlp-harness), run by the gate | replays every committed scenario over the protocol's real machines and writes `decisions/` — the gate then regenerates and byte-compares |
+| A browser implementation | `scenarios/*.json` | reconstructs the identical link behaviour from the same committed scenarios |
 
 There is exactly **one** corpus directory. The gate asserts that both
 consumers resolve to it, so a consumer pointed at a second copy fails there
@@ -30,11 +30,11 @@ and the diff is part of the change's review.
 ## Layout
 
 ```
-profiles/    one JSON document per link profile
-scenarios/   one JSON document per acceptance story
-decisions/   one JSON document per scenario: the golden decision trace
-tools/       the corpus generator and the static validator
-scripts/     the gate
+matrix.json    the acceptance matrix: the specification's stories, the
+               scenarios that cover them, and what each one promises
+scenarios/     one JSON document per acceptance story
+decisions/     one JSON document per scenario: the golden decision trace
+scripts/       the gate, and the matrix's own check
 ```
 
 ## Running the gate
@@ -46,49 +46,51 @@ scripts/conformance-gate.sh --self-test # check the checker
 ```
 
 The gate needs a Rust toolchain and Python 3, and nothing else, so it runs
-the same in CI, in a container, and on a developer machine. The reference
-implementation is expected next to this repository as `../mlp-core`;
-`MLP_CORE_DIR` overrides that.
+the same in CI, in a container, and on a developer machine. The harness is
+expected next to this repository as `../mlp-harness`; `MLP_HARNESS_DIR`
+overrides that.
 
 ## What the gate checks
 
-1. **The corpus's own shape.** Every profile is a canonical tier point, every
-   scenario's steps parse, the acceptance matrix's coverage is complete, and
-   every trace is clean — no scenario may commit a run that broke an
-   invariant.
-2. **The traces are reproducible.** The generator replays the committed
-   scenarios through the reference implementation and the result must be
-   byte-identical to the committed traces.
-3. **The corpus was actually read.** The generator's "no corpus" marker is
-   counted and required to be zero, so a deleted or unreadable corpus cannot
-   pass as a green run that compared nothing.
-4. **The gate itself.** `--self-test` mutates a copy of the corpus three
-   ways and requires each mutation to be noticed. A gate that cannot fail is
-   not a gate.
-
-## The profiles
-
-The file name is the profile id (`t2.json` ⇒ id `t2`). A **tier** profile
-(`t0`…`t4`) is a canonical point of the target envelope; its numbers are
-fixed by the specification, and the gate rejects a tier profile that drifts
-from them. A **flap** profile carries an outage schedule and is checked
-against its tier's band.
+1. **The acceptance matrix is complete.** Every story the specification
+   states has a scenario, every scenario the corpus commits is named by the
+   matrix, and no case is named twice.
+2. **The traces are reproducible.** The harness replays the committed
+   scenarios through the protocol's real machines and the result must be
+   byte-identical to the committed traces. The harness refuses a scenario
+   that does not parse, and it fails when a run breaks an invariant: a
+   corpus may only commit clean runs.
+3. **The gate itself.** `--self-test` mutates a copy of the corpus three
+   ways — a tampered trace, a scenario the matrix does not name, and a
+   scenario that does not parse — and requires each mutation to be noticed.
+   A gate that cannot fail is not a gate.
 
 ## The scenarios
 
-Each scenario is one acceptance story: the tier it targets, the steps that
-drive it (`Link`, `Advance`, `CaptureChange`, `ViewerInput`, `Disconnect`,
-`Reconnect`, `SenderReconnect`, `Path`, `Assert`), and the invariants it
-asserts. The gate holds the matrix's case coverage frozen, so the corpus
-cannot shrink quietly.
+Each scenario is one acceptance story, in the harness's scenario format: the
+tier it targets, the link it starts on, the steps that drive it
+(`SetLink`, `Advance`, `CaptureChange`, `ViewerInput`, `ViewerDisconnect`,
+`ViewerReconnect`, `HostReconnect`, `PathSwitch`, `ScheduleOutage`,
+`Assert`), and the invariants it asserts. The link profiles are carried in
+the scenarios themselves, so a scenario is read on its own.
+
+A scenario starts on its tier's canonical link — the tier's own point in the
+target envelope — and a scenario that needs a different link says so with a
+`SetLink` step.
+
+## The matrix
+
+`matrix.json` is the corpus's map of the specification's acceptance stories
+(MLP spec annex S) onto the scenarios that cover them. Each story names the
+scenarios that cover it, the cases it asserts, and the promise it makes in
+one sentence.
 
 ## Adding a scenario
 
 1. Add `scenarios/<id>.json`.
-2. Run `scripts/conformance-gate.sh --update` and commit the regenerated
+2. Add the scenario to its story in `matrix.json`.
+3. Run `scripts/conformance-gate.sh --update` and commit the regenerated
    trace.
-3. Add the case to the matrix in `tools/corpus_static.py` if it covers a
-   case the matrix does not yet name.
 
 The trace is generated, never written by hand.
 
@@ -111,6 +113,7 @@ not, so any implementation may validate itself against it.
 |---|---|
 | [`mlp`](https://github.com/medialaneprotocol/mlp) | the normative specification |
 | [`mlp-core`](https://github.com/medialaneprotocol/mlp-core) | the Rust reference implementation, and the protocol's command-line tool |
+| [`mlp-harness`](https://github.com/medialaneprotocol/mlp-harness) | the verification layer: the link model, the driver, the invariants, the predictions |
 | [`mlp-ts`](https://github.com/medialaneprotocol/mlp-ts) | the browser reference implementation |
 | [`mlp-proto`](https://github.com/medialaneprotocol/mlp-proto) | the class bodies' wire schemas |
 | [`mlp-conformance`](https://github.com/medialaneprotocol/mlp-conformance) | the conformance corpus and its gate |

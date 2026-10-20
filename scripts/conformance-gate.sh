@@ -4,38 +4,37 @@
 # The corpus is the protocol's shared, executable description of what it
 # promises. This gate is what keeps it honest:
 #
-#   1. the static validator checks the corpus's own shape — every profile is
-#      a canonical tier point, every scenario's steps parse, the acceptance
-#      matrix's coverage is complete, and every trace is clean;
-#   2. the generator replays the committed scenarios through the reference
-#      implementation and writes the golden decision traces, which the gate
-#      then compares byte for byte with the committed ones;
-#   3. the generator's "no corpus" marker is counted and required to be zero,
-#      so a deleted or unreadable corpus cannot pass as a green run that
-#      compared nothing.
+#   1. the harness — the protocol's verification layer — replays every
+#      committed scenario and writes the decision trace it produced, and the
+#      gate compares those traces with the committed ones, byte for byte;
+#   2. the acceptance matrix names every story the specification states and
+#      every scenario the corpus commits, and the gate checks it.
+#
+# The harness owns the shape: it reads the scenarios, it decides whether a
+# run is clean, and it writes the traces. The corpus owns the content: the
+# scenarios, the matrix, and the traces.
 #
 # Usage:
 #   scripts/conformance-gate.sh             # run the gate
 #   scripts/conformance-gate.sh --update    # regenerate the traces in place
 #   scripts/conformance-gate.sh --self-test # check the checker
 #
-# The gate needs a Rust toolchain and Python 3, and nothing else: it must run
-# in CI, in a container, and on a developer machine with the same result.
-#
-# The reference implementation is expected next to this repository as
-# `../mlp-core`; `MLP_CORE_DIR` overrides that.
+# The gate needs a Rust toolchain and Python 3, and nothing else, so it runs
+# the same in CI, in a container, and on a developer machine. The harness is
+# expected next to this repository as `../mlp-harness`; `MLP_HARNESS_DIR`
+# overrides that. `MLP_CORPUS_DIR` overrides the corpus's own directory, and
+# the gate's self-test uses it to run the gate against a mutated copy.
 
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-CORPUS_DIR="$REPO_ROOT"
-CORE_DIR="${MLP_CORE_DIR:-$REPO_ROOT/../mlp-core}"
+CORPUS_DIR="${MLP_CORPUS_DIR:-$REPO_ROOT}"
+HARNESS_DIR="${MLP_HARNESS_DIR:-$REPO_ROOT/../mlp-harness}"
 LOGDIR="$(mktemp -d "${TMPDIR:-/tmp}/mlp-conformance-XXXXXX")"
 trap 'rm -rf "$LOGDIR"' EXIT
 
 SCENARIO_COUNT_EXPECTED=16
-PROFILE_COUNT_EXPECTED=7
-SIMULATOR_CASE_COUNT_EXPECTED=25
+STORY_COUNT_EXPECTED=15
 
 UPDATE=0
 SELFTEST=0
@@ -46,248 +45,6 @@ for argument in "$@"; do
         *) printf 'mlp-conformance-gate: unknown argument %s\n' "$argument" >&2; exit 2 ;;
     esac
 done
-
-# ── the static validator ────────────────────────────────────────────────────
-#
-# It is its own process, so its verdict lines are folded into this shell's
-# ledger here: its FAIL lines are the gate's failures, and a static run that
-# failed must not be able to exit 0.
-
-static_check() {
-    local log="$LOGDIR/corpus-static.log" rc=0
-    MLP_PROGRAM_OUT="$LOGDIR/program.txt" \
-    MLP_CORE_DIR="$CORE_DIR" \
-        python3 "$CORPUS_DIR/tools/corpus_static.py" "$CORPUS_DIR" \
-            "$SCENARIO_COUNT_EXPECTED" "$PROFILE_COUNT_EXPECTED" \
-            "$SIMULATOR_CASE_COUNT_EXPECTED" "$UPDATE" >"$log" 2>&1 || rc=$?
-    cat "$log"
-
-    local good bad
-    good="$(grep -c '^ok ' "$log" || true)"
-    bad="$(grep -c '^FAIL ' "$log" || true)"
-    PASSES=$((PASSES + ${good:-0}))
-    FAILURES=$((FAILURES + ${bad:-0}))
-
-    if [ "$rc" = "2" ]; then
-        printf 'mlp-conformance-gate: the static validator could not run\n' >&2
-        exit 2
-    fi
-    if [ "$rc" != "0" ] && [ "${bad:-0}" = "0" ]; then
-        printf 'mlp-conformance-gate: the static validator failed without a verdict\n' >&2
-        FAILURES=$((FAILURES + 1))
-    fi
-}
-
-# ── the generator ───────────────────────────────────────────────────────────
-#
-# It is not a crate: the gate compiles it with rustc against the already-built
-# reference library, so the corpus adds no dependency to anything.
-
-build_generator() { # prints the binary path, or fails with its log
-    local source="$CORPUS_DIR/tools/corpus-gen.rs"
-    [ -f "$source" ] || die "the generator is missing at $source"
-
-    local rlib_json="$LOGDIR/rlib.json"
-    if ! ( cd "$CORE_DIR" && cargo build --features testing \
-            --message-format=json --quiet ) >"$rlib_json" 2>"$LOGDIR/cargo.log"; then
-        die "the reference library could not be built; see $LOGDIR/cargo.log"
-    fi
-
-    # Two lines out of the artifact message: the rlib to link and the directory
-    # its own dependencies live in. Cargo reports the *uplifted* rlib and the
-    # hashed metadata beside it; the hashed rlib is the one whose dependency
-    # directory is `deps/`, which is where every transitive rlib is.
-    local selection
-    selection="$(python3 - "$rlib_json" <<'PY'
-import json
-import os
-import sys
-
-rlib = ""
-meta = ""
-with open(sys.argv[1], "r", encoding="utf-8", errors="replace") as handle:
-    for line in handle:
-        try:
-            message = json.loads(line)
-        except ValueError:
-            continue
-        if message.get("reason") != "compiler-artifact":
-            continue
-        if "mlp-core" not in message.get("package_id", ""):
-            continue
-        if message["target"].get("kind") != ["lib"]:
-            continue
-        if "testing" not in message.get("features", []):
-            continue
-        for name in message.get("filenames", []):
-            if name.endswith(".rlib"):
-                rlib = name
-            elif name.endswith(".rmeta"):
-                meta = name
-if meta:
-    hashed = meta[: -len(".rmeta")] + ".rlib"
-    if os.path.exists(hashed):
-        rlib = hashed
-if not rlib:
-    sys.exit("the build produced no rlib")
-deps = os.path.dirname(rlib)
-if os.path.basename(deps) == "deps":
-    deps = os.path.dirname(rlib)
-print(rlib)
-print(deps)
-PY
-    )" || die "could not locate the reference library's rlib"
-
-    local rlib deps binary
-    rlib="$(printf '%s\n' "$selection" | sed -n '1p')"
-    deps="$(printf '%s\n' "$selection" | sed -n '2p')"
-    binary="$LOGDIR/corpus-gen"
-    if ! rustc --edition 2021 -O \
-            --extern "mlp_core=$rlib" \
-            -L "dependency=$deps" \
-            -o "$binary" "$source" 2>"$LOGDIR/rustc.log"; then
-        die "the generator did not compile; see $LOGDIR/rustc.log"
-    fi
-    printf '%s' "$binary"
-}
-
-run_generator() { # outdir
-    local out="$1" binary
-    binary="$(build_generator)"
-    ( cd "$CORPUS_DIR" && MLP_CORPUS_OUT="$out" \
-        MLP_CORPUS_PROGRAM="$LOGDIR/program.txt" "$binary" )
-}
-
-# ── the dynamic half ────────────────────────────────────────────────────────
-
-check_traces() {
-    local scratch="$LOGDIR/decisions"
-    rm -rf "$scratch"
-    mkdir -p "$scratch"
-
-    if ! run_generator "$scratch" >"$LOGDIR/runner.log" 2>&1; then
-        fail "corpus: traces reproducible" "the generator exited non-zero; its log follows"
-        tail -20 "$LOGDIR/runner.log" >&2
-        return
-    fi
-
-    local absent
-    absent="$(grep -c 'mlp-corpus: no corpus' "$LOGDIR/runner.log" || true)"
-    if [ "$absent" != "0" ]; then
-        fail "corpus: traces reproducible" \
-            "the generator printed its no-corpus marker ${absent} time(s)"
-        return
-    fi
-
-    local marker
-    marker="$(grep -oE 'mlp-corpus: scenarios=[0-9]+ traces=[0-9]+' "$LOGDIR/runner.log" | tail -1)"
-    if [ -z "$marker" ]; then
-        fail "corpus: traces reproducible" "the generator printed no summary line"
-        return
-    fi
-    local runner_scenarios runner_traces
-    runner_scenarios="$(printf '%s' "$marker" | sed -E 's/.*scenarios=([0-9]+).*/\1/')"
-    runner_traces="$(printf '%s' "$marker" | sed -E 's/.*traces=([0-9]+).*/\1/')"
-
-    if [ "$runner_scenarios" != "$SCENARIO_COUNT_EXPECTED" ]; then
-        fail "corpus: generator scenario count" \
-            "expected $SCENARIO_COUNT_EXPECTED, the generator read $runner_scenarios"
-        return
-    fi
-
-    if [ "$UPDATE" = "1" ]; then
-        rm -rf "$CORPUS_DIR/decisions"
-        cp -r "$scratch" "$CORPUS_DIR/decisions"
-        ok "corpus: traces updated ($runner_traces)"
-        return
-    fi
-
-    if diff -r --exclude=README.md "$scratch" "$CORPUS_DIR/decisions" >"$LOGDIR/diff.log" 2>&1; then
-        ok "corpus: $runner_traces traces byte-identical"
-    else
-        fail "corpus: traces reproducible" \
-            "the regenerated traces differ from the committed ones (run with --update)"
-        sed -n '1,20p' "$LOGDIR/diff.log" >&2
-    fi
-}
-
-# ── the checker's own check ─────────────────────────────────────────────────
-#
-# A gate that cannot fail is not a gate. Each case mutates a copy of the
-# corpus and requires the gate to notice.
-
-self_test() {
-    local scratch status
-    scratch="$(mktemp -d "${TMPDIR:-/tmp}/mlp-selftest-XXXXXX")"
-    trap 'rm -rf "$scratch"' RETURN
-    cp -r "$CORPUS_DIR/." "$scratch/"
-
-    local checks=0 failures=0
-
-    # 1. A profile whose numbers are not the canonical tier point must be
-    #    noticed.
-    python3 - "$scratch/profiles/t2.json" <<'PY'
-import json
-import sys
-
-path = sys.argv[1]
-profile = json.load(open(path))
-profile["rtt_ms"] = 999.0
-json.dump(profile, open(path, "w"), indent=2)
-PY
-    MLP_CORE_DIR="$CORE_DIR" python3 "$scratch/tools/corpus_static.py" "$scratch" \
-        16 7 25 0 >"$scratch/verdict-1.txt" 2>&1 || true
-    if grep -q '^FAIL profiles: tier identity' "$scratch/verdict-1.txt"; then
-        checks=$((checks + 1))
-    else
-        echo "self-test: a non-canonical tier point was not noticed" >&2
-        failures=$((failures + 1))
-    fi
-
-    # 2. A scenario that drops one of the matrix's simulator cases must be
-    #    noticed.
-    rm -f "$scratch/scenarios/s01-t2-typing-echo.json"
-    MLP_CORE_DIR="$CORE_DIR" python3 "$scratch/tools/corpus_static.py" "$scratch" \
-        16 7 25 0 >"$scratch/verdict-2.txt" 2>&1 || true
-    if grep -q '^FAIL scenarios: coverage' "$scratch/verdict-2.txt"; then
-        checks=$((checks + 1))
-    else
-        echo "self-test: a missing matrix case was not noticed" >&2
-        failures=$((failures + 1))
-    fi
-
-    # 3. A decision trace that no longer matches its scenario must be
-    #    noticed.
-    cp "$REPO_ROOT/scenarios/s01-t2-typing-echo.json" "$scratch/scenarios/"
-    cp "$REPO_ROOT/decisions/s01-t2-typing-echo.json" "$scratch/decisions/"
-    python3 - "$scratch/decisions/s01-t2-typing-echo.json" <<'PY'
-import json
-import sys
-
-path = sys.argv[1]
-trace = json.load(open(path))
-# A digest that is not 16 lowercase hex digits: the shape check must catch it.
-trace["digest"] = "NOT-A-DIGEST"
-json.dump(trace, open(path, "w"), indent=2)
-PY
-    MLP_CORE_DIR="$CORE_DIR" python3 "$scratch/tools/corpus_static.py" "$scratch" \
-        16 7 25 0 >"$scratch/verdict-3.txt" 2>&1 || true
-    if grep -q '^FAIL decisions: traces' "$scratch/verdict-3.txt"; then
-        checks=$((checks + 1))
-    else
-        echo "self-test: a tampered trace was not noticed" >&2
-        failures=$((failures + 1))
-    fi
-
-    if [ "$failures" -eq 0 ]; then
-        echo "self-test: $checks mutation(s) rejected"
-        return 0
-    fi
-    echo "self-test: $failures mutation(s) were not rejected" >&2
-    return 1
-}
-
-# ── main ────────────────────────────────────────────────────────────────────
 
 PASSES=0
 FAILURES=0
@@ -310,20 +67,160 @@ die() {
     exit 2
 }
 
+# ── the harness ─────────────────────────────────────────────────────────────
+#
+# The corpus adds no dependency to anything: the gate builds the harness and
+# runs its own command. The traces the harness writes are the corpus's
+# documents.
+
+build_harness() { # prints the binary path, or fails with its log
+    if [ ! -d "$HARNESS_DIR" ]; then
+        die "the harness is missing at $HARNESS_DIR (set MLP_HARNESS_DIR)"
+    fi
+    if ! ( cd "$HARNESS_DIR" && cargo build --release ) >"$LOGDIR/cargo.log" 2>&1; then
+        die "the harness could not be built; see $LOGDIR/cargo.log"
+    fi
+    printf '%s' "$HARNESS_DIR/target/release/mlp-harness"
+}
+
+# ── the acceptance matrix ───────────────────────────────────────────────────
+#
+# The matrix is the corpus's map of the specification's acceptance stories
+# (MLP spec annex S) onto the scenarios that cover them. A story with no
+# scenario is a promise nobody checks, and a scenario with no story is a
+# document nobody can place.
+
+check_matrix() {
+    local log="$LOGDIR/matrix.log" rc=0
+    python3 "$CORPUS_DIR/scripts/check-matrix.py" \
+        "$CORPUS_DIR" "$STORY_COUNT_EXPECTED" "$SCENARIO_COUNT_EXPECTED" >"$log" 2>&1 || rc=$?
+    cat "$log"
+    if [ "$rc" != "0" ]; then
+        fail "the acceptance matrix covers every story" "see the output above"
+        return
+    fi
+    ok "the acceptance matrix covers every story"
+}
+
+# ── the traces ──────────────────────────────────────────────────────────────
+
+check_traces() {
+    local scratch="$LOGDIR/decisions"
+    local binary
+    binary="$(build_harness)"
+    rm -rf "$scratch"
+    mkdir -p "$scratch"
+
+    # The harness refuses a scenario that does not parse, and it fails when a
+    # run breaks an invariant: a corpus may only commit clean runs.
+    if ! "$binary" corpus \
+            --scenarios "$CORPUS_DIR/scenarios" \
+            --out "$scratch" >"$LOGDIR/runner.log" 2>&1; then
+        fail "corpus: traces reproducible" "the harness reported a failure; its log follows"
+        tail -20 "$LOGDIR/runner.log" >&2
+        return
+    fi
+    local count
+    count="$(find "$scratch" -name '*.json' | wc -l | tr -d ' ')"
+    if [ "$count" != "$SCENARIO_COUNT_EXPECTED" ]; then
+        fail "corpus: scenario count" \
+            "expected $SCENARIO_COUNT_EXPECTED, the harness wrote $count"
+        return
+    fi
+
+    if [ "$UPDATE" = "1" ]; then
+        rm -rf "$CORPUS_DIR/decisions"
+        cp -r "$scratch" "$CORPUS_DIR/decisions"
+        ok "corpus: traces updated ($count)"
+        return
+    fi
+
+    if diff -r "$scratch" "$CORPUS_DIR/decisions" >"$LOGDIR/diff.log" 2>&1; then
+        ok "corpus: $count traces byte-identical"
+    else
+        fail "corpus: traces reproducible" \
+            "the regenerated traces differ from the committed ones (run with --update)"
+        sed -n '1,20p' "$LOGDIR/diff.log" >&2
+    fi
+}
+
+# ── the checker's own check ─────────────────────────────────────────────────
+#
+# A gate that cannot fail is not a gate. Each case mutates a copy of the
+# corpus and runs the gate against it, and each mutation must be noticed.
+
+self_test() {
+    local scratch
+    scratch="$(mktemp -d "${TMPDIR:-/tmp}/mlp-selftest-XXXXXX")"
+    trap 'rm -rf "$scratch"' RETURN
+    cp -r "$CORPUS_DIR/." "$scratch/"
+
+    local checks=0 failures=0
+
+    # 1. A trace that no longer matches its scenario must be noticed.
+    python3 - "$scratch/decisions/s01-t2-typing-echo.json" <<'PY'
+import json
+import sys
+
+path = sys.argv[1]
+document = json.load(open(path))
+document["digest"] = "0" * 16
+json.dump(document, open(path, "w"), indent=2)
+PY
+    if MLP_CORPUS_DIR="$scratch" "$REPO_ROOT/scripts/conformance-gate.sh" >/dev/null 2>&1; then
+        echo "self-test: a tampered trace was not noticed" >&2
+        failures=$((failures + 1))
+    else
+        checks=$((checks + 1))
+    fi
+
+    # 2. A scenario the matrix does not name must be noticed.
+    python3 - "$scratch/matrix.json" <<'PY'
+import json
+import sys
+
+path = sys.argv[1]
+document = json.load(open(path))
+document["stories"][0]["scenarios"] = []
+json.dump(document, open(path, "w"), indent=2)
+PY
+    if MLP_CORPUS_DIR="$scratch" "$REPO_ROOT/scripts/conformance-gate.sh" >/dev/null 2>&1; then
+        echo "self-test: a scenario the matrix does not name was not noticed" >&2
+        failures=$((failures + 1))
+    else
+        checks=$((checks + 1))
+    fi
+
+    # 3. A scenario that does not parse must be noticed.
+    printf 'not a scenario' >"$scratch/scenarios/s01-t2-typing-echo.json"
+    if MLP_CORPUS_DIR="$scratch" "$REPO_ROOT/scripts/conformance-gate.sh" >/dev/null 2>&1; then
+        echo "self-test: a scenario that does not parse was not noticed" >&2
+        failures=$((failures + 1))
+    else
+        checks=$((checks + 1))
+    fi
+
+    if [ "$failures" -eq 0 ]; then
+        echo "self-test: $checks mutation(s) rejected"
+        return 0
+    fi
+    echo "self-test: $failures mutation(s) were not rejected" >&2
+    return 1
+}
+
+# ── main ────────────────────────────────────────────────────────────────────
+
 echo "mlp-conformance-gate: checking the corpus at $CORPUS_DIR"
 
 if [ "$SELFTEST" = "1" ]; then
+    build_harness >/dev/null
     if self_test; then
         exit 0
     fi
     exit 1
 fi
 
-if [ ! -d "$CORE_DIR" ]; then
-    die "the reference implementation is missing at $CORE_DIR (set MLP_CORE_DIR)"
-fi
-
-static_check
+check_matrix
 check_traces
 
 if [ "$FAILURES" -eq 0 ]; then

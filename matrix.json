@@ -1,0 +1,166 @@
+{
+  "schema": 1,
+  "stories": [
+    {
+      "story": "S-1",
+      "intent": "Typing under poor Wi-Fi: keystroke echo p95 within 2xRTT+250 ms (0.550 s), at most one patch gap per 10 s, no pending-reason anchor plan, converged within 2 s of the last keystroke.",
+      "scenarios": [
+        "s01-t2-typing-echo"
+      ],
+      "cases": [
+        "t2_typing_echo_within_budget"
+      ]
+    },
+    {
+      "story": "S-2",
+      "intent": "One 900x620 wheel scroll under long-haul conditions: first visual change within 1 s, pending_cells monotone to 0 within 8 s, at most one anchor plan, no stuck repair, 2-5 fps.",
+      "scenarios": [
+        "s02-t3-scroll-converge"
+      ],
+      "cases": [
+        "t3_scroll_converges_within_plan_deadline"
+      ]
+    },
+    {
+      "story": "S-3",
+      "intent": "A 10 s black-hole with a keystroke during it: the session parks and resumes, no rejected resume, recovery p95 within 2xRTT+2 s, one accepted resume per receiver, input applied after restore or expired within its deadline and never applied late.",
+      "scenarios": [
+        "s03-t4-outage-resume"
+      ],
+      "cases": [
+        "t4_outage_survives_and_resumes",
+        "t4_input_deadline_bounds",
+        "t4_no_stuck_keys"
+      ]
+    },
+    {
+      "story": "S-4",
+      "intent": "Five cycles of 10 s down / 10 s up: the session survives every cycle with one resumed media session per receiver per cycle and no new handshake, no TTL park eviction, no duplicate input injection, and a bounded reconnect ladder.",
+      "scenarios": [
+        "s04-t4-flap-five-cycles"
+      ],
+      "cases": [
+        "t4_flap_five_cycles_no_operator_action",
+        "t4_flap_ladder_bounded"
+      ]
+    },
+    {
+      "story": "S-5",
+      "intent": "A full-screen change under long-haul conditions is delivered as a progressive anchor plan: no reset update, every plan update atomic and within budget, pending_cells monotone between input events, completion within 8 s.",
+      "scenarios": [
+        "s05-t3-anchor-plan-monotone"
+      ],
+      "cases": [
+        "t3_anchor_plan_atomic_and_monotone"
+      ]
+    },
+    {
+      "story": "S-6",
+      "intent": "Typing during a converging full-screen change at T3: keystroke echo stays within the tier bound, input is never queued behind media (queue depth and relay-send latency bounded), and the media rate cap holds.",
+      "scenarios": [
+        "s06a-t3-input-priority-under-plan",
+        "s06b-t2-input-priority-under-plan"
+      ],
+      "cases": [
+        "t3_input_priority_under_plan",
+        "t2_input_priority_under_plan"
+      ]
+    },
+    {
+      "story": "S-7",
+      "intent": "Continuous motion at T3 and, with an anchor plan, at T4: every hop's queue stays within its configured cap, one pending update per receiver, cell state bounded, no monotone growth. The live ten-minute run is the netem harness's; this scenario is the deterministic invariant harness for INV-5.",
+      "scenarios": [
+        "s07-memory-bounded-motion"
+      ],
+      "cases": [
+        "t3_memory_bounded_under_continuous_motion",
+        "t4_memory_bounded_with_plans"
+      ]
+    },
+    {
+      "story": "S-8",
+      "intent": "A degrade/recover cycle at T3 where every recovery step is attributed to exactly one hop: the sum of hop reports plus link loss equals receiver-reported loss within one object, and every session-state transition has a series.",
+      "scenarios": [
+        "s08-t3-recovery-attributed"
+      ],
+      "cases": [
+        "t3_recovery_fully_attributed"
+      ]
+    },
+    {
+      "story": "S-9",
+      "intent": "A media-lane-only loss then a full loss on a fast link: the session resumes with no reset update, the first update after resume chains onto the receiver's held update (patch_gaps 0), one accepted resume per loss, and the control lane stays intact throughout the media-lane-only phase.",
+      "scenarios": [
+        "s09-t1-resume-without-reset"
+      ],
+      "cases": [
+        "t1_resume_rebases_not_resets",
+        "t1_media_lane_resume_control_lane_intact"
+      ]
+    },
+    {
+      "story": "S-10",
+      "intent": "Ctrl+Alt+Shift held across a 20 s black-hole: the park grace releases every key, after restore only the keys still physically held are re-established, and no key remains down at session end. INV-4 holds in every profile.",
+      "scenarios": [
+        "s10-t3-no-stuck-keys"
+      ],
+      "cases": [
+        "t3_pressed_set_releases_on_park_and_resume",
+        "input_fuzz_no_stuck_keys"
+      ]
+    },
+    {
+      "story": "S-11",
+      "intent": "Text-first mode at the middle of the T4 band: applied fps at or above 1 over any 5 s window, at least 90 percent of keystrokes echoed within 2xRTT+250 ms, at most one expired input object, audio off by default, and the UI states the degraded mode.",
+      "scenarios": [
+        "s11-t4-typing-text-first"
+      ],
+      "cases": [
+        "t4_typing_text_first_floor",
+        "t4_no_audio_default"
+      ]
+    },
+    {
+      "story": "S-12",
+      "intent": "Datagram carrier selection at T4 (S2): promotion only when the datagram carrier's goodput beats the WebSocket path with hysteresis, demotion on degradation or channel close, no switch during a plan or pulse, update identity continuous across a switch.",
+      "scenarios": [
+        "s12-t4-path-selection"
+      ],
+      "cases": [
+        "s2_path_selection_hysteresis",
+        "s2_path_demotion_on_degradation",
+        "s2_no_switch_during_plan"
+      ]
+    },
+    {
+      "story": "S-13",
+      "intent": "The media WebSocket cannot be opened, so the session runs lane_mode=single on poor Wi-Fi: the session is live, input keeps its priority bound, media is still paced, and the receiver shows the benign single-connection note.",
+      "scenarios": [
+        "s13-t2-single-lane"
+      ],
+      "cases": [
+        "t2_single_lane_priority_preserved"
+      ]
+    },
+    {
+      "story": "S-14",
+      "intent": "LAN regression guard: no netem at all, a full-screen change and pointer motion with zero patch gaps, zero dropped updates, no anchor plan, and pacing that never delays an update beyond 1 ms.",
+      "scenarios": [
+        "s14-t0-baseline"
+      ],
+      "cases": [
+        "t0_identical_to_baseline_behaviour"
+      ]
+    },
+    {
+      "story": "S-15",
+      "intent": "Rollout safety: a receiver against a sender whose media lane is unsupported. The session connects and stays usable, the media lane is refused with a typed reason, input and terminal still work, and the score is reported as 0 with the reason rather than missing. No network degradation is involved.",
+      "scenarios": [
+        "s15-lane-unsupported-degrade"
+      ],
+      "cases": [
+        "lane_unsupported_degrades_not_fails"
+      ]
+    }
+  ]
+}

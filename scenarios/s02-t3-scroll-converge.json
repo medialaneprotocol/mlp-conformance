@@ -1,75 +1,206 @@
 {
   "schema": 1,
-  "id": "s02-t3-scroll-converge",
-  "tiers": [
-    "T3"
-  ],
-  "story": "S-2",
+  "name": "s02-t3-scroll-converge",
   "tier": "T3",
-  "stage": "S1",
-  "intent": "One 900x620 wheel scroll under long-haul conditions: first visual change within 1 s, pending_cells monotone to 0 within 8 s, at most one anchor plan, no stuck repair, 2-5 fps.",
-  "simulator_cases": [
-    "t3_scroll_converges_within_plan_deadline"
-  ],
-  "receivers": 1,
+  "seed": 1003,
+  "link": {
+    "down": {
+      "rate_bps": 256000,
+      "propagation_us": 200000,
+      "jitter": {
+        "Normal": {
+          "amplitude_us": 100000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 100
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 64000,
+      "burst_bytes": 32000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "up": {
+      "rate_bps": 128000,
+      "propagation_us": 200000,
+      "jitter": {
+        "Normal": {
+          "amplitude_us": 100000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 100
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 32000,
+      "burst_bytes": 16000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "mtu_bytes": 65536,
+    "outages": {
+      "windows": []
+    },
+    "seed": 1003
+  },
+  "prior_bps": null,
+  "grid": {
+    "width_px": 1920,
+    "height_px": 1080,
+    "cell_size_px": 64
+  },
   "steps": [
     {
-      "Link": {
-        "profile": "t3"
+      "SetLink": {
+        "profile": {
+          "down": {
+            "rate_bps": 256000,
+            "propagation_us": 200000,
+            "jitter": {
+              "Normal": {
+                "amplitude_us": 100000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 100
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 64000,
+            "burst_bytes": 32000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "up": {
+            "rate_bps": 128000,
+            "propagation_us": 200000,
+            "jitter": {
+              "Normal": {
+                "amplitude_us": 100000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 100
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 32000,
+            "burst_bytes": 16000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "mtu_bytes": 65536,
+          "outages": {
+            "windows": []
+          },
+          "seed": 1003
+        }
       }
     },
     {
-      "Advance": 1000
+      "Advance": {
+        "ms": 1000
+      }
     },
     {
       "CaptureChange": {
-        "x": 200,
-        "y": 180,
-        "width": 1500,
-        "height": 800
-      }
-    },
-    {
-      "Advance": 2000
-    },
-    {
-      "Assert": "INV-2"
-    },
-    {
-      "ViewerInput": {
-        "Wheel": {
-          "delta": -8
+        "region": {
+          "x_px": 200,
+          "y_px": 180,
+          "width_px": 1500,
+          "height_px": 800
         }
       }
     },
     {
-      "Advance": 250
+      "Advance": {
+        "ms": 2000
+      }
+    },
+    {
+      "Assert": {
+        "invariant": "INV-2"
+      }
     },
     {
       "ViewerInput": {
-        "Wheel": {
-          "delta": -8
+        "event": {
+          "Wheel": {
+            "delta": -8
+          }
         }
       }
     },
     {
-      "Advance": 250
+      "Advance": {
+        "ms": 250
+      }
     },
     {
       "ViewerInput": {
-        "Wheel": {
-          "delta": -8
+        "event": {
+          "Wheel": {
+            "delta": -8
+          }
         }
       }
     },
     {
-      "Advance": 8000
+      "Advance": {
+        "ms": 250
+      }
     },
     {
-      "Assert": "INV-2"
+      "ViewerInput": {
+        "event": {
+          "Wheel": {
+            "delta": -8
+          }
+        }
+      }
     },
     {
-      "Assert": "INV-7"
+      "Advance": {
+        "ms": 8000
+      }
+    },
+    {
+      "Assert": {
+        "invariant": "INV-2"
+      }
+    },
+    {
+      "Assert": {
+        "invariant": "INV-7"
+      }
     }
-  ]
+  ],
+  "faults": {
+    "apply_partial_update": false,
+    "acknowledge_unemitted_cell": false,
+    "apply_input_twice": false,
+    "apply_input_after_deadline": false,
+    "keep_key_held_after_release": false,
+    "unbounded_queue": false,
+    "oversize_object": false,
+    "burst_over_budget": false,
+    "delay_echo": false,
+    "recreate_session": false,
+    "unattributed_drop": false
+  }
 }

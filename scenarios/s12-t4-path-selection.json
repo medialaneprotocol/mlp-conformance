@@ -1,65 +1,194 @@
 {
   "schema": 1,
-  "id": "s12-t4-path-selection",
-  "tiers": [
-    "T4"
-  ],
-  "story": "S-12",
+  "name": "s12-t4-path-selection",
   "tier": "T4",
-  "stage": "S2",
-  "intent": "Datagram carrier selection at T4 (S2): promotion only when the datagram carrier's goodput beats the WebSocket path with hysteresis, demotion on degradation or channel close, no switch during a plan or pulse, frame identity continuous across a switch.",
-  "simulator_cases": [
-    "s2_path_selection_hysteresis",
-    "s2_path_demotion_on_degradation",
-    "s2_no_switch_during_plan"
-  ],
-  "receivers": 1,
+  "seed": 1004,
+  "link": {
+    "down": {
+      "rate_bps": 32000,
+      "propagation_us": 700000,
+      "jitter": {
+        "Pareto": {
+          "amplitude_us": 500000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 350
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 8000,
+      "burst_bytes": 4000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "up": {
+      "rate_bps": 32000,
+      "propagation_us": 700000,
+      "jitter": {
+        "Pareto": {
+          "amplitude_us": 500000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 350
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 8000,
+      "burst_bytes": 4000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "mtu_bytes": 1150,
+    "outages": {
+      "windows": []
+    },
+    "seed": 1004
+  },
+  "prior_bps": null,
+  "grid": {
+    "width_px": 1920,
+    "height_px": 1080,
+    "cell_size_px": 64
+  },
   "steps": [
     {
-      "Link": {
-        "profile": "t4"
+      "SetLink": {
+        "profile": {
+          "down": {
+            "rate_bps": 32000,
+            "propagation_us": 700000,
+            "jitter": {
+              "Pareto": {
+                "amplitude_us": 500000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 350
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 8000,
+            "burst_bytes": 4000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "up": {
+            "rate_bps": 32000,
+            "propagation_us": 700000,
+            "jitter": {
+              "Pareto": {
+                "amplitude_us": 500000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 350
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 8000,
+            "burst_bytes": 4000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "mtu_bytes": 1150,
+          "outages": {
+            "windows": []
+          },
+          "seed": 1004
+        }
       }
     },
     {
-      "Advance": 3000
+      "Advance": {
+        "ms": 3000
+      }
     },
     {
       "CaptureChange": {
-        "x": 420,
-        "y": 300,
-        "width": 720,
-        "height": 400
+        "region": {
+          "x_px": 420,
+          "y_px": 300,
+          "width_px": 720,
+          "height_px": 400
+        }
       }
     },
     {
-      "PathSwitch": "dc"
+      "PathSwitch": {
+        "path": "dc"
+      }
     },
     {
-      "Advance": 10000
+      "Advance": {
+        "ms": 10000
+      }
     },
     {
-      "PathSwitch": "ws"
+      "PathSwitch": {
+        "path": "ws"
+      }
     },
     {
-      "Advance": 10000
+      "Advance": {
+        "ms": 10000
+      }
     },
     {
-      "PathSwitch": "dc"
+      "PathSwitch": {
+        "path": "dc"
+      }
     },
     {
-      "Advance": 5000
+      "Advance": {
+        "ms": 5000
+      }
     },
     {
-      "PathSwitch": "ws"
+      "PathSwitch": {
+        "path": "ws"
+      }
     },
     {
-      "Advance": 5000
+      "Advance": {
+        "ms": 5000
+      }
     },
     {
-      "Assert": "INV-2"
+      "Assert": {
+        "invariant": "INV-2"
+      }
     },
     {
-      "Assert": "INV-7"
+      "Assert": {
+        "invariant": "INV-7"
+      }
     }
-  ]
+  ],
+  "faults": {
+    "apply_partial_update": false,
+    "acknowledge_unemitted_cell": false,
+    "apply_input_twice": false,
+    "apply_input_after_deadline": false,
+    "keep_key_held_after_release": false,
+    "unbounded_queue": false,
+    "oversize_object": false,
+    "burst_over_budget": false,
+    "delay_echo": false,
+    "recreate_session": false,
+    "unattributed_drop": false
+  }
 }

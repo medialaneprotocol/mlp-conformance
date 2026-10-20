@@ -1,80 +1,209 @@
 {
   "schema": 1,
-  "id": "s13-t2-single-lane",
-  "tiers": [
-    "T2"
-  ],
-  "story": "S-13",
+  "name": "s13-t2-single-lane",
   "tier": "T2",
-  "stage": "S1",
-  "intent": "The media WebSocket cannot be opened, so the session runs lane_mode=single on poor Wi-Fi: the session is live, input keeps its priority bound, media is still paced, and the receiver shows the benign single-connection note.",
-  "simulator_cases": [
-    "t2_single_lane_priority_preserved"
-  ],
-  "receivers": 1,
+  "seed": 1002,
+  "link": {
+    "down": {
+      "rate_bps": 1000000,
+      "propagation_us": 75000,
+      "jitter": {
+        "Normal": {
+          "amplitude_us": 40000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 20
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 250000,
+      "burst_bytes": 125000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "up": {
+      "rate_bps": 256000,
+      "propagation_us": 75000,
+      "jitter": {
+        "Normal": {
+          "amplitude_us": 40000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 20
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 64000,
+      "burst_bytes": 32000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "mtu_bytes": 65536,
+    "outages": {
+      "windows": []
+    },
+    "seed": 1002
+  },
+  "prior_bps": null,
+  "grid": {
+    "width_px": 1920,
+    "height_px": 1080,
+    "cell_size_px": 64
+  },
   "steps": [
     {
-      "Link": {
-        "profile": "t2"
+      "SetLink": {
+        "profile": {
+          "down": {
+            "rate_bps": 1000000,
+            "propagation_us": 75000,
+            "jitter": {
+              "Normal": {
+                "amplitude_us": 40000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 20
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 250000,
+            "burst_bytes": 125000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "up": {
+            "rate_bps": 256000,
+            "propagation_us": 75000,
+            "jitter": {
+              "Normal": {
+                "amplitude_us": 40000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 20
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 64000,
+            "burst_bytes": 32000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "mtu_bytes": 65536,
+          "outages": {
+            "windows": []
+          },
+          "seed": 1002
+        }
       }
     },
     {
-      "Advance": 1000
+      "Advance": {
+        "ms": 1000
+      }
     },
     {
       "CaptureChange": {
-        "x": 240,
-        "y": 180,
-        "width": 900,
-        "height": 500
+        "region": {
+          "x_px": 240,
+          "y_px": 180,
+          "width_px": 900,
+          "height_px": 500
+        }
       }
     },
     {
-      "Advance": 500
+      "Advance": {
+        "ms": 500
+      }
     },
     {
       "ViewerInput": {
-        "Key": {
-          "code": "KeyH",
-          "pressed": true
+        "event": {
+          "Key": {
+            "code": "KeyH",
+            "pressed": true
+          }
         }
       }
     },
     {
       "ViewerInput": {
-        "Key": {
-          "code": "KeyH",
-          "pressed": false
+        "event": {
+          "Key": {
+            "code": "KeyH",
+            "pressed": false
+          }
         }
       }
     },
     {
-      "Advance": 120
-    },
-    {
-      "ViewerInput": {
-        "Key": {
-          "code": "KeyI",
-          "pressed": true
-        }
+      "Advance": {
+        "ms": 120
       }
     },
     {
       "ViewerInput": {
-        "Key": {
-          "code": "KeyI",
-          "pressed": false
+        "event": {
+          "Key": {
+            "code": "KeyI",
+            "pressed": true
+          }
         }
       }
     },
     {
-      "Advance": 2000
+      "ViewerInput": {
+        "event": {
+          "Key": {
+            "code": "KeyI",
+            "pressed": false
+          }
+        }
+      }
     },
     {
-      "Assert": "INV-8"
+      "Advance": {
+        "ms": 2000
+      }
     },
     {
-      "Assert": "INV-7"
+      "Assert": {
+        "invariant": "INV-8"
+      }
+    },
+    {
+      "Assert": {
+        "invariant": "INV-7"
+      }
     }
-  ]
+  ],
+  "faults": {
+    "apply_partial_update": false,
+    "acknowledge_unemitted_cell": false,
+    "apply_input_twice": false,
+    "apply_input_after_deadline": false,
+    "keep_key_held_after_release": false,
+    "unbounded_queue": false,
+    "oversize_object": false,
+    "burst_over_budget": false,
+    "delay_echo": false,
+    "recreate_session": false,
+    "unattributed_drop": false
+  }
 }

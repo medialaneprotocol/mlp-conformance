@@ -1,170 +1,377 @@
 {
   "schema": 1,
-  "id": "s07-memory-bounded-motion",
-  "tiers": [
-    "T3",
-    "T4"
-  ],
-  "story": "S-7",
+  "name": "s07-memory-bounded-motion",
   "tier": "T3",
-  "stage": "S1",
-  "intent": "Continuous motion at T3 and, with an anchor plan, at T4: every hop's queue stays within its configured cap, one pending frame per receiver, cell state bounded, no monotone growth. The live ten-minute run is the netem harness's; this scenario is the deterministic invariant harness for INV-5.",
-  "simulator_cases": [
-    "t3_memory_bounded_under_continuous_motion",
-    "t4_memory_bounded_with_plans"
-  ],
-  "receivers": 1,
+  "seed": 1003,
+  "link": {
+    "down": {
+      "rate_bps": 256000,
+      "propagation_us": 200000,
+      "jitter": {
+        "Normal": {
+          "amplitude_us": 100000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 100
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 64000,
+      "burst_bytes": 32000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "up": {
+      "rate_bps": 128000,
+      "propagation_us": 200000,
+      "jitter": {
+        "Normal": {
+          "amplitude_us": 100000
+        }
+      },
+      "loss": {
+        "Uniform": {
+          "permille": 100
+        }
+      },
+      "reorder_permille": 0,
+      "duplicate_permille": 0,
+      "queue_cap_bytes": 32000,
+      "burst_bytes": 16000,
+      "reorder_window_us": 10000,
+      "duplicate_delay_us": 1000,
+      "extra_delay_us": 0
+    },
+    "mtu_bytes": 65536,
+    "outages": {
+      "windows": []
+    },
+    "seed": 1003
+  },
+  "prior_bps": null,
+  "grid": {
+    "width_px": 1920,
+    "height_px": 1080,
+    "cell_size_px": 64
+  },
   "steps": [
     {
-      "Link": {
-        "profile": "t3"
+      "SetLink": {
+        "profile": {
+          "down": {
+            "rate_bps": 256000,
+            "propagation_us": 200000,
+            "jitter": {
+              "Normal": {
+                "amplitude_us": 100000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 100
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 64000,
+            "burst_bytes": 32000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "up": {
+            "rate_bps": 128000,
+            "propagation_us": 200000,
+            "jitter": {
+              "Normal": {
+                "amplitude_us": 100000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 100
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 32000,
+            "burst_bytes": 16000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "mtu_bytes": 65536,
+          "outages": {
+            "windows": []
+          },
+          "seed": 1003
+        }
       }
     },
     {
-      "Advance": 1000
+      "Advance": {
+        "ms": 1000
+      }
     },
     {
       "CaptureChange": {
-        "x": 120,
-        "y": 90,
-        "width": 200,
-        "height": 120
+        "region": {
+          "x_px": 120,
+          "y_px": 90,
+          "width_px": 200,
+          "height_px": 120
+        }
       }
     },
     {
-      "Advance": 10000
+      "Advance": {
+        "ms": 10000
+      }
     },
     {
       "CaptureChange": {
-        "x": 180,
-        "y": 130,
-        "width": 200,
-        "height": 120
+        "region": {
+          "x_px": 180,
+          "y_px": 130,
+          "width_px": 200,
+          "height_px": 120
+        }
       }
     },
     {
-      "Advance": 10000
+      "Advance": {
+        "ms": 10000
+      }
     },
     {
       "CaptureChange": {
-        "x": 240,
-        "y": 170,
-        "width": 200,
-        "height": 120
+        "region": {
+          "x_px": 240,
+          "y_px": 170,
+          "width_px": 200,
+          "height_px": 120
+        }
       }
     },
     {
-      "Advance": 10000
+      "Advance": {
+        "ms": 10000
+      }
     },
     {
       "CaptureChange": {
-        "x": 300,
-        "y": 210,
-        "width": 200,
-        "height": 120
+        "region": {
+          "x_px": 300,
+          "y_px": 210,
+          "width_px": 200,
+          "height_px": 120
+        }
       }
     },
     {
-      "Advance": 10000
+      "Advance": {
+        "ms": 10000
+      }
     },
     {
       "CaptureChange": {
-        "x": 360,
-        "y": 250,
-        "width": 200,
-        "height": 120
+        "region": {
+          "x_px": 360,
+          "y_px": 250,
+          "width_px": 200,
+          "height_px": 120
+        }
       }
     },
     {
-      "Advance": 10000
+      "Advance": {
+        "ms": 10000
+      }
     },
     {
       "CaptureChange": {
-        "x": 420,
-        "y": 290,
-        "width": 200,
-        "height": 120
+        "region": {
+          "x_px": 420,
+          "y_px": 290,
+          "width_px": 200,
+          "height_px": 120
+        }
       }
     },
     {
-      "Advance": 10000
-    },
-    {
-      "Link": {
-        "profile": "t4"
+      "Advance": {
+        "ms": 10000
       }
     },
     {
-      "Advance": 1000
+      "SetLink": {
+        "profile": {
+          "down": {
+            "rate_bps": 32000,
+            "propagation_us": 700000,
+            "jitter": {
+              "Pareto": {
+                "amplitude_us": 500000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 350
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 8000,
+            "burst_bytes": 4000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "up": {
+            "rate_bps": 32000,
+            "propagation_us": 700000,
+            "jitter": {
+              "Pareto": {
+                "amplitude_us": 500000
+              }
+            },
+            "loss": {
+              "Uniform": {
+                "permille": 350
+              }
+            },
+            "reorder_permille": 0,
+            "duplicate_permille": 0,
+            "queue_cap_bytes": 8000,
+            "burst_bytes": 4000,
+            "reorder_window_us": 10000,
+            "duplicate_delay_us": 1000,
+            "extra_delay_us": 0
+          },
+          "mtu_bytes": 1150,
+          "outages": {
+            "windows": []
+          },
+          "seed": 1004
+        }
+      }
+    },
+    {
+      "Advance": {
+        "ms": 1000
+      }
     },
     {
       "CaptureChange": {
-        "x": 0,
-        "y": 0,
-        "width": 1920,
-        "height": 1080
+        "region": {
+          "x_px": 0,
+          "y_px": 0,
+          "width_px": 1920,
+          "height_px": 1080
+        }
       }
     },
     {
-      "Advance": 10000
+      "Advance": {
+        "ms": 10000
+      }
     },
     {
       "CaptureChange": {
-        "x": 0,
-        "y": 0,
-        "width": 1920,
-        "height": 1080
+        "region": {
+          "x_px": 0,
+          "y_px": 0,
+          "width_px": 1920,
+          "height_px": 1080
+        }
       }
     },
     {
-      "Advance": 10000
+      "Advance": {
+        "ms": 10000
+      }
     },
     {
       "CaptureChange": {
-        "x": 0,
-        "y": 0,
-        "width": 1920,
-        "height": 1080
+        "region": {
+          "x_px": 0,
+          "y_px": 0,
+          "width_px": 1920,
+          "height_px": 1080
+        }
       }
     },
     {
-      "Advance": 10000
+      "Advance": {
+        "ms": 10000
+      }
     },
     {
       "CaptureChange": {
-        "x": 0,
-        "y": 0,
-        "width": 1920,
-        "height": 1080
+        "region": {
+          "x_px": 0,
+          "y_px": 0,
+          "width_px": 1920,
+          "height_px": 1080
+        }
       }
     },
     {
-      "Advance": 10000
+      "Advance": {
+        "ms": 10000
+      }
     },
     {
       "CaptureChange": {
-        "x": 0,
-        "y": 0,
-        "width": 1920,
-        "height": 1080
+        "region": {
+          "x_px": 0,
+          "y_px": 0,
+          "width_px": 1920,
+          "height_px": 1080
+        }
       }
     },
     {
-      "Advance": 10000
+      "Advance": {
+        "ms": 10000
+      }
     },
     {
       "CaptureChange": {
-        "x": 0,
-        "y": 0,
-        "width": 1920,
-        "height": 1080
+        "region": {
+          "x_px": 0,
+          "y_px": 0,
+          "width_px": 1920,
+          "height_px": 1080
+        }
       }
     },
     {
-      "Advance": 10000
+      "Advance": {
+        "ms": 10000
+      }
     },
     {
-      "Assert": "INV-5"
+      "Assert": {
+        "invariant": "INV-5"
+      }
     }
-  ]
+  ],
+  "faults": {
+    "apply_partial_update": false,
+    "acknowledge_unemitted_cell": false,
+    "apply_input_twice": false,
+    "apply_input_after_deadline": false,
+    "keep_key_held_after_release": false,
+    "unbounded_queue": false,
+    "oversize_object": false,
+    "burst_over_budget": false,
+    "delay_echo": false,
+    "recreate_session": false,
+    "unattributed_drop": false
+  }
 }
