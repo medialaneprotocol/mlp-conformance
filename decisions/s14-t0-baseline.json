@@ -1,4 +1,4 @@
-{"schema":1,"scenario":"s14-t0-baseline","tier":"t0","digest":"40f9bb858d40a1ea","trace":{
+{"schema":1,"scenario":"s14-t0-baseline","tier":"t0","digest":"73617df6cb02a89b","trace":{
   "schema": 1,
   "scenario": {
     "name": "s14-t0-baseline",
@@ -75,8 +75,8 @@
       "in_flight_peak": 5
     },
     "up": {
-      "offered": 63,
-      "delivered": 62,
+      "offered": 64,
+      "delivered": 63,
       "dropped_loss": 0,
       "dropped_outage": 0,
       "dropped_too_large": 0,
@@ -84,8 +84,8 @@
       "dropped_handover": 0,
       "duplicated": 0,
       "reordered": 0,
-      "bytes_offered": 5731,
-      "bytes_delivered": 5540,
+      "bytes_offered": 5922,
+      "bytes_delivered": 5731,
       "queue_peak_bytes": 191,
       "queue_delay_us": 0,
       "in_flight_peak": 5
@@ -2854,6 +2854,22 @@
         }
       },
       {
+        "Offered": {
+          "at_us": 1525000,
+          "direction": "Up",
+          "seq": 112,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 1525000,
+          "direction": "Up",
+          "seq": 112,
+          "bytes": 191
+        }
+      },
+      {
         "Delivered": {
           "at_us": 1525069,
           "direction": "Up",
@@ -2872,24 +2888,8 @@
         }
       },
       {
-        "Offered": {
-          "at_us": 1750000,
-          "direction": "Up",
-          "seq": 112,
-          "bytes": 191
-        }
-      },
-      {
-        "Released": {
-          "at_us": 1750000,
-          "direction": "Up",
-          "seq": 112,
-          "bytes": 191
-        }
-      },
-      {
         "Delivered": {
-          "at_us": 1755799,
+          "at_us": 1530799,
           "direction": "Up",
           "seq": 112,
           "bytes": 191,
@@ -2898,9 +2898,34 @@
       },
       {
         "Offered": {
+          "at_us": 1750000,
+          "direction": "Up",
+          "seq": 113,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 1750000,
+          "direction": "Up",
+          "seq": 113,
+          "bytes": 191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 1757467,
+          "direction": "Up",
+          "seq": 113,
+          "bytes": 191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
           "at_us": 1841000,
           "direction": "Down",
-          "seq": 113,
+          "seq": 114,
           "bytes": 86
         }
       },
@@ -2908,40 +2933,40 @@
         "Released": {
           "at_us": 1841000,
           "direction": "Down",
-          "seq": 113,
+          "seq": 114,
           "bytes": 86
         }
       },
       {
         "Delivered": {
-          "at_us": 1848467,
+          "at_us": 1847662,
           "direction": "Down",
-          "seq": 113,
+          "seq": 114,
           "bytes": 86,
           "duplicate": false
         }
       },
       {
         "Offered": {
-          "at_us": 1849000,
+          "at_us": 1848000,
           "direction": "Up",
-          "seq": 114,
+          "seq": 115,
           "bytes": 79
         }
       },
       {
         "Released": {
-          "at_us": 1849000,
+          "at_us": 1848000,
           "direction": "Up",
-          "seq": 114,
+          "seq": 115,
           "bytes": 79
         }
       },
       {
         "Delivered": {
-          "at_us": 1855662,
+          "at_us": 1855834,
           "direction": "Up",
-          "seq": 114,
+          "seq": 115,
           "bytes": 79,
           "duplicate": false
         }
@@ -2950,7 +2975,7 @@
         "Offered": {
           "at_us": 2000000,
           "direction": "Up",
-          "seq": 115,
+          "seq": 116,
           "bytes": 191
         }
       }
@@ -3497,6 +3522,12 @@
         "converged": true
       },
       {
+        "at_us": 1525000,
+        "highest_applied_update_id": 49,
+        "pending_cells": 18,
+        "converged": false
+      },
+      {
         "at_us": 1750000,
         "highest_applied_update_id": 49,
         "pending_cells": 0,
@@ -3612,16 +3643,16 @@
     "convergence_ms": 14,
     "convergences": 661,
     "bytes_down": 213772,
-    "bytes_up": 5731,
+    "bytes_up": 5922,
     "updates_applied": 50,
     "updates_sent": 50,
-    "objects_delivered": 114,
+    "objects_delivered": 115,
     "objects_dropped": 0,
     "objects_lost": 1,
     "rtt_ms": 15.875,
     "pace_bps": 1800000,
     "target_fps": 27.465820312500004,
-    "feedbacks_received": 7,
+    "feedbacks_received": 8,
     "acks_received": 50,
     "inputs_received": 2,
     "objects_enqueued": 52,
@@ -3638,5 +3669,5 @@
     "cells": 510,
     "duration_ms": 2000
   },
-  "digest": "40f9bb858d40a1ea"
+  "digest": "73617df6cb02a89b"
 }}
