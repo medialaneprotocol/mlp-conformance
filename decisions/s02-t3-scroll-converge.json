@@ -1,4 +1,4 @@
-{"schema":1,"scenario":"s02-t3-scroll-converge","tier":"t3","digest":"93b185247e511c4e","trace":{
+{"schema":1,"scenario":"s02-t3-scroll-converge","tier":"t3","digest":"2439ac2fe92be9d1","trace":{
   "schema": 1,
   "scenario": {
     "name": "s02-t3-scroll-converge",
@@ -59,7 +59,7 @@
       "seed": 1003
     },
     "down": {
-      "offered": 50,
+      "offered": 51,
       "delivered": 48,
       "dropped_loss": 2,
       "dropped_outage": 0,
@@ -68,7 +68,7 @@
       "dropped_handover": 0,
       "duplicated": 0,
       "reordered": 0,
-      "bytes_offered": 203000,
+      "bytes_offered": 203086,
       "bytes_delivered": 191414,
       "queue_peak_bytes": 8224,
       "queue_delay_us": 0,
@@ -3686,9 +3686,25 @@
       },
       {
         "Offered": {
+          "at_us": 11432000,
+          "direction": "Down",
+          "seq": 151,
+          "bytes": 86
+        }
+      },
+      {
+        "Released": {
+          "at_us": 11432000,
+          "direction": "Down",
+          "seq": 151,
+          "bytes": 86
+        }
+      },
+      {
+        "Offered": {
           "at_us": 11500000,
           "direction": "Up",
-          "seq": 151,
+          "seq": 152,
           "bytes": 191
         }
       }
@@ -4275,6 +4291,16 @@
         "anchor": true,
         "plan_id": null,
         "reflects_input_seq": 6
+      },
+      {
+        "at_us": 11433000,
+        "update_id": 59,
+        "kind": "idle",
+        "cells": 0,
+        "bytes": 0,
+        "anchor": false,
+        "plan_id": null,
+        "reflects_input_seq": 6
       }
     ],
     "acks": [
@@ -4552,7 +4578,7 @@
         "at_us": 11500000,
         "highest_applied_update_id": 58,
         "pending_cells": 0,
-        "converged": true
+        "converged": false
       }
     ],
     "plans": [
@@ -4897,22 +4923,22 @@
     "echo_max_ms": 1322,
     "echo_samples": 6,
     "convergence_ms": 524,
-    "convergences": 1103,
-    "bytes_down": 203000,
+    "convergences": 1034,
+    "bytes_down": 203086,
     "bytes_up": 12823,
     "updates_applied": 44,
-    "updates_sent": 58,
+    "updates_sent": 59,
     "objects_delivered": 139,
     "objects_dropped": 9,
     "objects_lost": 20,
     "rtt_ms": 935.375,
-    "pace_bps": 388178,
-    "target_fps": 5.923126220703126,
+    "pace_bps": 345047,
+    "target_fps": 5.2649993896484375,
     "feedbacks_received": 41,
     "acks_received": 41,
     "inputs_received": 6,
-    "objects_enqueued": 63,
-    "fragments_sent": 50,
+    "objects_enqueued": 64,
+    "fragments_sent": 51,
     "queue_overflow_drops": 0,
     "in_flight_evictions": 0,
     "superseded": 13,
@@ -4925,5 +4951,5 @@
     "cells": 510,
     "duration_ms": 11500
   },
-  "digest": "93b185247e511c4e"
+  "digest": "2439ac2fe92be9d1"
 }}
