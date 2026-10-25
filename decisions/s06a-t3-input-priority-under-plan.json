@@ -1,4 +1,4 @@
-{"schema":1,"scenario":"s06a-t3-input-priority-under-plan","tier":"t3","digest":"05814314db6ba41f","trace":{
+{"schema":1,"scenario":"s06a-t3-input-priority-under-plan","tier":"t3","digest":"387be6f18aef4ec1","trace":{
   "schema": 1,
   "scenario": {
     "name": "s06a-t3-input-priority-under-plan",
@@ -59,36 +59,36 @@
       "seed": 1003
     },
     "down": {
-      "offered": 38,
-      "delivered": 33,
-      "dropped_loss": 2,
+      "offered": 50,
+      "delivered": 44,
+      "dropped_loss": 1,
       "dropped_outage": 0,
       "dropped_too_large": 0,
       "dropped_queue_overflow": 0,
       "dropped_handover": 0,
       "duplicated": 0,
       "reordered": 0,
-      "bytes_offered": 151696,
-      "bytes_delivered": 130786,
-      "queue_peak_bytes": 8224,
+      "bytes_offered": 204058,
+      "bytes_delivered": 178912,
+      "queue_peak_bytes": 8382,
       "queue_delay_us": 0,
-      "in_flight_peak": 6
+      "in_flight_peak": 8
     },
     "up": {
-      "offered": 83,
-      "delivered": 63,
-      "dropped_loss": 11,
+      "offered": 109,
+      "delivered": 91,
+      "dropped_loss": 5,
       "dropped_outage": 0,
       "dropped_too_large": 0,
       "dropped_queue_overflow": 0,
       "dropped_handover": 0,
       "duplicated": 0,
       "reordered": 0,
-      "bytes_offered": 9686,
-      "bytes_delivered": 7436,
+      "bytes_offered": 12686,
+      "bytes_delivered": 10509,
       "queue_peak_bytes": 320,
       "queue_delay_us": 0,
-      "in_flight_peak": 11
+      "in_flight_peak": 16
     },
     "events": [
       {
@@ -101,7 +101,7 @@
           "at_us": 0,
           "direction": "Down",
           "seq": 1,
-          "bytes": 86
+          "bytes": 95
         }
       },
       {
@@ -109,7 +109,7 @@
           "at_us": 0,
           "direction": "Down",
           "seq": 1,
-          "bytes": 86
+          "bytes": 95
         }
       },
       {
@@ -155,34 +155,34 @@
       },
       {
         "Offered": {
-          "at_us": 250000,
-          "direction": "Up",
+          "at_us": 225000,
+          "direction": "Down",
           "seq": 4,
-          "bytes": 191
+          "bytes": 3935
         }
       },
       {
         "Released": {
-          "at_us": 250000,
-          "direction": "Up",
+          "at_us": 225000,
+          "direction": "Down",
           "seq": 4,
-          "bytes": 191
+          "bytes": 3935
         }
       },
       {
         "Offered": {
-          "at_us": 271000,
-          "direction": "Down",
+          "at_us": 250000,
+          "direction": "Up",
           "seq": 5,
-          "bytes": 3926
+          "bytes": 191
         }
       },
       {
         "Released": {
-          "at_us": 271000,
-          "direction": "Down",
+          "at_us": 250000,
+          "direction": "Up",
           "seq": 5,
-          "bytes": 3926
+          "bytes": 191
         }
       },
       {
@@ -199,7 +199,7 @@
           "at_us": 329184,
           "direction": "Down",
           "seq": 1,
-          "bytes": 86,
+          "bytes": 95,
           "duplicate": false
         }
       },
@@ -221,9 +221,59 @@
       },
       {
         "Delivered": {
-          "at_us": 451218,
-          "direction": "Up",
+          "at_us": 426218,
+          "direction": "Down",
           "seq": 4,
+          "bytes": 3935,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 427000,
+          "direction": "Up",
+          "seq": 7,
+          "bytes": 50
+        }
+      },
+      {
+        "Dropped": {
+          "at_us": 427000,
+          "direction": "Up",
+          "seq": 8,
+          "bytes": 79,
+          "reason": "Loss"
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 427000,
+          "direction": "Up",
+          "seq": 9,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 427000,
+          "direction": "Up",
+          "seq": 7,
+          "bytes": 50
+        }
+      },
+      {
+        "Released": {
+          "at_us": 427000,
+          "direction": "Up",
+          "seq": 9,
+          "bytes": 191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 477553,
+          "direction": "Up",
+          "seq": 5,
           "bytes": 191,
           "duplicate": false
         }
@@ -232,7 +282,7 @@
         "Offered": {
           "at_us": 478000,
           "direction": "Down",
-          "seq": 7,
+          "seq": 10,
           "bytes": 1832
         }
       },
@@ -240,58 +290,8 @@
         "Released": {
           "at_us": 478000,
           "direction": "Down",
-          "seq": 7,
+          "seq": 10,
           "bytes": 1832
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 498553,
-          "direction": "Down",
-          "seq": 5,
-          "bytes": 3926,
-          "duplicate": false
-        }
-      },
-      {
-        "Dropped": {
-          "at_us": 499000,
-          "direction": "Up",
-          "seq": 8,
-          "bytes": 50,
-          "reason": "Loss"
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 499000,
-          "direction": "Up",
-          "seq": 9,
-          "bytes": 79
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 499000,
-          "direction": "Up",
-          "seq": 10,
-          "bytes": 191
-        }
-      },
-      {
-        "Released": {
-          "at_us": 499000,
-          "direction": "Up",
-          "seq": 9,
-          "bytes": 79
-        }
-      },
-      {
-        "Released": {
-          "at_us": 499000,
-          "direction": "Up",
-          "seq": 10,
-          "bytes": 191
         }
       },
       {
@@ -321,61 +321,61 @@
       },
       {
         "Delivered": {
-          "at_us": 716747,
-          "direction": "Up",
-          "seq": 10,
-          "bytes": 191,
-          "duplicate": false
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 725356,
-          "direction": "Up",
-          "seq": 9,
-          "bytes": 79,
-          "duplicate": false
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 750000,
-          "direction": "Up",
-          "seq": 12,
-          "bytes": 191
-        }
-      },
-      {
-        "Released": {
-          "at_us": 750000,
-          "direction": "Up",
-          "seq": 12,
-          "bytes": 191
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 943411,
+          "at_us": 695747,
           "direction": "Down",
-          "seq": 7,
+          "seq": 10,
           "bytes": 1832,
           "duplicate": false
         }
       },
       {
         "Offered": {
-          "at_us": 944000,
+          "at_us": 696000,
           "direction": "Up",
-          "seq": 13,
+          "seq": 12,
           "bytes": 50
         }
       },
       {
         "Released": {
-          "at_us": 944000,
+          "at_us": 696000,
+          "direction": "Up",
+          "seq": 12,
+          "bytes": 50
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 730954,
+          "direction": "Up",
+          "seq": 7,
+          "bytes": 50,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 734773,
+          "direction": "Up",
+          "seq": 9,
+          "bytes": 191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 750000,
           "direction": "Up",
           "seq": 13,
-          "bytes": 50
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 750000,
+          "direction": "Up",
+          "seq": 13,
+          "bytes": 191
         }
       },
       {
@@ -405,10 +405,19 @@
       },
       {
         "Delivered": {
-          "at_us": 1103800,
+          "at_us": 1045551,
+          "direction": "Up",
+          "seq": 13,
+          "bytes": 191,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 1049800,
           "direction": "Up",
           "seq": 12,
-          "bytes": 191,
+          "bytes": 50,
           "duplicate": false
         }
       },
@@ -417,7 +426,7 @@
           "at_us": 1116000,
           "direction": "Down",
           "seq": 15,
-          "bytes": 86
+          "bytes": 95
         }
       },
       {
@@ -425,16 +434,7 @@
           "at_us": 1116000,
           "direction": "Down",
           "seq": 15,
-          "bytes": 86
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 1239551,
-          "direction": "Up",
-          "seq": 13,
-          "bytes": 50,
-          "duplicate": false
+          "bytes": 95
         }
       },
       {
@@ -467,7 +467,7 @@
           "at_us": 1385228,
           "direction": "Down",
           "seq": 15,
-          "bytes": 86,
+          "bytes": 95,
           "duplicate": false
         }
       },
@@ -548,9 +548,25 @@
       },
       {
         "Offered": {
+          "at_us": 1993000,
+          "direction": "Down",
+          "seq": 20,
+          "bytes": 3488
+        }
+      },
+      {
+        "Released": {
+          "at_us": 1993000,
+          "direction": "Down",
+          "seq": 20,
+          "bytes": 3488
+        }
+      },
+      {
+        "Offered": {
           "at_us": 2000000,
           "direction": "Up",
-          "seq": 20,
+          "seq": 21,
           "bytes": 191
         }
       },
@@ -558,23 +574,23 @@
         "Offered": {
           "at_us": 2000000,
           "direction": "Down",
-          "seq": 21,
-          "bytes": 4182
+          "seq": 22,
+          "bytes": 4191
         }
       },
       {
         "Released": {
           "at_us": 2000000,
           "direction": "Down",
-          "seq": 21,
-          "bytes": 4182
+          "seq": 22,
+          "bytes": 4191
         }
       },
       {
         "Released": {
           "at_us": 2000000,
           "direction": "Up",
-          "seq": 20,
+          "seq": 21,
           "bytes": 191
         }
       },
@@ -589,9 +605,9 @@
       },
       {
         "Delivered": {
-          "at_us": 2236236,
+          "at_us": 2246862,
           "direction": "Up",
-          "seq": 20,
+          "seq": 21,
           "bytes": 191,
           "duplicate": false
         }
@@ -600,7 +616,7 @@
         "Offered": {
           "at_us": 2250000,
           "direction": "Up",
-          "seq": 22,
+          "seq": 23,
           "bytes": 191
         }
       },
@@ -608,106 +624,154 @@
         "Released": {
           "at_us": 2250000,
           "direction": "Up",
-          "seq": 22,
+          "seq": 23,
           "bytes": 191
         }
       },
       {
-        "Offered": {
-          "at_us": 2301000,
-          "direction": "Up",
-          "seq": 23,
-          "bytes": 51
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 2301000,
-          "direction": "Up",
-          "seq": 24,
-          "bytes": 51
-        }
-      },
-      {
-        "Released": {
-          "at_us": 2301000,
-          "direction": "Up",
-          "seq": 23,
-          "bytes": 51
-        }
-      },
-      {
-        "Released": {
-          "at_us": 2301000,
-          "direction": "Up",
-          "seq": 24,
-          "bytes": 51
-        }
-      },
-      {
         "Delivered": {
-          "at_us": 2337910,
+          "at_us": 2286041,
           "direction": "Down",
-          "seq": 21,
-          "bytes": 4182,
+          "seq": 20,
+          "bytes": 3488,
           "duplicate": false
         }
       },
       {
         "Offered": {
-          "at_us": 2338000,
+          "at_us": 2287000,
           "direction": "Up",
-          "seq": 25,
-          "bytes": 79
+          "seq": 24,
+          "bytes": 50
         }
       },
       {
         "Released": {
-          "at_us": 2338000,
+          "at_us": 2287000,
           "direction": "Up",
-          "seq": 25,
-          "bytes": 79
+          "seq": 24,
+          "bytes": 50
         }
       },
       {
         "Offered": {
-          "at_us": 2421000,
+          "at_us": 2301000,
+          "direction": "Up",
+          "seq": 25,
+          "bytes": 51
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 2301000,
           "direction": "Up",
           "seq": 26,
           "bytes": 51
         }
       },
       {
-        "Dropped": {
-          "at_us": 2421000,
+        "Released": {
+          "at_us": 2301000,
+          "direction": "Up",
+          "seq": 25,
+          "bytes": 51
+        }
+      },
+      {
+        "Released": {
+          "at_us": 2301000,
+          "direction": "Up",
+          "seq": 26,
+          "bytes": 51
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 2313960,
+          "direction": "Down",
+          "seq": 22,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 2314000,
           "direction": "Up",
           "seq": 27,
-          "bytes": 51,
-          "reason": "Loss"
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 2314000,
+          "direction": "Up",
+          "seq": 27,
+          "bytes": 79
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 2421000,
+          "direction": "Up",
+          "seq": 28,
+          "bytes": 51
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 2421000,
+          "direction": "Up",
+          "seq": 29,
+          "bytes": 51
         }
       },
       {
         "Released": {
           "at_us": 2421000,
           "direction": "Up",
-          "seq": 26,
+          "seq": 28,
+          "bytes": 51
+        }
+      },
+      {
+        "Released": {
+          "at_us": 2421000,
+          "direction": "Up",
+          "seq": 29,
           "bytes": 51
         }
       },
       {
         "Delivered": {
-          "at_us": 2496862,
+          "at_us": 2468466,
           "direction": "Up",
-          "seq": 22,
+          "seq": 23,
           "bytes": 191,
           "duplicate": false
         }
       },
       {
         "Offered": {
+          "at_us": 2474000,
+          "direction": "Down",
+          "seq": 30,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 2474000,
+          "direction": "Down",
+          "seq": 30,
+          "bytes": 4191
+        }
+      },
+      {
+        "Offered": {
           "at_us": 2500000,
           "direction": "Up",
-          "seq": 28,
+          "seq": 31,
           "bytes": 191
         }
       },
@@ -715,177 +779,104 @@
         "Released": {
           "at_us": 2500000,
           "direction": "Up",
-          "seq": 28,
+          "seq": 31,
           "bytes": 191
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 2541000,
-          "direction": "Up",
-          "seq": 29,
-          "bytes": 51
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 2541000,
-          "direction": "Up",
-          "seq": 30,
-          "bytes": 51
-        }
-      },
-      {
-        "Released": {
-          "at_us": 2541000,
-          "direction": "Up",
-          "seq": 29,
-          "bytes": 51
-        }
-      },
-      {
-        "Released": {
-          "at_us": 2541000,
-          "direction": "Up",
-          "seq": 30,
-          "bytes": 51
         }
       },
       {
         "Delivered": {
-          "at_us": 2541576,
+          "at_us": 2527576,
           "direction": "Up",
           "seq": 24,
-          "bytes": 51,
+          "bytes": 50,
           "duplicate": false
         }
       },
       {
-        "Offered": {
-          "at_us": 2542000,
-          "direction": "Down",
-          "seq": 31,
-          "bytes": 4182
-        }
-      },
-      {
-        "Released": {
-          "at_us": 2542000,
-          "direction": "Down",
-          "seq": 31,
-          "bytes": 4182
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 2543000,
-          "direction": "Down",
-          "seq": 32,
-          "bytes": 4182
-        }
-      },
-      {
-        "Released": {
-          "at_us": 2543000,
-          "direction": "Down",
-          "seq": 32,
-          "bytes": 4182
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 2544000,
-          "direction": "Down",
-          "seq": 33,
-          "bytes": 4182
-        }
-      },
-      {
-        "Released": {
-          "at_us": 2544000,
-          "direction": "Down",
-          "seq": 33,
-          "bytes": 4182
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 2545000,
-          "direction": "Down",
-          "seq": 34,
-          "bytes": 4182
-        }
-      },
-      {
-        "Released": {
-          "at_us": 2545000,
-          "direction": "Down",
-          "seq": 34,
-          "bytes": 4182
-        }
-      },
-      {
         "Delivered": {
-          "at_us": 2554844,
+          "at_us": 2535578,
           "direction": "Up",
-          "seq": 25,
+          "seq": 27,
           "bytes": 79,
           "duplicate": false
         }
       },
       {
-        "Delivered": {
-          "at_us": 2583870,
+        "Offered": {
+          "at_us": 2541000,
           "direction": "Up",
-          "seq": 23,
+          "seq": 32,
+          "bytes": 51
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 2541000,
+          "direction": "Up",
+          "seq": 33,
+          "bytes": 51
+        }
+      },
+      {
+        "Released": {
+          "at_us": 2541000,
+          "direction": "Up",
+          "seq": 32,
+          "bytes": 51
+        }
+      },
+      {
+        "Released": {
+          "at_us": 2541000,
+          "direction": "Up",
+          "seq": 33,
+          "bytes": 51
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 2582689,
+          "direction": "Up",
+          "seq": 25,
           "bytes": 51,
           "duplicate": false
         }
       },
       {
         "Offered": {
-          "at_us": 2625000,
+          "at_us": 2583000,
           "direction": "Down",
-          "seq": 35,
-          "bytes": 4182
+          "seq": 34,
+          "bytes": 4191
         }
       },
       {
         "Released": {
-          "at_us": 2625000,
+          "at_us": 2583000,
           "direction": "Down",
-          "seq": 35,
-          "bytes": 4182
-        }
-      },
-      {
-        "Dropped": {
-          "at_us": 2661000,
-          "direction": "Up",
-          "seq": 36,
-          "bytes": 51,
-          "reason": "Loss"
+          "seq": 34,
+          "bytes": 4191
         }
       },
       {
         "Offered": {
-          "at_us": 2661000,
-          "direction": "Up",
-          "seq": 37,
-          "bytes": 51
+          "at_us": 2584000,
+          "direction": "Down",
+          "seq": 35,
+          "bytes": 4191
         }
       },
       {
         "Released": {
-          "at_us": 2661000,
-          "direction": "Up",
-          "seq": 37,
-          "bytes": 51
+          "at_us": 2584000,
+          "direction": "Down",
+          "seq": 35,
+          "bytes": 4191
         }
       },
       {
         "Delivered": {
-          "at_us": 2700821,
+          "at_us": 2608723,
           "direction": "Up",
           "seq": 26,
           "bytes": 51,
@@ -893,17 +884,97 @@
         }
       },
       {
-        "Delivered": {
-          "at_us": 2725131,
-          "direction": "Up",
-          "seq": 28,
-          "bytes": 191,
-          "duplicate": false
+        "Offered": {
+          "at_us": 2609000,
+          "direction": "Down",
+          "seq": 36,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 2609000,
+          "direction": "Down",
+          "seq": 36,
+          "bytes": 4191
         }
       },
       {
         "Delivered": {
-          "at_us": 2741203,
+          "at_us": 2641224,
+          "direction": "Up",
+          "seq": 28,
+          "bytes": 51,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 2642000,
+          "direction": "Down",
+          "seq": 37,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 2642000,
+          "direction": "Down",
+          "seq": 37,
+          "bytes": 4191
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 2661000,
+          "direction": "Up",
+          "seq": 38,
+          "bytes": 51
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 2661000,
+          "direction": "Up",
+          "seq": 39,
+          "bytes": 51
+        }
+      },
+      {
+        "Released": {
+          "at_us": 2661000,
+          "direction": "Up",
+          "seq": 38,
+          "bytes": 51
+        }
+      },
+      {
+        "Released": {
+          "at_us": 2661000,
+          "direction": "Up",
+          "seq": 39,
+          "bytes": 51
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 2670000,
+          "direction": "Down",
+          "seq": 40,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 2670000,
+          "direction": "Down",
+          "seq": 40,
+          "bytes": 4191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 2676670,
           "direction": "Up",
           "seq": 29,
           "bytes": 51,
@@ -912,9 +983,25 @@
       },
       {
         "Offered": {
+          "at_us": 2677000,
+          "direction": "Down",
+          "seq": 41,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 2677000,
+          "direction": "Down",
+          "seq": 41,
+          "bytes": 4191
+        }
+      },
+      {
+        "Offered": {
           "at_us": 2750000,
           "direction": "Up",
-          "seq": 38,
+          "seq": 42,
           "bytes": 191
         }
       },
@@ -922,15 +1009,24 @@
         "Released": {
           "at_us": 2750000,
           "direction": "Up",
-          "seq": 38,
+          "seq": 42,
           "bytes": 191
         }
       },
       {
+        "Delivered": {
+          "at_us": 2763073,
+          "direction": "Up",
+          "seq": 31,
+          "bytes": 191,
+          "duplicate": false
+        }
+      },
+      {
         "Offered": {
           "at_us": 2781000,
           "direction": "Up",
-          "seq": 39,
+          "seq": 43,
           "bytes": 51
         }
       },
@@ -938,7 +1034,7 @@
         "Offered": {
           "at_us": 2781000,
           "direction": "Up",
-          "seq": 40,
+          "seq": 44,
           "bytes": 51
         }
       },
@@ -946,7 +1042,7 @@
         "Released": {
           "at_us": 2781000,
           "direction": "Up",
-          "seq": 39,
+          "seq": 43,
           "bytes": 51
         }
       },
@@ -954,385 +1050,518 @@
         "Released": {
           "at_us": 2781000,
           "direction": "Up",
-          "seq": 40,
+          "seq": 44,
           "bytes": 51
         }
       },
       {
         "Delivered": {
-          "at_us": 2791200,
-          "direction": "Up",
+          "at_us": 2804801,
+          "direction": "Down",
           "seq": 30,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Dropped": {
+          "at_us": 2805000,
+          "direction": "Up",
+          "seq": 45,
+          "bytes": 79,
+          "reason": "Loss"
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 2805000,
+          "direction": "Up",
+          "seq": 46,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 2805000,
+          "direction": "Up",
+          "seq": 46,
+          "bytes": 191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 2864264,
+          "direction": "Up",
+          "seq": 33,
           "bytes": 51,
           "duplicate": false
         }
       },
       {
         "Offered": {
-          "at_us": 2813000,
+          "at_us": 2865000,
           "direction": "Down",
-          "seq": 41,
-          "bytes": 3718
+          "seq": 47,
+          "bytes": 4191
         }
       },
       {
         "Released": {
-          "at_us": 2813000,
+          "at_us": 2865000,
           "direction": "Down",
-          "seq": 41,
-          "bytes": 3718
+          "seq": 47,
+          "bytes": 4191
         }
       },
       {
         "Delivered": {
-          "at_us": 2836259,
+          "at_us": 2870543,
+          "direction": "Up",
+          "seq": 32,
+          "bytes": 51,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 2895000,
+          "direction": "Down",
+          "seq": 48,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 2895000,
+          "direction": "Down",
+          "seq": 48,
+          "bytes": 4191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 2898628,
           "direction": "Down",
           "seq": 34,
-          "bytes": 4182,
+          "bytes": 4191,
           "duplicate": false
         }
       },
       {
         "Offered": {
-          "at_us": 2837000,
+          "at_us": 2899000,
           "direction": "Up",
-          "seq": 42,
+          "seq": 49,
+          "bytes": 50
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 2899000,
+          "direction": "Up",
+          "seq": 50,
           "bytes": 79
         }
       },
       {
         "Offered": {
-          "at_us": 2837000,
+          "at_us": 2899000,
           "direction": "Up",
-          "seq": 43,
+          "seq": 51,
           "bytes": 191
         }
       },
       {
         "Released": {
-          "at_us": 2837000,
+          "at_us": 2899000,
           "direction": "Up",
-          "seq": 42,
+          "seq": 50,
           "bytes": 79
         }
       },
       {
         "Released": {
-          "at_us": 2837000,
+          "at_us": 2899000,
           "direction": "Up",
-          "seq": 43,
+          "seq": 49,
+          "bytes": 50
+        }
+      },
+      {
+        "Released": {
+          "at_us": 2899000,
+          "direction": "Up",
+          "seq": 51,
           "bytes": 191
         }
       },
       {
         "Delivered": {
-          "at_us": 2846656,
+          "at_us": 2901895,
           "direction": "Down",
-          "seq": 31,
-          "bytes": 4182,
+          "seq": 40,
+          "bytes": 4191,
           "duplicate": false
         }
       },
       {
         "Offered": {
-          "at_us": 2847000,
+          "at_us": 2902000,
+          "direction": "Up",
+          "seq": 52,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 2902000,
+          "direction": "Up",
+          "seq": 52,
+          "bytes": 79
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 2903392,
+          "direction": "Up",
+          "seq": 39,
+          "bytes": 51,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 2904000,
+          "direction": "Down",
+          "seq": 53,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 2904000,
+          "direction": "Down",
+          "seq": 53,
+          "bytes": 4191
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 2924000,
+          "direction": "Up",
+          "seq": 54,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 2924000,
+          "direction": "Up",
+          "seq": 54,
+          "bytes": 191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 2924509,
+          "direction": "Up",
+          "seq": 38,
+          "bytes": 51,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 2966879,
+          "direction": "Down",
+          "seq": 35,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 2967000,
+          "direction": "Up",
+          "seq": 55,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 2967000,
+          "direction": "Up",
+          "seq": 55,
+          "bytes": 79
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 2986164,
           "direction": "Up",
           "seq": 44,
+          "bytes": 51,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 2987000,
+          "direction": "Down",
+          "seq": 56,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 2987000,
+          "direction": "Down",
+          "seq": 56,
+          "bytes": 4191
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3000000,
+          "direction": "Up",
+          "seq": 57,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3000000,
+          "direction": "Up",
+          "seq": 57,
+          "bytes": 191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3002519,
+          "direction": "Up",
+          "seq": 43,
+          "bytes": 51,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3022439,
+          "direction": "Down",
+          "seq": 36,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3023000,
+          "direction": "Up",
+          "seq": 58,
           "bytes": 50
         }
       },
       {
         "Offered": {
-          "at_us": 2847000,
+          "at_us": 3023000,
           "direction": "Up",
-          "seq": 45,
+          "seq": 59,
           "bytes": 79
         }
       },
       {
         "Released": {
-          "at_us": 2847000,
+          "at_us": 3023000,
           "direction": "Up",
-          "seq": 45,
+          "seq": 59,
           "bytes": 79
         }
       },
       {
         "Released": {
-          "at_us": 2847000,
+          "at_us": 3023000,
           "direction": "Up",
-          "seq": 44,
+          "seq": 58,
           "bytes": 50
         }
       },
       {
-        "Dropped": {
-          "at_us": 2862000,
+        "Offered": {
+          "at_us": 3025000,
+          "direction": "Up",
+          "seq": 60,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3025000,
+          "direction": "Up",
+          "seq": 60,
+          "bytes": 191
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3049000,
+          "direction": "Down",
+          "seq": 61,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3049000,
+          "direction": "Down",
+          "seq": 61,
+          "bytes": 4191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3055355,
+          "direction": "Down",
+          "seq": 37,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3056000,
+          "direction": "Up",
+          "seq": 62,
+          "bytes": 50
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3056000,
+          "direction": "Up",
+          "seq": 63,
+          "bytes": 79
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3056000,
+          "direction": "Up",
+          "seq": 64,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3056000,
+          "direction": "Up",
+          "seq": 63,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3056000,
+          "direction": "Up",
+          "seq": 62,
+          "bytes": 50
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3056000,
+          "direction": "Up",
+          "seq": 64,
+          "bytes": 191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3099518,
           "direction": "Up",
           "seq": 46,
           "bytes": 191,
-          "reason": "Loss"
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 2864073,
-          "direction": "Down",
-          "seq": 35,
-          "bytes": 4182,
           "duplicate": false
         }
       },
       {
-        "Dropped": {
-          "at_us": 2865000,
+        "Delivered": {
+          "at_us": 3106832,
           "direction": "Up",
-          "seq": 47,
+          "seq": 50,
           "bytes": 79,
-          "reason": "Loss"
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 2873543,
-          "direction": "Down",
-          "seq": 33,
-          "bytes": 4182,
           "duplicate": false
         }
       },
       {
-        "Offered": {
-          "at_us": 2874000,
-          "direction": "Up",
-          "seq": 48,
-          "bytes": 79
-        }
-      },
-      {
-        "Released": {
-          "at_us": 2874000,
-          "direction": "Up",
-          "seq": 48,
-          "bytes": 79
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 2887000,
+        "Delivered": {
+          "at_us": 3142320,
           "direction": "Up",
           "seq": 49,
-          "bytes": 191
-        }
-      },
-      {
-        "Released": {
-          "at_us": 2887000,
-          "direction": "Up",
-          "seq": 49,
-          "bytes": 191
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 2927916,
-          "direction": "Down",
-          "seq": 32,
-          "bytes": 4182,
-          "duplicate": false
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 2928000,
-          "direction": "Up",
-          "seq": 50,
-          "bytes": 79
-        }
-      },
-      {
-        "Released": {
-          "at_us": 2928000,
-          "direction": "Up",
-          "seq": 50,
-          "bytes": 79
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 2928351,
-          "direction": "Up",
-          "seq": 37,
-          "bytes": 51,
+          "bytes": 50,
           "duplicate": false
         }
       },
       {
         "Delivered": {
-          "at_us": 2999550,
-          "direction": "Up",
-          "seq": 40,
-          "bytes": 51,
-          "duplicate": false
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 3000000,
-          "direction": "Up",
-          "seq": 51,
-          "bytes": 191
-        }
-      },
-      {
-        "Released": {
-          "at_us": 3000000,
-          "direction": "Up",
-          "seq": 51,
-          "bytes": 191
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 3043157,
-          "direction": "Up",
-          "seq": 39,
-          "bytes": 51,
-          "duplicate": false
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 3052323,
+          "at_us": 3155046,
           "direction": "Down",
           "seq": 41,
-          "bytes": 3718,
+          "bytes": 4191,
           "duplicate": false
         }
       },
       {
         "Offered": {
-          "at_us": 3053000,
+          "at_us": 3156000,
           "direction": "Up",
-          "seq": 52,
+          "seq": 65,
           "bytes": 50
         }
       },
       {
-        "Released": {
-          "at_us": 3053000,
+        "Offered": {
+          "at_us": 3156000,
           "direction": "Up",
-          "seq": 52,
-          "bytes": 50
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 3084346,
-          "direction": "Up",
-          "seq": 38,
-          "bytes": 191,
-          "duplicate": false
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 3093926,
-          "direction": "Up",
-          "seq": 44,
-          "bytes": 50,
-          "duplicate": false
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 3119037,
-          "direction": "Up",
-          "seq": 43,
-          "bytes": 191,
-          "duplicate": false
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 3168518,
-          "direction": "Up",
-          "seq": 48,
-          "bytes": 79,
-          "duplicate": false
+          "seq": 66,
+          "bytes": 79
         }
       },
       {
         "Offered": {
-          "at_us": 3169000,
-          "direction": "Down",
-          "seq": 53,
-          "bytes": 4182
-        }
-      },
-      {
-        "Released": {
-          "at_us": 3169000,
-          "direction": "Down",
-          "seq": 53,
-          "bytes": 4182
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 3188854,
+          "at_us": 3156000,
           "direction": "Up",
-          "seq": 45,
-          "bytes": 79,
-          "duplicate": false
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 3250000,
-          "direction": "Up",
-          "seq": 54,
+          "seq": 67,
           "bytes": 191
         }
       },
       {
         "Released": {
-          "at_us": 3250000,
+          "at_us": 3156000,
           "direction": "Up",
-          "seq": 54,
+          "seq": 66,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3156000,
+          "direction": "Up",
+          "seq": 65,
+          "bytes": 50
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3156000,
+          "direction": "Up",
+          "seq": 67,
           "bytes": 191
         }
       },
       {
         "Delivered": {
-          "at_us": 3298427,
-          "direction": "Up",
-          "seq": 52,
-          "bytes": 50,
-          "duplicate": false
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 3305550,
-          "direction": "Up",
-          "seq": 49,
-          "bytes": 191,
-          "duplicate": false
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 3315046,
-          "direction": "Up",
-          "seq": 42,
-          "bytes": 79,
-          "duplicate": false
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 3345420,
+          "at_us": 3167938,
           "direction": "Up",
           "seq": 51,
           "bytes": 191,
@@ -1341,137 +1570,48 @@
       },
       {
         "Delivered": {
-          "at_us": 3392316,
-          "direction": "Up",
-          "seq": 50,
-          "bytes": 79,
-          "duplicate": false
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 3424000,
-          "direction": "Down",
-          "seq": 55,
-          "bytes": 4182
-        }
-      },
-      {
-        "Released": {
-          "at_us": 3424000,
-          "direction": "Down",
-          "seq": 55,
-          "bytes": 4182
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 3437938,
+          "at_us": 3168950,
           "direction": "Down",
           "seq": 53,
-          "bytes": 4182,
+          "bytes": 4191,
           "duplicate": false
         }
       },
       {
         "Offered": {
-          "at_us": 3438000,
+          "at_us": 3169000,
           "direction": "Up",
-          "seq": 56,
+          "seq": 68,
           "bytes": 50
         }
       },
       {
         "Offered": {
-          "at_us": 3438000,
+          "at_us": 3169000,
           "direction": "Up",
-          "seq": 57,
-          "bytes": 79
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 3438000,
-          "direction": "Up",
-          "seq": 58,
-          "bytes": 191
-        }
-      },
-      {
-        "Released": {
-          "at_us": 3438000,
-          "direction": "Up",
-          "seq": 57,
+          "seq": 69,
           "bytes": 79
         }
       },
       {
         "Released": {
-          "at_us": 3438000,
+          "at_us": 3169000,
           "direction": "Up",
-          "seq": 56,
+          "seq": 69,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3169000,
+          "direction": "Up",
+          "seq": 68,
           "bytes": 50
-        }
-      },
-      {
-        "Released": {
-          "at_us": 3438000,
-          "direction": "Up",
-          "seq": 58,
-          "bytes": 191
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 3481000,
-          "direction": "Down",
-          "seq": 59,
-          "bytes": 4182
-        }
-      },
-      {
-        "Released": {
-          "at_us": 3481000,
-          "direction": "Down",
-          "seq": 59,
-          "bytes": 4182
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 3500000,
-          "direction": "Up",
-          "seq": 60,
-          "bytes": 191
-        }
-      },
-      {
-        "Released": {
-          "at_us": 3500000,
-          "direction": "Up",
-          "seq": 60,
-          "bytes": 191
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 3538000,
-          "direction": "Down",
-          "seq": 61,
-          "bytes": 4182
-        }
-      },
-      {
-        "Released": {
-          "at_us": 3538000,
-          "direction": "Down",
-          "seq": 61,
-          "bytes": 4182
         }
       },
       {
         "Delivered": {
-          "at_us": 3570790,
+          "at_us": 3175207,
           "direction": "Up",
           "seq": 54,
           "bytes": 191,
@@ -1479,197 +1619,151 @@
         }
       },
       {
-        "Offered": {
-          "at_us": 3594000,
-          "direction": "Down",
-          "seq": 62,
-          "bytes": 4182
-        }
-      },
-      {
-        "Released": {
-          "at_us": 3594000,
-          "direction": "Down",
-          "seq": 62,
-          "bytes": 4182
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 3651000,
-          "direction": "Down",
-          "seq": 63,
-          "bytes": 4182
-        }
-      },
-      {
-        "Released": {
-          "at_us": 3651000,
-          "direction": "Down",
-          "seq": 63,
-          "bytes": 4182
+        "Dropped": {
+          "at_us": 3181000,
+          "direction": "Up",
+          "seq": 70,
+          "bytes": 191,
+          "reason": "Loss"
         }
       },
       {
         "Delivered": {
-          "at_us": 3678771,
+          "at_us": 3185565,
           "direction": "Up",
-          "seq": 57,
+          "seq": 42,
+          "bytes": 191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3204000,
+          "direction": "Down",
+          "seq": 71,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3204000,
+          "direction": "Down",
+          "seq": 71,
+          "bytes": 4191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3222790,
+          "direction": "Up",
+          "seq": 52,
           "bytes": 79,
           "duplicate": false
         }
       },
       {
         "Delivered": {
-          "at_us": 3688950,
-          "direction": "Down",
-          "seq": 55,
-          "bytes": 4182,
-          "duplicate": false
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 3689000,
-          "direction": "Up",
-          "seq": 64,
-          "bytes": 79
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 3689000,
-          "direction": "Up",
-          "seq": 65,
-          "bytes": 191
-        }
-      },
-      {
-        "Released": {
-          "at_us": 3689000,
-          "direction": "Up",
-          "seq": 64,
-          "bytes": 79
-        }
-      },
-      {
-        "Released": {
-          "at_us": 3689000,
-          "direction": "Up",
-          "seq": 65,
-          "bytes": 191
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 3696879,
+          "at_us": 3228606,
           "direction": "Up",
           "seq": 58,
-          "bytes": 191,
-          "duplicate": false
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 3705254,
-          "direction": "Up",
-          "seq": 56,
           "bytes": 50,
           "duplicate": false
         }
       },
       {
-        "Offered": {
-          "at_us": 3707000,
-          "direction": "Down",
-          "seq": 66,
-          "bytes": 4182
-        }
-      },
-      {
-        "Released": {
-          "at_us": 3707000,
-          "direction": "Down",
-          "seq": 66,
-          "bytes": 4182
-        }
-      },
-      {
         "Delivered": {
-          "at_us": 3743606,
+          "at_us": 3245879,
           "direction": "Down",
-          "seq": 61,
-          "bytes": 4182,
+          "seq": 56,
+          "bytes": 4191,
           "duplicate": false
         }
       },
       {
         "Offered": {
-          "at_us": 3744000,
+          "at_us": 3246000,
           "direction": "Up",
-          "seq": 67,
+          "seq": 72,
+          "bytes": 50
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3246000,
+          "direction": "Up",
+          "seq": 73,
           "bytes": 79
         }
       },
       {
         "Offered": {
-          "at_us": 3744000,
+          "at_us": 3246000,
           "direction": "Up",
-          "seq": 68,
+          "seq": 74,
           "bytes": 191
         }
       },
       {
         "Released": {
-          "at_us": 3744000,
+          "at_us": 3246000,
           "direction": "Up",
-          "seq": 67,
+          "seq": 73,
           "bytes": 79
         }
       },
       {
         "Released": {
-          "at_us": 3744000,
+          "at_us": 3246000,
           "direction": "Up",
-          "seq": 68,
+          "seq": 72,
+          "bytes": 50
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3246000,
+          "direction": "Up",
+          "seq": 74,
           "bytes": 191
         }
       },
       {
         "Offered": {
-          "at_us": 3750000,
+          "at_us": 3250000,
           "direction": "Up",
-          "seq": 69,
+          "seq": 75,
           "bytes": 191
         }
       },
       {
         "Released": {
-          "at_us": 3750000,
+          "at_us": 3250000,
           "direction": "Up",
-          "seq": 69,
+          "seq": 75,
           "bytes": 191
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 3764000,
-          "direction": "Down",
-          "seq": 70,
-          "bytes": 4182
-        }
-      },
-      {
-        "Released": {
-          "at_us": 3764000,
-          "direction": "Down",
-          "seq": 70,
-          "bytes": 4182
         }
       },
       {
         "Delivered": {
-          "at_us": 3800662,
+          "at_us": 3254578,
+          "direction": "Up",
+          "seq": 55,
+          "bytes": 79,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3260513,
+          "direction": "Up",
+          "seq": 59,
+          "bytes": 79,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3260388,
           "direction": "Up",
           "seq": 60,
           "bytes": 191,
@@ -1677,235 +1771,303 @@
         }
       },
       {
-        "Offered": {
-          "at_us": 3801000,
+        "Delivered": {
+          "at_us": 3283550,
           "direction": "Down",
-          "seq": 71,
-          "bytes": 4182
+          "seq": 47,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3284000,
+          "direction": "Up",
+          "seq": 76,
+          "bytes": 50
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3284000,
+          "direction": "Up",
+          "seq": 77,
+          "bytes": 79
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3284000,
+          "direction": "Up",
+          "seq": 78,
+          "bytes": 191
         }
       },
       {
         "Released": {
-          "at_us": 3801000,
-          "direction": "Down",
-          "seq": 71,
-          "bytes": 4182
+          "at_us": 3284000,
+          "direction": "Up",
+          "seq": 77,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3284000,
+          "direction": "Up",
+          "seq": 76,
+          "bytes": 50
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3284000,
+          "direction": "Up",
+          "seq": 78,
+          "bytes": 191
         }
       },
       {
         "Delivered": {
-          "at_us": 3829388,
-          "direction": "Down",
+          "at_us": 3299473,
+          "direction": "Up",
           "seq": 62,
-          "bytes": 4182,
+          "bytes": 50,
           "duplicate": false
         }
       },
       {
-        "Dropped": {
-          "at_us": 3830000,
+        "Delivered": {
+          "at_us": 3300144,
           "direction": "Up",
-          "seq": 72,
+          "seq": 63,
           "bytes": 79,
-          "reason": "Loss"
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 3873216,
-          "direction": "Down",
-          "seq": 59,
-          "bytes": 4182,
           "duplicate": false
         }
       },
       {
-        "Offered": {
-          "at_us": 3874000,
-          "direction": "Up",
-          "seq": 73,
-          "bytes": 79
-        }
-      },
-      {
-        "Released": {
-          "at_us": 3874000,
-          "direction": "Up",
-          "seq": 73,
-          "bytes": 79
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 3881000,
-          "direction": "Down",
-          "seq": 74,
-          "bytes": 4182
-        }
-      },
-      {
-        "Released": {
-          "at_us": 3881000,
-          "direction": "Down",
-          "seq": 74,
-          "bytes": 4182
-        }
-      },
-      {
         "Delivered": {
-          "at_us": 3898079,
+          "at_us": 3354405,
           "direction": "Up",
           "seq": 64,
+          "bytes": 191,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3359316,
+          "direction": "Down",
+          "seq": 48,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3360000,
+          "direction": "Up",
+          "seq": 79,
+          "bytes": 79
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3360000,
+          "direction": "Up",
+          "seq": 80,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3360000,
+          "direction": "Up",
+          "seq": 79,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3360000,
+          "direction": "Up",
+          "seq": 80,
+          "bytes": 191
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3361000,
+          "direction": "Down",
+          "seq": 81,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3361000,
+          "direction": "Down",
+          "seq": 81,
+          "bytes": 4191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3380565,
+          "direction": "Up",
+          "seq": 66,
           "bytes": 79,
           "duplicate": false
         }
       },
       {
         "Delivered": {
-          "at_us": 3951267,
+          "at_us": 3392216,
+          "direction": "Up",
+          "seq": 57,
+          "bytes": 191,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3413911,
           "direction": "Up",
           "seq": 65,
-          "bytes": 191,
-          "duplicate": false
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 3976000,
-          "direction": "Down",
-          "seq": 75,
-          "bytes": 4182
-        }
-      },
-      {
-        "Released": {
-          "at_us": 3976000,
-          "direction": "Down",
-          "seq": 75,
-          "bytes": 4182
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 3994353,
-          "direction": "Up",
-          "seq": 68,
-          "bytes": 191,
+          "bytes": 50,
           "duplicate": false
         }
       },
       {
         "Delivered": {
-          "at_us": 3995349,
-          "direction": "Down",
-          "seq": 70,
-          "bytes": 4182,
-          "duplicate": false
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 3996000,
+          "at_us": 3416393,
           "direction": "Up",
-          "seq": 76,
-          "bytes": 79
-        }
-      },
-      {
-        "Released": {
-          "at_us": 3996000,
-          "direction": "Up",
-          "seq": 76,
-          "bytes": 79
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 4000000,
-          "direction": "Up",
-          "seq": 77,
-          "bytes": 191
-        }
-      },
-      {
-        "Released": {
-          "at_us": 4000000,
-          "direction": "Up",
-          "seq": 77,
-          "bytes": 191
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 4005405,
-          "direction": "Down",
-          "seq": 66,
-          "bytes": 4182,
-          "duplicate": false
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 4006000,
-          "direction": "Up",
-          "seq": 78,
-          "bytes": 79
-        }
-      },
-      {
-        "Released": {
-          "at_us": 4006000,
-          "direction": "Up",
-          "seq": 78,
-          "bytes": 79
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 4039946,
-          "direction": "Up",
-          "seq": 67,
+          "seq": 69,
           "bytes": 79,
           "duplicate": false
         }
       },
       {
         "Delivered": {
-          "at_us": 4073686,
+          "at_us": 3431718,
+          "direction": "Down",
+          "seq": 71,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3432000,
           "direction": "Up",
-          "seq": 69,
+          "seq": 82,
+          "bytes": 79
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3432000,
+          "direction": "Up",
+          "seq": 83,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3432000,
+          "direction": "Up",
+          "seq": 82,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3432000,
+          "direction": "Up",
+          "seq": 83,
+          "bytes": 191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3445629,
+          "direction": "Up",
+          "seq": 68,
+          "bytes": 50,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3451417,
+          "direction": "Up",
+          "seq": 74,
           "bytes": 191,
           "duplicate": false
         }
       },
       {
         "Delivered": {
-          "at_us": 4077629,
-          "direction": "Down",
-          "seq": 71,
-          "bytes": 4182,
+          "at_us": 3479686,
+          "direction": "Up",
+          "seq": 67,
+          "bytes": 191,
           "duplicate": false
         }
       },
       {
         "Offered": {
-          "at_us": 4078000,
-          "direction": "Up",
-          "seq": 79,
-          "bytes": 79
+          "at_us": 3481000,
+          "direction": "Down",
+          "seq": 84,
+          "bytes": 4191
         }
       },
       {
         "Released": {
-          "at_us": 4078000,
-          "direction": "Up",
-          "seq": 79,
-          "bytes": 79
+          "at_us": 3481000,
+          "direction": "Down",
+          "seq": 84,
+          "bytes": 4191
         }
       },
       {
         "Delivered": {
-          "at_us": 4101718,
+          "at_us": 3489516,
+          "direction": "Up",
+          "seq": 75,
+          "bytes": 191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3500000,
+          "direction": "Up",
+          "seq": 85,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3500000,
+          "direction": "Up",
+          "seq": 85,
+          "bytes": 191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3501127,
+          "direction": "Down",
+          "seq": 61,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3501239,
           "direction": "Up",
           "seq": 73,
           "bytes": 79,
@@ -1913,144 +2075,117 @@
         }
       },
       {
-        "Delivered": {
-          "at_us": 4103127,
-          "direction": "Down",
-          "seq": 63,
-          "bytes": 4182,
-          "duplicate": false
-        }
-      },
-      {
-        "Dropped": {
-          "at_us": 4104000,
-          "direction": "Up",
-          "seq": 80,
-          "bytes": 79,
-          "reason": "Loss"
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 4135231,
-          "direction": "Down",
-          "seq": 74,
-          "bytes": 4182,
-          "duplicate": false
-        }
-      },
-      {
         "Offered": {
-          "at_us": 4136000,
+          "at_us": 3502000,
           "direction": "Up",
-          "seq": 81,
+          "seq": 86,
           "bytes": 79
         }
       },
       {
         "Released": {
-          "at_us": 4136000,
+          "at_us": 3502000,
           "direction": "Up",
-          "seq": 81,
+          "seq": 86,
           "bytes": 79
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 4201417,
-          "direction": "Up",
-          "seq": 76,
-          "bytes": 79,
-          "duplicate": false
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 4214236,
-          "direction": "Down",
-          "seq": 75,
-          "bytes": 4182,
-          "duplicate": false
         }
       },
       {
         "Offered": {
-          "at_us": 4215000,
-          "direction": "Up",
-          "seq": 82,
-          "bytes": 79
+          "at_us": 3508000,
+          "direction": "Down",
+          "seq": 87,
+          "bytes": 8224
         }
       },
       {
         "Released": {
-          "at_us": 4215000,
-          "direction": "Up",
-          "seq": 82,
-          "bytes": 79
+          "at_us": 3508000,
+          "direction": "Down",
+          "seq": 87,
+          "bytes": 8224
         }
       },
       {
         "Delivered": {
-          "at_us": 4239516,
+          "at_us": 3526195,
           "direction": "Up",
           "seq": 77,
-          "bytes": 191,
-          "duplicate": false
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 4240000,
-          "direction": "Down",
-          "seq": 83,
-          "bytes": 4182
-        }
-      },
-      {
-        "Released": {
-          "at_us": 4240000,
-          "direction": "Down",
-          "seq": 83,
-          "bytes": 4182
-        }
-      },
-      {
-        "Dropped": {
-          "at_us": 4250000,
-          "direction": "Up",
-          "seq": 84,
-          "bytes": 191,
-          "reason": "Loss"
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 4268000,
-          "direction": "Down",
-          "seq": 85,
-          "bytes": 8224
-        }
-      },
-      {
-        "Released": {
-          "at_us": 4268000,
-          "direction": "Down",
-          "seq": 85,
-          "bytes": 8224
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 4300215,
-          "direction": "Up",
-          "seq": 78,
           "bytes": 79,
           "duplicate": false
         }
       },
       {
         "Delivered": {
-          "at_us": 4377630,
+          "at_us": 3532358,
+          "direction": "Up",
+          "seq": 76,
+          "bytes": 50,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3535182,
+          "direction": "Up",
+          "seq": 78,
+          "bytes": 191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3552000,
+          "direction": "Down",
+          "seq": 88,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3552000,
+          "direction": "Down",
+          "seq": 88,
+          "bytes": 4191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3574554,
+          "direction": "Up",
+          "seq": 72,
+          "bytes": 50,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3581476,
+          "direction": "Down",
+          "seq": 81,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3582000,
+          "direction": "Up",
+          "seq": 89,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3582000,
+          "direction": "Up",
+          "seq": 89,
+          "bytes": 79
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3592274,
           "direction": "Up",
           "seq": 79,
           "bytes": 79,
@@ -2059,23 +2194,41 @@
       },
       {
         "Offered": {
-          "at_us": 4425000,
+          "at_us": 3609000,
           "direction": "Down",
-          "seq": 86,
-          "bytes": 4182
+          "seq": 90,
+          "bytes": 4191
         }
       },
       {
         "Released": {
-          "at_us": 4425000,
+          "at_us": 3609000,
           "direction": "Down",
-          "seq": 86,
-          "bytes": 4182
+          "seq": 90,
+          "bytes": 4191
         }
       },
       {
         "Delivered": {
-          "at_us": 4447274,
+          "at_us": 3626390,
+          "direction": "Up",
+          "seq": 80,
+          "bytes": 191,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3679800,
+          "direction": "Up",
+          "seq": 83,
+          "bytes": 191,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3698980,
           "direction": "Up",
           "seq": 82,
           "bytes": 79,
@@ -2084,296 +2237,894 @@
       },
       {
         "Delivered": {
-          "at_us": 4452107,
+          "at_us": 3717154,
           "direction": "Up",
-          "seq": 81,
+          "seq": 86,
           "bytes": 79,
           "duplicate": false
         }
       },
       {
-        "Delivered": {
-          "at_us": 4460091,
-          "direction": "Down",
-          "seq": 83,
-          "bytes": 4182,
-          "duplicate": false
-        }
-      },
-      {
         "Offered": {
-          "at_us": 4461000,
-          "direction": "Up",
-          "seq": 87,
-          "bytes": 79
+          "at_us": 3723000,
+          "direction": "Down",
+          "seq": 91,
+          "bytes": 4191
         }
       },
       {
         "Released": {
-          "at_us": 4461000,
-          "direction": "Up",
-          "seq": 87,
-          "bytes": 79
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 4500000,
-          "direction": "Up",
-          "seq": 88,
-          "bytes": 191
-        }
-      },
-      {
-        "Released": {
-          "at_us": 4500000,
-          "direction": "Up",
-          "seq": 88,
-          "bytes": 191
+          "at_us": 3723000,
+          "direction": "Down",
+          "seq": 91,
+          "bytes": 4191
         }
       },
       {
         "Delivered": {
-          "at_us": 4606588,
+          "at_us": 3726685,
           "direction": "Down",
-          "seq": 85,
+          "seq": 87,
           "bytes": 8224,
           "duplicate": false
         }
       },
       {
         "Offered": {
-          "at_us": 4607000,
+          "at_us": 3727000,
           "direction": "Up",
-          "seq": 89,
+          "seq": 92,
           "bytes": 50
         }
       },
       {
         "Released": {
-          "at_us": 4607000,
+          "at_us": 3727000,
           "direction": "Up",
-          "seq": 89,
+          "seq": 92,
           "bytes": 50
         }
       },
       {
-        "Offered": {
-          "at_us": 4610000,
-          "direction": "Down",
-          "seq": 90,
-          "bytes": 4182
-        }
-      },
-      {
-        "Released": {
-          "at_us": 4610000,
-          "direction": "Down",
-          "seq": 90,
-          "bytes": 4182
+        "Dropped": {
+          "at_us": 3750000,
+          "direction": "Up",
+          "seq": 93,
+          "bytes": 191,
+          "reason": "Loss"
         }
       },
       {
         "Delivered": {
-          "at_us": 4695779,
+          "at_us": 3764264,
           "direction": "Down",
-          "seq": 86,
-          "bytes": 4182,
+          "seq": 88,
+          "bytes": 4191,
           "duplicate": false
         }
       },
       {
         "Offered": {
-          "at_us": 4696000,
+          "at_us": 3765000,
           "direction": "Up",
-          "seq": 91,
+          "seq": 94,
           "bytes": 79
         }
       },
       {
         "Released": {
-          "at_us": 4696000,
+          "at_us": 3765000,
           "direction": "Up",
-          "seq": 91,
+          "seq": 94,
           "bytes": 79
         }
       },
       {
         "Delivered": {
-          "at_us": 4709013,
+          "at_us": 3774116,
+          "direction": "Down",
+          "seq": 84,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3775000,
           "direction": "Up",
-          "seq": 88,
+          "seq": 95,
+          "bytes": 79
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3775000,
+          "direction": "Up",
+          "seq": 96,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3775000,
+          "direction": "Up",
+          "seq": 95,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3775000,
+          "direction": "Up",
+          "seq": 96,
+          "bytes": 191
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3834000,
+          "direction": "Down",
+          "seq": 97,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3834000,
+          "direction": "Down",
+          "seq": 97,
+          "bytes": 4191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3844180,
+          "direction": "Up",
+          "seq": 85,
           "bytes": 191,
           "duplicate": false
         }
       },
       {
         "Delivered": {
-          "at_us": 4736230,
-          "direction": "Up",
-          "seq": 87,
-          "bytes": 79,
-          "duplicate": false
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 4750000,
-          "direction": "Up",
-          "seq": 92,
-          "bytes": 191
-        }
-      },
-      {
-        "Released": {
-          "at_us": 4750000,
-          "direction": "Up",
-          "seq": 92,
-          "bytes": 191
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 4855078,
-          "direction": "Down",
-          "seq": 90,
-          "bytes": 4182,
-          "duplicate": false
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 4856000,
-          "direction": "Up",
-          "seq": 93,
-          "bytes": 79
-        }
-      },
-      {
-        "Released": {
-          "at_us": 4856000,
-          "direction": "Up",
-          "seq": 93,
-          "bytes": 79
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 4875000,
-          "direction": "Down",
-          "seq": 94,
-          "bytes": 4182
-        }
-      },
-      {
-        "Released": {
-          "at_us": 4875000,
-          "direction": "Down",
-          "seq": 94,
-          "bytes": 4182
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 5000000,
-          "direction": "Up",
-          "seq": 95,
-          "bytes": 191
-        }
-      },
-      {
-        "Released": {
-          "at_us": 5000000,
-          "direction": "Up",
-          "seq": 95,
-          "bytes": 191
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 5001000,
-          "direction": "Up",
-          "seq": 96,
-          "bytes": 55
-        }
-      },
-      {
-        "Released": {
-          "at_us": 5001000,
-          "direction": "Up",
-          "seq": 96,
-          "bytes": 55
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 5008548,
-          "direction": "Up",
-          "seq": 91,
-          "bytes": 79,
-          "duplicate": false
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 5029427,
+          "at_us": 3892704,
           "direction": "Up",
           "seq": 89,
+          "bytes": 79,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3963925,
+          "direction": "Down",
+          "seq": 91,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3964000,
+          "direction": "Up",
+          "seq": 98,
+          "bytes": 79
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3964000,
+          "direction": "Up",
+          "seq": 99,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3964000,
+          "direction": "Up",
+          "seq": 98,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3964000,
+          "direction": "Up",
+          "seq": 99,
+          "bytes": 191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3971792,
+          "direction": "Down",
+          "seq": 90,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 3972000,
+          "direction": "Up",
+          "seq": 100,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 3972000,
+          "direction": "Up",
+          "seq": 100,
+          "bytes": 79
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 3972943,
+          "direction": "Up",
+          "seq": 94,
+          "bytes": 79,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 4000000,
+          "direction": "Up",
+          "seq": 101,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 4000000,
+          "direction": "Up",
+          "seq": 101,
+          "bytes": 191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 4002538,
+          "direction": "Up",
+          "seq": 92,
           "bytes": 50,
           "duplicate": false
         }
       },
       {
+        "Dropped": {
+          "at_us": 4019000,
+          "direction": "Down",
+          "seq": 102,
+          "bytes": 4191,
+          "reason": "Loss"
+        }
+      },
+      {
         "Delivered": {
-          "at_us": 5118703,
+          "at_us": 4047637,
           "direction": "Up",
-          "seq": 93,
+          "seq": 95,
           "bytes": 79,
           "duplicate": false
         }
       },
       {
         "Delivered": {
-          "at_us": 5124210,
+          "at_us": 4109455,
           "direction": "Up",
-          "seq": 92,
+          "seq": 96,
           "bytes": 191,
           "duplicate": false
         }
       },
       {
-        "Dropped": {
-          "at_us": 5125000,
+        "Delivered": {
+          "at_us": 4116012,
           "direction": "Down",
           "seq": 97,
-          "bytes": 4182,
-          "reason": "Loss"
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 5177218,
-          "direction": "Down",
-          "seq": 94,
-          "bytes": 4182,
+          "bytes": 4191,
           "duplicate": false
         }
       },
       {
-        "Dropped": {
-          "at_us": 5178000,
+        "Offered": {
+          "at_us": 4117000,
+          "direction": "Up",
+          "seq": 103,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 4117000,
+          "direction": "Up",
+          "seq": 103,
+          "bytes": 79
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 4204000,
+          "direction": "Down",
+          "seq": 104,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 4204000,
+          "direction": "Down",
+          "seq": 104,
+          "bytes": 4191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 4247561,
+          "direction": "Up",
+          "seq": 99,
+          "bytes": 191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 4250000,
+          "direction": "Up",
+          "seq": 105,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 4250000,
+          "direction": "Up",
+          "seq": 105,
+          "bytes": 191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 4307438,
+          "direction": "Up",
+          "seq": 101,
+          "bytes": 191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 4315000,
+          "direction": "Down",
+          "seq": 106,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 4315000,
+          "direction": "Down",
+          "seq": 106,
+          "bytes": 4191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 4342535,
+          "direction": "Up",
+          "seq": 100,
+          "bytes": 79,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 4385575,
           "direction": "Up",
           "seq": 98,
           "bytes": 79,
-          "reason": "Loss"
+          "duplicate": false
         }
       },
       {
         "Delivered": {
-          "at_us": 5200201,
+          "at_us": 4409004,
+          "direction": "Down",
+          "seq": 104,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 4410000,
           "direction": "Up",
-          "seq": 95,
+          "seq": 107,
+          "bytes": 79
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 4410000,
+          "direction": "Up",
+          "seq": 108,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 4410000,
+          "direction": "Up",
+          "seq": 107,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 4410000,
+          "direction": "Up",
+          "seq": 108,
+          "bytes": 191
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 4426000,
+          "direction": "Down",
+          "seq": 109,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 4426000,
+          "direction": "Down",
+          "seq": 109,
+          "bytes": 4191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 4440651,
+          "direction": "Up",
+          "seq": 103,
+          "bytes": 79,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 4500000,
+          "direction": "Up",
+          "seq": 110,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 4500000,
+          "direction": "Up",
+          "seq": 110,
+          "bytes": 191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 4528278,
+          "direction": "Up",
+          "seq": 105,
           "bytes": 191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 4537000,
+          "direction": "Down",
+          "seq": 111,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 4537000,
+          "direction": "Down",
+          "seq": 111,
+          "bytes": 4191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 4618426,
+          "direction": "Up",
+          "seq": 107,
+          "bytes": 79,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 4630027,
+          "direction": "Down",
+          "seq": 109,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 4631000,
+          "direction": "Up",
+          "seq": 112,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 4631000,
+          "direction": "Up",
+          "seq": 112,
+          "bytes": 79
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 4648000,
+          "direction": "Down",
+          "seq": 113,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 4648000,
+          "direction": "Down",
+          "seq": 113,
+          "bytes": 4191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 4657516,
+          "direction": "Down",
+          "seq": 106,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 4658000,
+          "direction": "Up",
+          "seq": 114,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 4658000,
+          "direction": "Up",
+          "seq": 114,
+          "bytes": 79
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 4678185,
+          "direction": "Up",
+          "seq": 108,
+          "bytes": 191,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 4746983,
+          "direction": "Up",
+          "seq": 110,
+          "bytes": 191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 4750000,
+          "direction": "Up",
+          "seq": 115,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 4750000,
+          "direction": "Up",
+          "seq": 115,
+          "bytes": 191
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 4759000,
+          "direction": "Down",
+          "seq": 116,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 4759000,
+          "direction": "Down",
+          "seq": 116,
+          "bytes": 4191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 4813401,
+          "direction": "Down",
+          "seq": 111,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 4814000,
+          "direction": "Up",
+          "seq": 117,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 4814000,
+          "direction": "Up",
+          "seq": 117,
+          "bytes": 79
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 4870000,
+          "direction": "Down",
+          "seq": 118,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 4870000,
+          "direction": "Down",
+          "seq": 118,
+          "bytes": 4191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 4891068,
+          "direction": "Up",
+          "seq": 112,
+          "bytes": 79,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 4918834,
+          "direction": "Up",
+          "seq": 114,
+          "bytes": 79,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 4937669,
+          "direction": "Down",
+          "seq": 113,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 4938000,
+          "direction": "Up",
+          "seq": 119,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 4938000,
+          "direction": "Up",
+          "seq": 119,
+          "bytes": 79
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 4981000,
+          "direction": "Down",
+          "seq": 120,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 4981000,
+          "direction": "Down",
+          "seq": 120,
+          "bytes": 4191
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 4990000,
+          "direction": "Down",
+          "seq": 121,
+          "bytes": 8224
+        }
+      },
+      {
+        "Released": {
+          "at_us": 4990000,
+          "direction": "Down",
+          "seq": 121,
+          "bytes": 8224
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 5000000,
+          "direction": "Up",
+          "seq": 122,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5000000,
+          "direction": "Up",
+          "seq": 122,
+          "bytes": 191
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 5001000,
+          "direction": "Up",
+          "seq": 123,
+          "bytes": 55
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5001000,
+          "direction": "Up",
+          "seq": 123,
+          "bytes": 55
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 5023235,
+          "direction": "Down",
+          "seq": 116,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 5024000,
+          "direction": "Up",
+          "seq": 124,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5024000,
+          "direction": "Up",
+          "seq": 124,
+          "bytes": 79
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 5059937,
+          "direction": "Up",
+          "seq": 117,
+          "bytes": 79,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 5092000,
+          "direction": "Down",
+          "seq": 125,
+          "bytes": 3167
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5092000,
+          "direction": "Down",
+          "seq": 125,
+          "bytes": 3167
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 5093219,
+          "direction": "Up",
+          "seq": 115,
+          "bytes": 191,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 5188568,
+          "direction": "Down",
+          "seq": 118,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 5189000,
+          "direction": "Up",
+          "seq": 126,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5189000,
+          "direction": "Up",
+          "seq": 126,
+          "bytes": 79
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 5206333,
+          "direction": "Down",
+          "seq": 121,
+          "bytes": 8224,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 5207000,
+          "direction": "Up",
+          "seq": 127,
+          "bytes": 50
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5207000,
+          "direction": "Up",
+          "seq": 127,
+          "bytes": 50
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 5247160,
+          "direction": "Up",
+          "seq": 119,
+          "bytes": 79,
           "duplicate": false
         }
       },
@@ -2381,7 +3132,7 @@
         "Offered": {
           "at_us": 5250000,
           "direction": "Up",
-          "seq": 99,
+          "seq": 128,
           "bytes": 191
         }
       },
@@ -2389,138 +3140,305 @@
         "Released": {
           "at_us": 5250000,
           "direction": "Up",
-          "seq": 99,
+          "seq": 128,
           "bytes": 191
         }
       },
       {
         "Delivered": {
-          "at_us": 5265088,
+          "at_us": 5256858,
           "direction": "Up",
-          "seq": 96,
+          "seq": 123,
           "bytes": 55,
           "duplicate": false
         }
       },
       {
         "Offered": {
-          "at_us": 5266000,
+          "at_us": 5257000,
           "direction": "Down",
-          "seq": 100,
-          "bytes": 4182
+          "seq": 129,
+          "bytes": 4191
         }
       },
       {
         "Released": {
-          "at_us": 5266000,
+          "at_us": 5257000,
           "direction": "Down",
-          "seq": 100,
-          "bytes": 4182
+          "seq": 129,
+          "bytes": 4191
         }
       },
       {
         "Offered": {
-          "at_us": 5267000,
+          "at_us": 5258000,
           "direction": "Down",
-          "seq": 101,
-          "bytes": 4182
+          "seq": 130,
+          "bytes": 4191
         }
       },
       {
         "Released": {
-          "at_us": 5267000,
+          "at_us": 5258000,
           "direction": "Down",
-          "seq": 101,
-          "bytes": 4182
+          "seq": 130,
+          "bytes": 4191
         }
       },
       {
         "Offered": {
-          "at_us": 5268000,
+          "at_us": 5259000,
           "direction": "Down",
-          "seq": 102,
-          "bytes": 4182
+          "seq": 131,
+          "bytes": 4191
         }
       },
       {
         "Released": {
-          "at_us": 5268000,
+          "at_us": 5259000,
           "direction": "Down",
-          "seq": 102,
-          "bytes": 4182
+          "seq": 131,
+          "bytes": 4191
         }
       },
       {
         "Offered": {
-          "at_us": 5269000,
+          "at_us": 5260000,
           "direction": "Down",
-          "seq": 103,
-          "bytes": 4182
+          "seq": 132,
+          "bytes": 4191
         }
       },
       {
         "Released": {
-          "at_us": 5269000,
+          "at_us": 5260000,
           "direction": "Down",
-          "seq": 103,
-          "bytes": 4182
+          "seq": 132,
+          "bytes": 4191
         }
       },
       {
         "Offered": {
-          "at_us": 5289000,
+          "at_us": 5261000,
           "direction": "Down",
-          "seq": 104,
-          "bytes": 4182
+          "seq": 133,
+          "bytes": 4191
         }
       },
       {
         "Released": {
-          "at_us": 5289000,
+          "at_us": 5261000,
           "direction": "Down",
-          "seq": 104,
-          "bytes": 4182
+          "seq": 133,
+          "bytes": 4191
         }
       },
       {
         "Offered": {
-          "at_us": 5384000,
+          "at_us": 5262000,
           "direction": "Down",
-          "seq": 105,
-          "bytes": 4182
+          "seq": 134,
+          "bytes": 3167
         }
       },
       {
         "Released": {
-          "at_us": 5384000,
+          "at_us": 5262000,
           "direction": "Down",
-          "seq": 105,
-          "bytes": 4182
+          "seq": 134,
+          "bytes": 3167
         }
       },
       {
         "Delivered": {
-          "at_us": 5460672,
+          "at_us": 5294821,
           "direction": "Up",
-          "seq": 99,
+          "seq": 124,
+          "bytes": 79,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 5301534,
+          "direction": "Down",
+          "seq": 125,
+          "bytes": 3167,
+          "duplicate": false
+        }
+      },
+      {
+        "Dropped": {
+          "at_us": 5302000,
+          "direction": "Up",
+          "seq": 135,
+          "bytes": 79,
+          "reason": "Loss"
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 5302000,
+          "direction": "Up",
+          "seq": 136,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5302000,
+          "direction": "Up",
+          "seq": 136,
+          "bytes": 191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 5304683,
+          "direction": "Up",
+          "seq": 122,
           "bytes": 191,
           "duplicate": false
         }
       },
       {
-        "Dropped": {
-          "at_us": 5478000,
+        "Offered": {
+          "at_us": 5315000,
           "direction": "Down",
-          "seq": 106,
-          "bytes": 4182,
-          "reason": "Loss"
+          "seq": 137,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5315000,
+          "direction": "Down",
+          "seq": 137,
+          "bytes": 4191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 5361426,
+          "direction": "Down",
+          "seq": 120,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 5362000,
+          "direction": "Up",
+          "seq": 138,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5362000,
+          "direction": "Up",
+          "seq": 138,
+          "bytes": 79
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 5426000,
+          "direction": "Down",
+          "seq": 139,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5426000,
+          "direction": "Down",
+          "seq": 139,
+          "bytes": 4191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 5455302,
+          "direction": "Up",
+          "seq": 127,
+          "bytes": 50,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 5457121,
+          "direction": "Up",
+          "seq": 126,
+          "bytes": 79,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 5485128,
+          "direction": "Down",
+          "seq": 130,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 5486000,
+          "direction": "Up",
+          "seq": 140,
+          "bytes": 79
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 5486000,
+          "direction": "Up",
+          "seq": 141,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5486000,
+          "direction": "Up",
+          "seq": 140,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5486000,
+          "direction": "Up",
+          "seq": 141,
+          "bytes": 191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 5499331,
+          "direction": "Down",
+          "seq": 134,
+          "bytes": 3167,
+          "duplicate": false
         }
       },
       {
         "Offered": {
           "at_us": 5500000,
           "direction": "Up",
-          "seq": 107,
+          "seq": 142,
+          "bytes": 79
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 5500000,
+          "direction": "Up",
+          "seq": 143,
           "bytes": 191
         }
       },
@@ -2528,247 +3446,337 @@
         "Released": {
           "at_us": 5500000,
           "direction": "Up",
-          "seq": 107,
+          "seq": 142,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5500000,
+          "direction": "Up",
+          "seq": 143,
           "bytes": 191
         }
       },
       {
         "Delivered": {
-          "at_us": 5528766,
-          "direction": "Down",
-          "seq": 102,
-          "bytes": 4182,
+          "at_us": 5509539,
+          "direction": "Up",
+          "seq": 136,
+          "bytes": 191,
           "duplicate": false
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 5529000,
-          "direction": "Up",
-          "seq": 108,
-          "bytes": 79
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 5529000,
-          "direction": "Up",
-          "seq": 109,
-          "bytes": 191
-        }
-      },
-      {
-        "Released": {
-          "at_us": 5529000,
-          "direction": "Up",
-          "seq": 108,
-          "bytes": 79
-        }
-      },
-      {
-        "Released": {
-          "at_us": 5529000,
-          "direction": "Up",
-          "seq": 109,
-          "bytes": 191
         }
       },
       {
         "Delivered": {
-          "at_us": 5549012,
+          "at_us": 5517268,
           "direction": "Down",
-          "seq": 101,
-          "bytes": 4182,
+          "seq": 131,
+          "bytes": 4191,
           "duplicate": false
         }
       },
       {
         "Offered": {
-          "at_us": 5550000,
+          "at_us": 5518000,
           "direction": "Up",
-          "seq": 110,
+          "seq": 144,
           "bytes": 79
         }
       },
       {
         "Released": {
-          "at_us": 5550000,
+          "at_us": 5518000,
           "direction": "Up",
-          "seq": 110,
+          "seq": 144,
           "bytes": 79
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 5537000,
+          "direction": "Down",
+          "seq": 145,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5537000,
+          "direction": "Down",
+          "seq": 145,
+          "bytes": 4191
         }
       },
       {
         "Delivered": {
-          "at_us": 5552561,
+          "at_us": 5560266,
           "direction": "Down",
-          "seq": 103,
-          "bytes": 4182,
+          "seq": 129,
+          "bytes": 4191,
           "duplicate": false
         }
       },
       {
         "Offered": {
-          "at_us": 5553000,
+          "at_us": 5561000,
           "direction": "Up",
-          "seq": 111,
-          "bytes": 79
-        }
-      },
-      {
-        "Released": {
-          "at_us": 5553000,
-          "direction": "Up",
-          "seq": 111,
-          "bytes": 79
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 5573000,
-          "direction": "Down",
-          "seq": 112,
-          "bytes": 4182
-        }
-      },
-      {
-        "Released": {
-          "at_us": 5573000,
-          "direction": "Down",
-          "seq": 112,
-          "bytes": 4182
-        }
-      },
-      {
-        "Delivered": {
-          "at_us": 5600455,
-          "direction": "Down",
-          "seq": 100,
-          "bytes": 4182,
-          "duplicate": false
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 5601000,
-          "direction": "Up",
-          "seq": 113,
+          "seq": 146,
           "bytes": 50
         }
       },
       {
-        "Dropped": {
-          "at_us": 5601000,
+        "Offered": {
+          "at_us": 5561000,
           "direction": "Up",
-          "seq": 114,
-          "bytes": 79,
-          "reason": "Loss"
+          "seq": 147,
+          "bytes": 79
         }
       },
       {
         "Offered": {
-          "at_us": 5601000,
+          "at_us": 5561000,
           "direction": "Up",
-          "seq": 115,
+          "seq": 148,
           "bytes": 191
         }
       },
       {
         "Released": {
-          "at_us": 5601000,
+          "at_us": 5561000,
           "direction": "Up",
-          "seq": 113,
+          "seq": 147,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5561000,
+          "direction": "Up",
+          "seq": 146,
           "bytes": 50
         }
       },
       {
         "Released": {
-          "at_us": 5601000,
+          "at_us": 5561000,
           "direction": "Up",
-          "seq": 115,
+          "seq": 148,
           "bytes": 191
         }
       },
       {
         "Delivered": {
-          "at_us": 5659535,
+          "at_us": 5564556,
           "direction": "Down",
-          "seq": 104,
-          "bytes": 4182,
+          "seq": 133,
+          "bytes": 4191,
           "duplicate": false
         }
       },
       {
         "Offered": {
-          "at_us": 5660000,
+          "at_us": 5565000,
           "direction": "Up",
-          "seq": 116,
-          "bytes": 79
-        }
-      },
-      {
-        "Offered": {
-          "at_us": 5660000,
-          "direction": "Up",
-          "seq": 117,
-          "bytes": 191
-        }
-      },
-      {
-        "Released": {
-          "at_us": 5660000,
-          "direction": "Up",
-          "seq": 116,
+          "seq": 149,
           "bytes": 79
         }
       },
       {
         "Released": {
-          "at_us": 5660000,
+          "at_us": 5565000,
           "direction": "Up",
-          "seq": 117,
-          "bytes": 191
+          "seq": 149,
+          "bytes": 79
         }
       },
       {
         "Offered": {
-          "at_us": 5668000,
-          "direction": "Down",
-          "seq": 118,
-          "bytes": 4182
+          "at_us": 5586000,
+          "direction": "Up",
+          "seq": 150,
+          "bytes": 191
         }
       },
       {
         "Released": {
-          "at_us": 5668000,
-          "direction": "Down",
-          "seq": 118,
-          "bytes": 4182
+          "at_us": 5586000,
+          "direction": "Up",
+          "seq": 150,
+          "bytes": 191
         }
       },
       {
         "Delivered": {
-          "at_us": 5691438,
-          "direction": "Down",
-          "seq": 105,
-          "bytes": 4182,
-          "duplicate": false
-        }
-      },
-      {
-        "Dropped": {
-          "at_us": 5692000,
+          "at_us": 5586160,
           "direction": "Up",
-          "seq": 119,
+          "seq": 138,
           "bytes": 79,
-          "reason": "Loss"
+          "duplicate": false
         }
       },
       {
         "Delivered": {
-          "at_us": 5741428,
+          "at_us": 5610213,
+          "direction": "Down",
+          "seq": 132,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 5611000,
           "direction": "Up",
-          "seq": 108,
+          "seq": 151,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5611000,
+          "direction": "Up",
+          "seq": 151,
+          "bytes": 79
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 5612320,
+          "direction": "Up",
+          "seq": 128,
+          "bytes": 191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 5613000,
+          "direction": "Down",
+          "seq": 152,
+          "bytes": 4191
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 5613000,
+          "direction": "Down",
+          "seq": 153,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5613000,
+          "direction": "Down",
+          "seq": 152,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5613000,
+          "direction": "Down",
+          "seq": 153,
+          "bytes": 4191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 5622162,
+          "direction": "Down",
+          "seq": 137,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 5623000,
+          "direction": "Up",
+          "seq": 154,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5623000,
+          "direction": "Up",
+          "seq": 154,
+          "bytes": 79
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 5648000,
+          "direction": "Down",
+          "seq": 155,
+          "bytes": 4191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5648000,
+          "direction": "Down",
+          "seq": 155,
+          "bytes": 4191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 5677399,
+          "direction": "Down",
+          "seq": 139,
+          "bytes": 4191,
+          "duplicate": false
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 5678000,
+          "direction": "Up",
+          "seq": 156,
+          "bytes": 79
+        }
+      },
+      {
+        "Offered": {
+          "at_us": 5678000,
+          "direction": "Up",
+          "seq": 157,
+          "bytes": 191
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5678000,
+          "direction": "Up",
+          "seq": 156,
+          "bytes": 79
+        }
+      },
+      {
+        "Released": {
+          "at_us": 5678000,
+          "direction": "Up",
+          "seq": 157,
+          "bytes": 191
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 5716086,
+          "direction": "Up",
+          "seq": 141,
+          "bytes": 191,
+          "duplicate": false
+        }
+      },
+      {
+        "Delivered": {
+          "at_us": 5747433,
+          "direction": "Up",
+          "seq": 142,
           "bytes": 79,
           "duplicate": false
         }
@@ -2777,7 +3785,7 @@
         "Offered": {
           "at_us": 5750000,
           "direction": "Up",
-          "seq": 120,
+          "seq": 158,
           "bytes": 191
         }
       },
@@ -2785,24 +3793,24 @@
         "Released": {
           "at_us": 5750000,
           "direction": "Up",
-          "seq": 120,
+          "seq": 158,
           "bytes": 191
         }
       },
       {
         "Offered": {
-          "at_us": 5762000,
+          "at_us": 5759000,
           "direction": "Down",
-          "seq": 121,
-          "bytes": 4182
+          "seq": 159,
+          "bytes": 4191
         }
       },
       {
         "Released": {
-          "at_us": 5762000,
+          "at_us": 5759000,
           "direction": "Down",
-          "seq": 121,
-          "bytes": 4182
+          "seq": 159,
+          "bytes": 4191
         }
       }
     ]
@@ -2850,57 +3858,57 @@
         "reflects_input_seq": 1
       },
       {
-        "at_us": 2543000,
+        "at_us": 2475000,
         "update_id": 5,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
         "plan_id": null,
-        "reflects_input_seq": 3
+        "reflects_input_seq": 1
       },
       {
-        "at_us": 2544000,
+        "at_us": 2584000,
         "update_id": 6,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
         "plan_id": null,
-        "reflects_input_seq": 3
+        "reflects_input_seq": 2
       },
       {
-        "at_us": 2545000,
+        "at_us": 2585000,
         "update_id": 7,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
         "plan_id": null,
-        "reflects_input_seq": 3
+        "reflects_input_seq": 2
       },
       {
-        "at_us": 2546000,
+        "at_us": 2586000,
         "update_id": 8,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
         "plan_id": null,
-        "reflects_input_seq": 3
+        "reflects_input_seq": 2
       },
       {
-        "at_us": 2547000,
+        "at_us": 2587000,
         "update_id": 9,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
         "plan_id": null,
-        "reflects_input_seq": 3
+        "reflects_input_seq": 2
       },
       {
-        "at_us": 2548000,
+        "at_us": 2610000,
         "update_id": 10,
         "kind": "anchor",
         "cells": 16,
@@ -2910,7 +3918,7 @@
         "reflects_input_seq": 3
       },
       {
-        "at_us": 2627000,
+        "at_us": 2611000,
         "update_id": 11,
         "kind": "anchor",
         "cells": 16,
@@ -2920,7 +3928,7 @@
         "reflects_input_seq": 3
       },
       {
-        "at_us": 2702000,
+        "at_us": 2643000,
         "update_id": 12,
         "kind": "anchor",
         "cells": 16,
@@ -2930,38 +3938,68 @@
         "reflects_input_seq": 4
       },
       {
-        "at_us": 2743000,
+        "at_us": 2644000,
         "update_id": 13,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
         "plan_id": null,
-        "reflects_input_seq": 6
+        "reflects_input_seq": 4
       },
       {
-        "at_us": 2744000,
+        "at_us": 2645000,
         "update_id": 14,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
         "plan_id": 1,
-        "reflects_input_seq": 6
+        "reflects_input_seq": 4
       },
       {
-        "at_us": 2745000,
+        "at_us": 2646000,
         "update_id": 15,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
         "plan_id": 1,
-        "reflects_input_seq": 6
+        "reflects_input_seq": 4
       },
       {
-        "at_us": 2793000,
+        "at_us": 2672000,
         "update_id": 16,
+        "kind": "anchor",
+        "cells": 16,
+        "bytes": 4096,
+        "anchor": true,
+        "plan_id": null,
+        "reflects_input_seq": 4
+      },
+      {
+        "at_us": 2678000,
+        "update_id": 17,
+        "kind": "anchor",
+        "cells": 16,
+        "bytes": 4096,
+        "anchor": true,
+        "plan_id": null,
+        "reflects_input_seq": 5
+      },
+      {
+        "at_us": 2679000,
+        "update_id": 18,
+        "kind": "anchor",
+        "cells": 16,
+        "bytes": 4096,
+        "anchor": true,
+        "plan_id": null,
+        "reflects_input_seq": 5
+      },
+      {
+        "at_us": 2866000,
+        "update_id": 19,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
@@ -2970,117 +4008,87 @@
         "reflects_input_seq": 7
       },
       {
-        "at_us": 2930000,
-        "update_id": 17,
-        "kind": "anchor",
-        "cells": 16,
-        "bytes": 4096,
-        "anchor": true,
-        "plan_id": null,
-        "reflects_input_seq": 9
-      },
-      {
-        "at_us": 2994000,
-        "update_id": 18,
-        "kind": "anchor",
-        "cells": 16,
-        "bytes": 4096,
-        "anchor": true,
-        "plan_id": 2,
-        "reflects_input_seq": 9
-      },
-      {
-        "at_us": 2995000,
-        "update_id": 19,
-        "kind": "anchor",
-        "cells": 16,
-        "bytes": 4096,
-        "anchor": true,
-        "plan_id": 2,
-        "reflects_input_seq": 9
-      },
-      {
-        "at_us": 3001000,
+        "at_us": 2867000,
         "update_id": 20,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": 2,
-        "reflects_input_seq": 11
+        "plan_id": null,
+        "reflects_input_seq": 7
       },
       {
-        "at_us": 3171000,
+        "at_us": 2895000,
         "update_id": 21,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": null,
-        "reflects_input_seq": 11
+        "plan_id": 2,
+        "reflects_input_seq": 7
       },
       {
-        "at_us": 3244000,
+        "at_us": 2896000,
         "update_id": 22,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": 3,
-        "reflects_input_seq": 11
+        "plan_id": 2,
+        "reflects_input_seq": 7
       },
       {
-        "at_us": 3245000,
+        "at_us": 2897000,
         "update_id": 23,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": 3,
-        "reflects_input_seq": 11
+        "plan_id": 2,
+        "reflects_input_seq": 7
       },
       {
-        "at_us": 3426000,
+        "at_us": 2905000,
         "update_id": 24,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": null,
-        "reflects_input_seq": 11
+        "plan_id": 2,
+        "reflects_input_seq": 9
       },
       {
-        "at_us": 3483000,
+        "at_us": 2906000,
         "update_id": 25,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": null,
-        "reflects_input_seq": 11
+        "plan_id": 2,
+        "reflects_input_seq": 9
       },
       {
-        "at_us": 3494000,
+        "at_us": 2988000,
         "update_id": 26,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": 4,
+        "plan_id": null,
         "reflects_input_seq": 11
       },
       {
-        "at_us": 3495000,
+        "at_us": 2989000,
         "update_id": 27,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": 4,
+        "plan_id": null,
         "reflects_input_seq": 11
       },
       {
-        "at_us": 3540000,
+        "at_us": 3051000,
         "update_id": 28,
         "kind": "anchor",
         "cells": 16,
@@ -3090,27 +4098,27 @@
         "reflects_input_seq": 11
       },
       {
-        "at_us": 3596000,
+        "at_us": 3145000,
         "update_id": 29,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": null,
+        "plan_id": 3,
         "reflects_input_seq": 11
       },
       {
-        "at_us": 3653000,
+        "at_us": 3146000,
         "update_id": 30,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": null,
+        "plan_id": 3,
         "reflects_input_seq": 11
       },
       {
-        "at_us": 3709000,
+        "at_us": 3206000,
         "update_id": 31,
         "kind": "anchor",
         "cells": 16,
@@ -3120,28 +4128,8 @@
         "reflects_input_seq": 11
       },
       {
-        "at_us": 3744000,
+        "at_us": 3363000,
         "update_id": 32,
-        "kind": "anchor",
-        "cells": 16,
-        "bytes": 4096,
-        "anchor": true,
-        "plan_id": 5,
-        "reflects_input_seq": 11
-      },
-      {
-        "at_us": 3745000,
-        "update_id": 33,
-        "kind": "anchor",
-        "cells": 16,
-        "bytes": 4096,
-        "anchor": true,
-        "plan_id": 5,
-        "reflects_input_seq": 11
-      },
-      {
-        "at_us": 3766000,
-        "update_id": 34,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
@@ -3150,7 +4138,27 @@
         "reflects_input_seq": 11
       },
       {
-        "at_us": 3973000,
+        "at_us": 3395000,
+        "update_id": 33,
+        "kind": "anchor",
+        "cells": 16,
+        "bytes": 4096,
+        "anchor": true,
+        "plan_id": 4,
+        "reflects_input_seq": 11
+      },
+      {
+        "at_us": 3396000,
+        "update_id": 34,
+        "kind": "anchor",
+        "cells": 16,
+        "bytes": 4096,
+        "anchor": true,
+        "plan_id": 4,
+        "reflects_input_seq": 11
+      },
+      {
+        "at_us": 3483000,
         "update_id": 35,
         "kind": "anchor",
         "cells": 16,
@@ -3160,197 +4168,197 @@
         "reflects_input_seq": 11
       },
       {
-        "at_us": 4241000,
+        "at_us": 3613000,
         "update_id": 36,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": 6,
+        "plan_id": null,
         "reflects_input_seq": 11
       },
       {
-        "at_us": 4426000,
+        "at_us": 3724000,
         "update_id": 37,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": 6,
+        "plan_id": 5,
         "reflects_input_seq": 11
       },
       {
-        "at_us": 4611000,
+        "at_us": 3835000,
         "update_id": 38,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": 6,
+        "plan_id": 5,
         "reflects_input_seq": 11
       },
       {
-        "at_us": 4876000,
+        "at_us": 4020000,
         "update_id": 39,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": 6,
+        "plan_id": 5,
         "reflects_input_seq": 11
       },
       {
-        "at_us": 5126000,
+        "at_us": 4205000,
         "update_id": 40,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": 6,
+        "plan_id": 5,
         "reflects_input_seq": 11
       },
       {
-        "at_us": 5267000,
+        "at_us": 4316000,
         "update_id": 41,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": 6,
-        "reflects_input_seq": 12
+        "plan_id": 5,
+        "reflects_input_seq": 11
       },
       {
-        "at_us": 5268000,
+        "at_us": 4427000,
         "update_id": 42,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": 6,
-        "reflects_input_seq": 12
+        "plan_id": 5,
+        "reflects_input_seq": 11
       },
       {
-        "at_us": 5269000,
+        "at_us": 4538000,
         "update_id": 43,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": 6,
-        "reflects_input_seq": 12
+        "plan_id": 5,
+        "reflects_input_seq": 11
       },
       {
-        "at_us": 5270000,
+        "at_us": 4649000,
         "update_id": 44,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": 6,
-        "reflects_input_seq": 12
+        "plan_id": 5,
+        "reflects_input_seq": 11
       },
       {
-        "at_us": 5271000,
+        "at_us": 4760000,
         "update_id": 45,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": 6,
-        "reflects_input_seq": 12
+        "plan_id": 5,
+        "reflects_input_seq": 11
       },
       {
-        "at_us": 5272000,
+        "at_us": 4871000,
         "update_id": 46,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": 6,
-        "reflects_input_seq": 12
+        "plan_id": 5,
+        "reflects_input_seq": 11
       },
       {
-        "at_us": 5273000,
+        "at_us": 4982000,
         "update_id": 47,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": 7,
-        "reflects_input_seq": 12
+        "plan_id": 5,
+        "reflects_input_seq": 11
       },
       {
-        "at_us": 5274000,
+        "at_us": 5093000,
         "update_id": 48,
         "kind": "anchor",
-        "cells": 16,
-        "bytes": 4096,
+        "cells": 12,
+        "bytes": 3072,
         "anchor": true,
-        "plan_id": 7,
-        "reflects_input_seq": 12
+        "plan_id": 5,
+        "reflects_input_seq": 11
       },
       {
-        "at_us": 5291000,
+        "at_us": 5258000,
         "update_id": 49,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": null,
+        "plan_id": 6,
         "reflects_input_seq": 12
       },
       {
-        "at_us": 5386000,
+        "at_us": 5259000,
         "update_id": 50,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": null,
+        "plan_id": 6,
         "reflects_input_seq": 12
       },
       {
-        "at_us": 5480000,
+        "at_us": 5260000,
         "update_id": 51,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": null,
+        "plan_id": 6,
         "reflects_input_seq": 12
       },
       {
-        "at_us": 5523000,
+        "at_us": 5261000,
         "update_id": 52,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": 8,
+        "plan_id": 6,
         "reflects_input_seq": 12
       },
       {
-        "at_us": 5524000,
+        "at_us": 5262000,
         "update_id": 53,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": 8,
+        "plan_id": 6,
         "reflects_input_seq": 12
       },
       {
-        "at_us": 5575000,
+        "at_us": 5263000,
         "update_id": 54,
         "kind": "anchor",
-        "cells": 16,
-        "bytes": 4096,
+        "cells": 12,
+        "bytes": 3072,
         "anchor": true,
-        "plan_id": null,
+        "plan_id": 6,
         "reflects_input_seq": 12
       },
       {
-        "at_us": 5670000,
+        "at_us": 5264000,
         "update_id": 55,
         "kind": "anchor",
         "cells": 16,
@@ -3360,7 +4368,7 @@
         "reflects_input_seq": 12
       },
       {
-        "at_us": 5764000,
+        "at_us": 5265000,
         "update_id": 56,
         "kind": "anchor",
         "cells": 16,
@@ -3370,23 +4378,113 @@
         "reflects_input_seq": 12
       },
       {
-        "at_us": 5773000,
+        "at_us": 5317000,
         "update_id": 57,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": 9,
+        "plan_id": null,
         "reflects_input_seq": 12
       },
       {
-        "at_us": 5774000,
+        "at_us": 5344000,
         "update_id": 58,
         "kind": "anchor",
         "cells": 16,
         "bytes": 4096,
         "anchor": true,
-        "plan_id": 9,
+        "plan_id": 7,
+        "reflects_input_seq": 12
+      },
+      {
+        "at_us": 5345000,
+        "update_id": 59,
+        "kind": "anchor",
+        "cells": 16,
+        "bytes": 4096,
+        "anchor": true,
+        "plan_id": 7,
+        "reflects_input_seq": 12
+      },
+      {
+        "at_us": 5428000,
+        "update_id": 60,
+        "kind": "anchor",
+        "cells": 16,
+        "bytes": 4096,
+        "anchor": true,
+        "plan_id": null,
+        "reflects_input_seq": 12
+      },
+      {
+        "at_us": 5539000,
+        "update_id": 61,
+        "kind": "anchor",
+        "cells": 16,
+        "bytes": 4096,
+        "anchor": true,
+        "plan_id": null,
+        "reflects_input_seq": 12
+      },
+      {
+        "at_us": 5594000,
+        "update_id": 62,
+        "kind": "anchor",
+        "cells": 16,
+        "bytes": 4096,
+        "anchor": true,
+        "plan_id": 8,
+        "reflects_input_seq": 12
+      },
+      {
+        "at_us": 5595000,
+        "update_id": 63,
+        "kind": "anchor",
+        "cells": 16,
+        "bytes": 4096,
+        "anchor": true,
+        "plan_id": 8,
+        "reflects_input_seq": 12
+      },
+      {
+        "at_us": 5615000,
+        "update_id": 64,
+        "kind": "anchor",
+        "cells": 16,
+        "bytes": 4096,
+        "anchor": true,
+        "plan_id": null,
+        "reflects_input_seq": 12
+      },
+      {
+        "at_us": 5616000,
+        "update_id": 65,
+        "kind": "anchor",
+        "cells": 16,
+        "bytes": 4096,
+        "anchor": true,
+        "plan_id": null,
+        "reflects_input_seq": 12
+      },
+      {
+        "at_us": 5650000,
+        "update_id": 66,
+        "kind": "anchor",
+        "cells": 16,
+        "bytes": 4096,
+        "anchor": true,
+        "plan_id": null,
+        "reflects_input_seq": 12
+      },
+      {
+        "at_us": 5761000,
+        "update_id": 67,
+        "kind": "anchor",
+        "cells": 16,
+        "bytes": 4096,
+        "anchor": true,
+        "plan_id": null,
         "reflects_input_seq": 12
       }
     ],
@@ -3398,7 +4496,7 @@
         "converged": false
       },
       {
-        "at_us": 499000,
+        "at_us": 427000,
         "highest_applied_update_id": 2,
         "pending_cells": 15,
         "converged": false
@@ -3454,314 +4552,410 @@
       {
         "at_us": 2500000,
         "highest_applied_update_id": 4,
-        "pending_cells": 16,
+        "pending_cells": 32,
         "converged": false
       },
       {
         "at_us": 2750000,
         "highest_applied_update_id": 4,
-        "pending_cells": 136,
+        "pending_cells": 179,
         "converged": false
       },
       {
-        "at_us": 2837000,
-        "highest_applied_update_id": 8,
-        "pending_cells": 148,
+        "at_us": 2805000,
+        "highest_applied_update_id": 5,
+        "pending_cells": 179,
         "converged": false
       },
       {
-        "at_us": 2862000,
-        "highest_applied_update_id": 8,
-        "pending_cells": 148,
+        "at_us": 2899000,
+        "highest_applied_update_id": 6,
+        "pending_cells": 207,
         "converged": false
       },
       {
-        "at_us": 2887000,
-        "highest_applied_update_id": 9,
-        "pending_cells": 148,
+        "at_us": 2924000,
+        "highest_applied_update_id": 14,
+        "pending_cells": 207,
         "converged": false
       },
       {
         "at_us": 3000000,
-        "highest_applied_update_id": 9,
-        "pending_cells": 160,
+        "highest_applied_update_id": 14,
+        "pending_cells": 235,
+        "converged": false
+      },
+      {
+        "at_us": 3025000,
+        "highest_applied_update_id": 14,
+        "pending_cells": 235,
+        "converged": false
+      },
+      {
+        "at_us": 3056000,
+        "highest_applied_update_id": 14,
+        "pending_cells": 251,
+        "converged": false
+      },
+      {
+        "at_us": 3156000,
+        "highest_applied_update_id": 17,
+        "pending_cells": 251,
+        "converged": false
+      },
+      {
+        "at_us": 3181000,
+        "highest_applied_update_id": 24,
+        "pending_cells": 251,
+        "converged": false
+      },
+      {
+        "at_us": 3246000,
+        "highest_applied_update_id": 26,
+        "pending_cells": 251,
         "converged": false
       },
       {
         "at_us": 3250000,
-        "highest_applied_update_id": 9,
-        "pending_cells": 130,
+        "highest_applied_update_id": 26,
+        "pending_cells": 251,
         "converged": false
       },
       {
-        "at_us": 3438000,
-        "highest_applied_update_id": 20,
-        "pending_cells": 130,
+        "at_us": 3284000,
+        "highest_applied_update_id": 26,
+        "pending_cells": 239,
+        "converged": false
+      },
+      {
+        "at_us": 3360000,
+        "highest_applied_update_id": 26,
+        "pending_cells": 227,
+        "converged": false
+      },
+      {
+        "at_us": 3432000,
+        "highest_applied_update_id": 29,
+        "pending_cells": 202,
         "converged": false
       },
       {
         "at_us": 3500000,
-        "highest_applied_update_id": 20,
-        "pending_cells": 130,
-        "converged": false
-      },
-      {
-        "at_us": 3689000,
-        "highest_applied_update_id": 22,
-        "pending_cells": 142,
-        "converged": false
-      },
-      {
-        "at_us": 3744000,
-        "highest_applied_update_id": 26,
-        "pending_cells": 158,
+        "highest_applied_update_id": 29,
+        "pending_cells": 188,
         "converged": false
       },
       {
         "at_us": 3750000,
-        "highest_applied_update_id": 26,
-        "pending_cells": 158,
+        "highest_applied_update_id": 30,
+        "pending_cells": 172,
+        "converged": false
+      },
+      {
+        "at_us": 3775000,
+        "highest_applied_update_id": 34,
+        "pending_cells": 172,
+        "converged": false
+      },
+      {
+        "at_us": 3964000,
+        "highest_applied_update_id": 37,
+        "pending_cells": 172,
         "converged": false
       },
       {
         "at_us": 4000000,
-        "highest_applied_update_id": 32,
-        "pending_cells": 176,
+        "highest_applied_update_id": 37,
+        "pending_cells": 172,
         "converged": false
       },
       {
         "at_us": 4250000,
-        "highest_applied_update_id": 35,
-        "pending_cells": 176,
+        "highest_applied_update_id": 38,
+        "pending_cells": 156,
+        "converged": false
+      },
+      {
+        "at_us": 4410000,
+        "highest_applied_update_id": 40,
+        "pending_cells": 156,
         "converged": false
       },
       {
         "at_us": 4500000,
-        "highest_applied_update_id": 36,
-        "pending_cells": 112,
+        "highest_applied_update_id": 40,
+        "pending_cells": 140,
         "converged": false
       },
       {
         "at_us": 4750000,
-        "highest_applied_update_id": 37,
-        "pending_cells": 98,
+        "highest_applied_update_id": 42,
+        "pending_cells": 127,
         "converged": false
       },
       {
         "at_us": 5000000,
-        "highest_applied_update_id": 38,
-        "pending_cells": 98,
+        "highest_applied_update_id": 44,
+        "pending_cells": 108,
         "converged": false
       },
       {
         "at_us": 5250000,
-        "highest_applied_update_id": 39,
-        "pending_cells": 74,
+        "highest_applied_update_id": 46,
+        "pending_cells": 76,
+        "converged": false
+      },
+      {
+        "at_us": 5302000,
+        "highest_applied_update_id": 48,
+        "pending_cells": 124,
+        "converged": false
+      },
+      {
+        "at_us": 5486000,
+        "highest_applied_update_id": 50,
+        "pending_cells": 156,
         "converged": false
       },
       {
         "at_us": 5500000,
-        "highest_applied_update_id": 39,
-        "pending_cells": 176,
+        "highest_applied_update_id": 54,
+        "pending_cells": 156,
         "converged": false
       },
       {
-        "at_us": 5529000,
-        "highest_applied_update_id": 43,
-        "pending_cells": 176,
+        "at_us": 5561000,
+        "highest_applied_update_id": 54,
+        "pending_cells": 172,
         "converged": false
       },
       {
-        "at_us": 5601000,
-        "highest_applied_update_id": 44,
-        "pending_cells": 192,
+        "at_us": 5586000,
+        "highest_applied_update_id": 54,
+        "pending_cells": 172,
         "converged": false
       },
       {
-        "at_us": 5660000,
-        "highest_applied_update_id": 47,
-        "pending_cells": 192,
+        "at_us": 5678000,
+        "highest_applied_update_id": 58,
+        "pending_cells": 220,
         "converged": false
       },
       {
         "at_us": 5750000,
-        "highest_applied_update_id": 48,
-        "pending_cells": 192,
+        "highest_applied_update_id": 58,
+        "pending_cells": 204,
         "converged": false
       }
     ],
     "plans": [
       {
-        "at_us": 2744000,
+        "at_us": 2645000,
         "plan_id": 1,
         "event": "band",
         "cells": 16
       },
       {
-        "at_us": 2745000,
+        "at_us": 2646000,
         "plan_id": 1,
         "event": "band",
         "cells": 16
       },
       {
-        "at_us": 2994000,
+        "at_us": 2895000,
         "plan_id": 2,
         "event": "band",
         "cells": 16
       },
       {
-        "at_us": 2995000,
+        "at_us": 2896000,
         "plan_id": 2,
         "event": "band",
         "cells": 16
       },
       {
-        "at_us": 3001000,
+        "at_us": 2897000,
         "plan_id": 2,
         "event": "band",
         "cells": 16
       },
       {
-        "at_us": 3244000,
+        "at_us": 2905000,
+        "plan_id": 2,
+        "event": "band",
+        "cells": 16
+      },
+      {
+        "at_us": 2906000,
+        "plan_id": 2,
+        "event": "band",
+        "cells": 16
+      },
+      {
+        "at_us": 3145000,
         "plan_id": 3,
         "event": "band",
         "cells": 16
       },
       {
-        "at_us": 3245000,
+        "at_us": 3146000,
         "plan_id": 3,
         "event": "band",
         "cells": 16
       },
       {
-        "at_us": 3494000,
+        "at_us": 3395000,
         "plan_id": 4,
         "event": "band",
         "cells": 16
       },
       {
-        "at_us": 3495000,
+        "at_us": 3396000,
         "plan_id": 4,
         "event": "band",
         "cells": 16
       },
       {
-        "at_us": 3744000,
+        "at_us": 3724000,
         "plan_id": 5,
         "event": "band",
         "cells": 16
       },
       {
-        "at_us": 3745000,
+        "at_us": 3835000,
         "plan_id": 5,
         "event": "band",
         "cells": 16
       },
       {
-        "at_us": 4241000,
+        "at_us": 4020000,
+        "plan_id": 5,
+        "event": "band",
+        "cells": 16
+      },
+      {
+        "at_us": 4205000,
+        "plan_id": 5,
+        "event": "band",
+        "cells": 16
+      },
+      {
+        "at_us": 4316000,
+        "plan_id": 5,
+        "event": "band",
+        "cells": 16
+      },
+      {
+        "at_us": 4427000,
+        "plan_id": 5,
+        "event": "band",
+        "cells": 16
+      },
+      {
+        "at_us": 4538000,
+        "plan_id": 5,
+        "event": "band",
+        "cells": 16
+      },
+      {
+        "at_us": 4649000,
+        "plan_id": 5,
+        "event": "band",
+        "cells": 16
+      },
+      {
+        "at_us": 4760000,
+        "plan_id": 5,
+        "event": "band",
+        "cells": 16
+      },
+      {
+        "at_us": 4871000,
+        "plan_id": 5,
+        "event": "band",
+        "cells": 16
+      },
+      {
+        "at_us": 4982000,
+        "plan_id": 5,
+        "event": "band",
+        "cells": 16
+      },
+      {
+        "at_us": 5093000,
+        "plan_id": 5,
+        "event": "band",
+        "cells": 12
+      },
+      {
+        "at_us": 5093000,
+        "plan_id": 5,
+        "event": "complete",
+        "cells": 0
+      },
+      {
+        "at_us": 5258000,
         "plan_id": 6,
         "event": "band",
         "cells": 16
       },
       {
-        "at_us": 4426000,
+        "at_us": 5259000,
         "plan_id": 6,
         "event": "band",
         "cells": 16
       },
       {
-        "at_us": 4611000,
+        "at_us": 5260000,
         "plan_id": 6,
         "event": "band",
         "cells": 16
       },
       {
-        "at_us": 4876000,
+        "at_us": 5261000,
         "plan_id": 6,
         "event": "band",
         "cells": 16
       },
       {
-        "at_us": 5126000,
+        "at_us": 5262000,
         "plan_id": 6,
         "event": "band",
         "cells": 16
       },
       {
-        "at_us": 5267000,
+        "at_us": 5263000,
         "plan_id": 6,
         "event": "band",
-        "cells": 16
+        "cells": 12
       },
       {
-        "at_us": 5268000,
-        "plan_id": 6,
-        "event": "band",
-        "cells": 16
-      },
-      {
-        "at_us": 5269000,
-        "plan_id": 6,
-        "event": "band",
-        "cells": 16
-      },
-      {
-        "at_us": 5270000,
-        "plan_id": 6,
-        "event": "band",
-        "cells": 16
-      },
-      {
-        "at_us": 5271000,
-        "plan_id": 6,
-        "event": "band",
-        "cells": 16
-      },
-      {
-        "at_us": 5272000,
-        "plan_id": 6,
-        "event": "band",
-        "cells": 16
-      },
-      {
-        "at_us": 5272000,
+        "at_us": 5263000,
         "plan_id": 6,
         "event": "complete",
         "cells": 0
       },
       {
-        "at_us": 5273000,
+        "at_us": 5344000,
         "plan_id": 7,
         "event": "band",
         "cells": 16
       },
       {
-        "at_us": 5274000,
+        "at_us": 5345000,
         "plan_id": 7,
         "event": "band",
         "cells": 16
       },
       {
-        "at_us": 5523000,
+        "at_us": 5594000,
         "plan_id": 8,
         "event": "band",
         "cells": 16
       },
       {
-        "at_us": 5524000,
+        "at_us": 5595000,
         "plan_id": 8,
-        "event": "band",
-        "cells": 16
-      },
-      {
-        "at_us": 5773000,
-        "plan_id": 9,
-        "event": "band",
-        "cells": 16
-      },
-      {
-        "at_us": 5774000,
-        "plan_id": 9,
         "event": "band",
         "cells": 16
       }
@@ -3772,27 +4966,31 @@
         "state": "live"
       },
       {
-        "at_us": 2744000,
+        "at_us": 2645000,
         "state": "converging"
       },
       {
-        "at_us": 3170000,
+        "at_us": 4620000,
         "state": "live"
       },
       {
-        "at_us": 3172000,
-        "state": "converging"
-      },
-      {
-        "at_us": 4449000,
+        "at_us": 4748000,
         "state": "degraded"
       },
       {
-        "at_us": 4711000,
+        "at_us": 4761000,
+        "state": "converging"
+      },
+      {
+        "at_us": 4893000,
+        "state": "degraded"
+      },
+      {
+        "at_us": 5306000,
         "state": "live"
       },
       {
-        "at_us": 5273000,
+        "at_us": 5318000,
         "state": "converging"
       }
     ],
@@ -3805,63 +5003,77 @@
         "expired": false
       },
       {
-        "at_us": 2542000,
+        "at_us": 2583000,
+        "seq": 2,
+        "kind": "key",
+        "applied": true,
+        "expired": false
+      },
+      {
+        "at_us": 2609000,
         "seq": 3,
         "kind": "key",
         "applied": true,
         "expired": false
       },
       {
-        "at_us": 2584000,
-        "seq": 2,
-        "kind": "key",
-        "applied": false,
-        "expired": false
-      },
-      {
-        "at_us": 2701000,
+        "at_us": 2642000,
         "seq": 4,
         "kind": "key",
         "applied": true,
         "expired": false
       },
       {
-        "at_us": 2742000,
-        "seq": 6,
+        "at_us": 2677000,
+        "seq": 5,
         "kind": "key",
         "applied": true,
         "expired": false
       },
       {
-        "at_us": 2792000,
+        "at_us": 2865000,
         "seq": 7,
         "kind": "key",
         "applied": true,
         "expired": false
       },
       {
-        "at_us": 2929000,
+        "at_us": 2871000,
+        "seq": 6,
+        "kind": "key",
+        "applied": false,
+        "expired": false
+      },
+      {
+        "at_us": 2904000,
         "seq": 9,
         "kind": "key",
         "applied": true,
         "expired": false
       },
       {
-        "at_us": 3000000,
+        "at_us": 2925000,
+        "seq": 8,
+        "kind": "key",
+        "applied": false,
+        "expired": false
+      },
+      {
+        "at_us": 2987000,
         "seq": 11,
         "kind": "key",
         "applied": true,
         "expired": false
       },
       {
-        "at_us": 3044000,
+        "at_us": 3003000,
         "seq": 10,
         "kind": "key",
         "applied": false,
         "expired": false
       },
       {
-        "at_us": 5266000,
+        "at_us": 5257000,
         "seq": 12,
         "kind": "pressed_set",
         "applied": true,
@@ -3871,40 +5083,90 @@
     "echoes": [
       {
         "input_seq": 1,
-        "echo_ms": 498,
-        "at_us": 499000
+        "echo_ms": 426,
+        "at_us": 427000
+      },
+      {
+        "input_seq": 2,
+        "echo_ms": 598,
+        "at_us": 2899000
       },
       {
         "input_seq": 3,
-        "echo_ms": 546,
-        "at_us": 2847000
+        "echo_ms": 722,
+        "at_us": 3023000
+      },
+      {
+        "input_seq": 4,
+        "echo_ms": 635,
+        "at_us": 3056000
+      },
+      {
+        "input_seq": 5,
+        "echo_ms": 735,
+        "at_us": 3156000
+      },
+      {
+        "input_seq": 9,
+        "echo_ms": 508,
+        "at_us": 3169000
       },
       {
         "input_seq": 11,
-        "echo_ms": 657,
-        "at_us": 3438000
+        "echo_ms": 465,
+        "at_us": 3246000
+      },
+      {
+        "input_seq": 7,
+        "echo_ms": 743,
+        "at_us": 3284000
       },
       {
         "input_seq": 12,
-        "echo_ms": 600,
-        "at_us": 5601000
+        "echo_ms": 560,
+        "at_us": 5561000
       }
     ],
     "sender_echoes": [
       {
         "input_seq": 1,
-        "echo_ms": 501,
-        "at_us": 726000
+        "echo_ms": 1507,
+        "at_us": 1732000
+      },
+      {
+        "input_seq": 2,
+        "echo_ms": 524,
+        "at_us": 3107000
       },
       {
         "input_seq": 3,
-        "echo_ms": 647,
-        "at_us": 3189000
+        "echo_ms": 652,
+        "at_us": 3261000
+      },
+      {
+        "input_seq": 4,
+        "echo_ms": 659,
+        "at_us": 3301000
+      },
+      {
+        "input_seq": 5,
+        "echo_ms": 704,
+        "at_us": 3381000
+      },
+      {
+        "input_seq": 9,
+        "echo_ms": 513,
+        "at_us": 3417000
       },
       {
         "input_seq": 11,
-        "echo_ms": 679,
-        "at_us": 3679000
+        "echo_ms": 515,
+        "at_us": 3502000
+      },
+      {
+        "input_seq": 7,
+        "echo_ms": 662,
+        "at_us": 3527000
       }
     ]
   },
@@ -3968,44 +5230,44 @@
   ],
   "violations": [],
   "measurements": {
-    "echo_p50_ms": 546,
-    "echo_p95_ms": 657,
-    "echo_max_ms": 657,
-    "echo_samples": 4,
-    "sender_echo_p50_ms": 647,
-    "sender_echo_p95_ms": 679,
-    "sender_echo_max_ms": 679,
-    "sender_echo_samples": 3,
+    "echo_p50_ms": 598,
+    "echo_p95_ms": 743,
+    "echo_max_ms": 743,
+    "echo_samples": 9,
+    "sender_echo_p50_ms": 652,
+    "sender_echo_p95_ms": 1507,
+    "sender_echo_max_ms": 1507,
+    "sender_echo_samples": 8,
     "convergence_ms": null,
-    "convergences": 690,
-    "bytes_down": 151696,
-    "bytes_up": 9686,
-    "updates_applied": 30,
-    "updates_sent": 58,
-    "objects_delivered": 96,
-    "objects_dropped": 13,
-    "objects_lost": 26,
-    "rtt_ms": 726.1162109375,
-    "pace_bps": 353894,
-    "target_fps": 5.399993896484375,
-    "feedbacks_received": 26,
-    "acks_received": 21,
-    "inputs_received": 10,
-    "objects_enqueued": 62,
-    "fragments_sent": 38,
+    "convergences": 672,
+    "bytes_down": 204058,
+    "bytes_up": 12686,
+    "updates_applied": 40,
+    "updates_sent": 67,
+    "objects_delivered": 135,
+    "objects_dropped": 6,
+    "objects_lost": 32,
+    "rtt_ms": 557.3611580126453,
+    "pace_bps": 471859,
+    "target_fps": 7.1999969482421875,
+    "feedbacks_received": 36,
+    "acks_received": 30,
+    "inputs_received": 12,
+    "objects_enqueued": 71,
+    "fragments_sent": 50,
     "queue_overflow_drops": 0,
-    "in_flight_evictions_total": 5,
-    "in_flight_deferred_total": 1710,
-    "echo_critical_replacements_total": 5,
-    "superseded": 16,
+    "in_flight_evictions_total": 6,
+    "in_flight_deferred_total": 1393,
+    "echo_critical_replacements_total": 6,
+    "superseded": 13,
     "oversize_total": 0,
     "probes_sent": 4,
-    "receiver_reordered": 8,
+    "receiver_reordered": 14,
     "receiver_duplicated": 0,
     "receiver_dropped_objects": 0,
-    "pending_cells": 208,
+    "pending_cells": 204,
     "cells": 510,
     "duration_ms": 5780
   },
-  "digest": "05814314db6ba41f"
+  "digest": "387be6f18aef4ec1"
 }}
